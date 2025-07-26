@@ -13,7 +13,7 @@
   <!-- Background image -->
 
   <div class="card mx-4 mx-md-5 shadow-5-strong bg-body-tertiary" style="
-        margin-top: -100px;
+        margin-top: -200px;
         backdrop-filter: blur(30px);
         ">
     <div class="card-body py-5 px-md-5">
@@ -43,20 +43,25 @@
             </div>
 
             <!-- Email input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-              {{ form_row(registrationForm.email) }}
-              <label class="form-label" for="form3Example3">Email address</label>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div data-mdb-input-init class="form-outline mb-4">
+                  {{ form_row(registrationForm.email) }}
+                  <label class="form-label" for="form3Example3">Email address</label>
+                </div>
+              </div>
+              <!-- Password input -->
+              <div class="col-md-6 mb-4">
+                <div data-mdb-input-init class="form-outline mb-4">
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                    }) }}  
+                  <label class="form-label" for="form3Example4">Password</label>
+                </div>
+              </div>
+              
             </div>
-
-            <!-- Password input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-                {{ form_row(registrationForm.plainPassword, {
-                    label: 'Password'
-                }) }}
-                
-            <label class="form-label" for="form3Example4">Password</label>
-            </div>
-
+            
             <!-- Checkbox -->
             <div class="form-check d-flex justify-content-center mb-4">
               {{ form_row(registrationForm.agreeTerms) }}
@@ -71,7 +76,7 @@
             </button>
 
             <!-- Register buttons -->
-            <div class="text-center">
+            {# <div class="text-center">
               <p>or sign up with:</p>
               <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-facebook-f"></i>
@@ -88,7 +93,7 @@
               <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-github"></i>
               </button>
-            </div>
+            </div> #}
           {{ form_end(registrationForm) }}
         </div>
       </div>
