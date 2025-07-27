@@ -43,9 +43,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Mobile::class)]
+    private Collection $mobiles;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
+        $this->mobiles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -180,6 +184,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mobile>
+     */
+    public function getMobiles(): Collection
+    {
+        return $this->mobiles;
+    }
+
+    public function addMobile(Mobile $mobile): static
+    {
+        if (!$this->mobiles->contains($mobile)) {
+            $this->mobiles->add($mobile);
+            $mobile->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMobile(Mobile $mobile): static
+    {
+        if ($this->mobiles->removeElement($mobile)) {
+            // set the owning side to null (unless already changed)
+            if ($mobile->getUser() === $this) {
+                $mobile->setUser(null);
+            }
+        }
 
         return $this;
     }

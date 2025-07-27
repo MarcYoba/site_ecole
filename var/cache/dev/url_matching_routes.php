@@ -12,6 +12,8 @@ return [
         '/ecole' => [[['_route' => 'app_ecole', '_controller' => 'App\\Controller\\EcoleController::index'], null, null, null, false, false, null]],
         '/home' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
         '/home/dashboard' => [[['_route' => 'app_home_dashboard', '_controller' => 'App\\Controller\\HomeController::Dashboard'], null, null, null, false, false, null]],
+        '/mobile' => [[['_route' => 'app_mobile', '_controller' => 'App\\Controller\\MobileController::index'], null, null, null, false, false, null]],
+        '/mobile/validate' => [[['_route' => 'app_mobile_validate', '_controller' => 'App\\Controller\\MobileController::validate'], null, null, null, false, false, null]],
         '/produit' => [[['_route' => 'app_produit', '_controller' => 'App\\Controller\\ProduitController::index'], null, null, null, false, false, null]],
         '/produit/create' => [[['_route' => 'app_produit_create', '_controller' => 'App\\Controller\\ProduitController::create'], null, null, null, false, false, null]],
         '/produit/list' => [[['_route' => 'app_produit_list', '_controller' => 'App\\Controller\\ProduitController::edit'], null, null, null, false, false, null]],

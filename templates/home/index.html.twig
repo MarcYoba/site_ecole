@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}YOBS{% endblock %}
 
 {% block body %}
 <!DOCTYPE html>
@@ -109,6 +109,12 @@
     </section>
 
     <!-- CONTENT SECTION -->
+    <h1 class="text-center ">Bienvenue sur YOBS</h1>
+    <h2 class="text-center">Votre plateforme de création de carte pour élève en ligne</h2>
+    <h3 class="text-center">
+        <button class="btn btn-primary" style="margin: 20px; padding: 10px 20px; font-size: 16px;">
+            <a href="{{ path('app_login') }}" style="color: white; text-decoration: none;">Commencer</a>
+    </h3>
     <div id="3"></div>
     {% include "produit/produit.html.twig" %}
 
@@ -131,7 +137,7 @@
                     <p> Yaounde </p>
                 </div>
             </div>
-            <div id="credit"> © YOBS  Production </div>
+            <div id="credit"> © YOBS  Production {{ 'now'|date('Y') }} tous droits réservés</div>
         </section>
 
     </footer>

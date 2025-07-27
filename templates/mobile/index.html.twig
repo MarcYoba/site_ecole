@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}YOBS{% endblock %}
+
+{% block body %}
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Informations de paiement mobile</h3>
+            <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                <div class="col-md-12">
+                  <div data-mdb-input-init class="form-outline">
+                    <p><b>NB:</b> 
+                        Pour garantir la validation correcte de votre dépôt, veuillez vous assurer que toutes les informations saisies sont exactes. 
+                        le nom saisir si dessous doit etre le nom utilisé pour le tranfert de <b> 10000 FCFA</b>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            {{ form_start(form) }}
+
+              <div data-mdb-input-init class="form-outline mb-4">
+               {{ form_widget(form.operateur) }}
+                <label class="form-label" for="form3Example1q">Sélectionnez un opérateur</label>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 mb-4">
+
+                  <div data-mdb-input-init class="form-outline datepicker">
+                    {{ form_widget(form.telephone) }}
+                    <label for="exampleDatepicker1" class="form-label">Numéro de téléphone</label>
+                  </div>
+
+                </div>
+                <div class="col-md-12 mb-4">
+                    {{ form_widget(form.nom) }}
+                    <label for="exampleDatepicker1" class="form-label">Nom utiliser pour le depot</label>
+                </div>
+              </div>
+
+              <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                <div class="col-md-12">
+                  <div data-mdb-input-init class="form-outline">
+                    <p>Tous les dépôts d'argent se feront sur le numéro de téléphone <b>(+237 672558082)</b></p>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg mb-1">Submit</button>
+
+            {{ form_end(form) }}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="text-center text-white mt-5">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © YOBS PRODUCTIONS {{ 'now'|date('Y') }} - Tous droits réservés
+  </div>
+</footer>
+{% endblock %}

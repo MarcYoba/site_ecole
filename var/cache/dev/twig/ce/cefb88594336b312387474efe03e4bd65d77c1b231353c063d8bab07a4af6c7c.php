@@ -228,7 +228,7 @@ class __TwigTemplate_75cd73e4b80cc41835053601920146df238b489541d837e7c1bd65300ab
                     </div>
                   </div>
 
-                  <button  type=\"button\" data-mdb-button-init data-mdb-ripple-init class=\"btn btn-light btn-lg\"
+                  <button  type=\"submit\" data-mdb-button-init data-mdb-ripple-init class=\"btn btn-light btn-lg\"
                     data-mdb-ripple-color=\"dark\">Enregistrer</button>
 
                 </div>
@@ -405,7 +405,7 @@ class __TwigTemplate_75cd73e4b80cc41835053601920146df238b489541d837e7c1bd65300ab
                     </div>
                   </div>
 
-                  <button  type=\"button\" data-mdb-button-init data-mdb-ripple-init class=\"btn btn-light btn-lg\"
+                  <button  type=\"submit\" data-mdb-button-init data-mdb-ripple-init class=\"btn btn-light btn-lg\"
                     data-mdb-ripple-color=\"dark\">Enregistrer</button>
 
                 </div>

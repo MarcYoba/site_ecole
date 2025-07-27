@@ -64,7 +64,7 @@ class __TwigTemplate_3747b514a8e0249e1a2821a9cb4d220bc1ac378f42446b5e36b98a80f57
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Home";
+        yield "YOBS";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -200,11 +200,20 @@ class __TwigTemplate_3747b514a8e0249e1a2821a9cb4d220bc1ac378f42446b5e36b98a80f57
     </section>
 
     <!-- CONTENT SECTION -->
+    <h1 class=\"text-center \">Bienvenue sur YOBS</h1>
+    <h2 class=\"text-center\">Votre plateforme de création de carte pour élève en ligne</h2>
+    <h3 class=\"text-center\">
+        <button class=\"btn btn-primary\" style=\"margin: 20px; padding: 10px 20px; font-size: 16px;\">
+            <a href=\"";
+        // line 116
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+        yield "\" style=\"color: white; text-decoration: none;\">Commencer</a>
+    </h3>
     <div id=\"3\"></div>
     ";
-        // line 113
-        yield from $this->loadTemplate("produit/produit.html.twig", "home/index.html.twig", 113)->unwrap()->yield($context);
-        // line 114
+        // line 119
+        yield from $this->loadTemplate("produit/produit.html.twig", "home/index.html.twig", 119)->unwrap()->yield($context);
+        // line 120
         yield "
     <!-- FOOTER -->
     <div id=\"4\"></div>
@@ -225,7 +234,10 @@ class __TwigTemplate_3747b514a8e0249e1a2821a9cb4d220bc1ac378f42446b5e36b98a80f57
                     <p> Yaounde </p>
                 </div>
             </div>
-            <div id=\"credit\"> © YOBS  Production </div>
+            <div id=\"credit\"> © YOBS  Production ";
+        // line 140
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "html", null, true);
+        yield " tous droits réservés</div>
         </section>
 
     </footer>
@@ -265,7 +277,7 @@ class __TwigTemplate_3747b514a8e0249e1a2821a9cb4d220bc1ac378f42446b5e36b98a80f57
         });
     </script>
 <script src=\"";
-        // line 173
+        // line 179
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/content.js"), "html", null, true);
         yield "\"></script>
 </body>
@@ -298,14 +310,14 @@ class __TwigTemplate_3747b514a8e0249e1a2821a9cb4d220bc1ac378f42446b5e36b98a80f57
      */
     public function getDebugInfo(): array
     {
-        return array (  269 => 173,  208 => 114,  206 => 113,  111 => 21,  107 => 20,  103 => 19,  99 => 18,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
+        return array (  281 => 179,  239 => 140,  217 => 120,  215 => 119,  209 => 116,  111 => 21,  107 => 20,  103 => 19,  99 => 18,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}YOBS{% endblock %}
 
 {% block body %}
 <!DOCTYPE html>
@@ -414,6 +426,12 @@ class __TwigTemplate_3747b514a8e0249e1a2821a9cb4d220bc1ac378f42446b5e36b98a80f57
     </section>
 
     <!-- CONTENT SECTION -->
+    <h1 class=\"text-center \">Bienvenue sur YOBS</h1>
+    <h2 class=\"text-center\">Votre plateforme de création de carte pour élève en ligne</h2>
+    <h3 class=\"text-center\">
+        <button class=\"btn btn-primary\" style=\"margin: 20px; padding: 10px 20px; font-size: 16px;\">
+            <a href=\"{{ path('app_login') }}\" style=\"color: white; text-decoration: none;\">Commencer</a>
+    </h3>
     <div id=\"3\"></div>
     {% include \"produit/produit.html.twig\" %}
 
@@ -436,7 +454,7 @@ class __TwigTemplate_3747b514a8e0249e1a2821a9cb4d220bc1ac378f42446b5e36b98a80f57
                     <p> Yaounde </p>
                 </div>
             </div>
-            <div id=\"credit\"> © YOBS  Production </div>
+            <div id=\"credit\"> © YOBS  Production {{ 'now'|date('Y') }} tous droits réservés</div>
         </section>
 
     </footer>

@@ -8,6 +8,8 @@ return [
     'app_ecole' => [[], ['_controller' => 'App\\Controller\\EcoleController::index'], [], [['text', '/ecole']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/home']], [], [], []],
     'app_home_dashboard' => [[], ['_controller' => 'App\\Controller\\HomeController::Dashboard'], [], [['text', '/home/dashboard']], [], [], []],
+    'app_mobile' => [[], ['_controller' => 'App\\Controller\\MobileController::index'], [], [['text', '/mobile']], [], [], []],
+    'app_mobile_validate' => [[], ['_controller' => 'App\\Controller\\MobileController::validate'], [], [['text', '/mobile/validate']], [], [], []],
     'app_produit' => [[], ['_controller' => 'App\\Controller\\ProduitController::index'], [], [['text', '/produit']], [], [], []],
     'app_produit_create' => [[], ['_controller' => 'App\\Controller\\ProduitController::create'], [], [['text', '/produit/create']], [], [], []],
     'app_produit_list' => [[], ['_controller' => 'App\\Controller\\ProduitController::edit'], [], [['text', '/produit/list']], [], [], []],

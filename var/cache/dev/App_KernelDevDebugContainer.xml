@@ -226,6 +226,13 @@
         <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\HomeController"/>
       </call>
     </service>
+    <service id="App\Controller\MobileController" class="App\Controller\MobileController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\MobileController"/>
+      </call>
+    </service>
     <service id="App\Controller\ProduitController" class="App\Controller\ProduitController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -251,6 +258,9 @@
     <service id="App\Form\EcoleType" class="App\Form\EcoleType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\MobileType" class="App\Form\MobileType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\ProduitType" class="App\Form\ProduitType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -258,6 +268,10 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\EcoleRepository" class="App\Repository\EcoleRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\MobileRepository" class="App\Repository\MobileRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -819,6 +833,7 @@
       </argument>
       <argument type="collection">
         <argument>App\Form\EcoleType</argument>
+        <argument>App\Form\MobileType</argument>
         <argument>App\Form\ProduitType</argument>
         <argument>App\Form\RegistrationFormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1896,7 +1911,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.kLEYPGo"/>
+      <argument type="service" id=".service_locator.6B2p6Gl"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3352,7 +3367,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.bAiPkJM"/>
+      <argument type="service" id=".service_locator.PeO052U"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3916,6 +3931,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MobileController" class="App\Controller\MobileController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MobileController" class="App\Controller\MobileController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\MobileController" class="App\Controller\MobileController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProduitController" class="App\Controller\ProduitController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProduitController" class="App\Controller\ProduitController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProduitController" class="App\Controller\ProduitController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -3927,12 +3945,16 @@
     <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EcoleType" class="App\Form\EcoleType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EcoleType" class="App\Form\EcoleType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MobileType" class="App\Form\MobileType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\MobileType" class="App\Form\MobileType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProduitType" class="App\Form\ProduitType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ProduitType" class="App\Form\ProduitType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EcoleRepository" class="App\Repository\EcoleRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\EcoleRepository" class="App\Repository\EcoleRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MobileRepository" class="App\Repository\MobileRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\MobileRepository" class="App\Repository\MobileRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\NomRepository" class="App\Repository\NomRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\NomRepository" class="App\Repository\NomRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" abstract="true"/>
@@ -4332,10 +4354,12 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.g7DTU3b" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.jkXkGaP" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\EcoleController::index" type="service_closure" id=".service_locator.5miB8_X"/>
+        <argument key="App\Controller\MobileController::index" type="service_closure" id=".service_locator.5miB8_X"/>
+        <argument key="App\Controller\MobileController::validate" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\ProduitController::create" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\ProduitController::edit" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\ProduitController::index" type="service_closure" id=".service_locator.5miB8_X"/>
@@ -4347,6 +4371,8 @@
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Controller\EcoleController:index" type="service_closure" id=".service_locator.5miB8_X"/>
+        <argument key="App\Controller\MobileController:index" type="service_closure" id=".service_locator.5miB8_X"/>
+        <argument key="App\Controller\MobileController:validate" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\ProduitController:create" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\ProduitController:edit" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\ProduitController:index" type="service_closure" id=".service_locator.5miB8_X"/>
@@ -4416,10 +4442,11 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.kLEYPGo" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.6B2p6Gl" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\EcoleType" type="service_closure" id="App\Form\EcoleType"/>
+        <argument key="App\Form\MobileType" type="service_closure" id="App\Form\MobileType"/>
         <argument key="App\Form\ProduitType" type="service_closure" id="App\Form\ProduitType"/>
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
@@ -4456,10 +4483,11 @@
         <argument key="doctrine.orm.listeners.doctrine_token_provider_schema_subscriber" type="service_closure" id="doctrine.orm.listeners.doctrine_token_provider_schema_subscriber"/>
       </argument>
     </service>
-    <service id=".service_locator.bAiPkJM" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.PeO052U" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\EcoleRepository" type="service_closure" id="App\Repository\EcoleRepository"/>
+        <argument key="App\Repository\MobileRepository" type="service_closure" id="App\Repository\MobileRepository"/>
         <argument key="App\Repository\NomRepository" type="service_closure" id="App\Repository\NomRepository"/>
         <argument key="App\Repository\ProduitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
@@ -4512,6 +4540,12 @@
     <service id=".service_locator.l1ae.Qz.App\Controller\HomeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\HomeController"/>
       <argument>App\Controller\HomeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\MobileController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\MobileController"/>
+      <argument>App\Controller\MobileController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.l1ae.Qz" method="withContext"/>
     </service>
@@ -4650,12 +4684,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.g7DTU3b"/>
+      <argument type="service" id=".service_locator.jkXkGaP"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.g7DTU3b"/>
+      <argument type="service" id=".service_locator.jkXkGaP"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -5346,16 +5380,16 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.g7DTU3b"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.jkXkGaP"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.XDGmiR3" alias=".1_ServiceLocator~Z4Zvali"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
     <service id=".service_locator.KzzxdJe" alias=".service_locator.1g4809_"/>
-    <service id=".service_locator.aW7DSQg" alias=".service_locator.g7DTU3b"/>
+    <service id=".service_locator.pfDfvhZ" alias=".service_locator.jkXkGaP"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.l6ELYLY"/>
-    <service id=".service_locator.OVpNdkI" alias=".service_locator.kLEYPGo"/>
+    <service id=".service_locator.F1y6I8b" alias=".service_locator.6B2p6Gl"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
     <service id=".service_locator.jkb6XQV" alias=".service_locator.l1ae.Qz"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
