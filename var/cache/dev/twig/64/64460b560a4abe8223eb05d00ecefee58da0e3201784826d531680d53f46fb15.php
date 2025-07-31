@@ -159,51 +159,25 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                 <div class=\"container-fluid\">
 
                     <!-- Page Heading -->
-                    <div class=\"d-sm-flex align-items-center justify-content-between mb-4\">
-                        <h1 class=\"h3 mb-0 text-gray-800\">Dashboard</h1>
-                        <a href=\"#\" class=\"d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm\"><i
-                                class=\"fas fa-download fa-sm text-white-50\"></i> Generate Report</a>
-                    </div>
-                    <div class=\"d-sm-flex align-items-center justify-content-between mb-4\">
-                        <a href=\"#\" class=\"d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm\">
-                        Pharmacie</a>
-                    </div>
-                    <!-- Content Row -->
+                    
+                    <!-- Content Row data-bs-toggle=\"modal\" data-bs-target=\"#monModal\" -->
                     <div class=\"row\">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class=\"col-xl-3 col-md-6 mb-4\">
-                            <div class=\"card border-left-primary shadow h-100 py-2\">
-                                <div class=\"card-body\">
-                                    <div class=\"row no-gutters align-items-center\">
-                                        <div class=\"col mr-2\">
-                                            <a href=\"php/achat/liste.php\">
-                                            <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
-                                                    ACHAT (MONTANT)</div>
-                                                
-                                            </div>
-                                        </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-calendar fa-2x text-gray-300\"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                
                         <!-- Earnings (Monthly) Card Example -->
                         <div class=\"col-xl-3 col-md-6 mb-4\">
                             <div class=\"card border-left-success shadow h-100 py-2\">
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"php/vente/liste.php\" >
-                                            <div class=\"text-xs font-weight-bold text-success text-uppercase mb-1\">
-                                                VENTE (MONTANT)</div>
+                                        <a href=\"";
+        // line 91
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_classe");
+        yield "\" class=\"btn btn-success\" >
+                                            <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
+                                              <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  CREER UNE CLASSE
                                                     
                                             </div>
                                         </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -216,14 +190,13 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"php/dette/dette.php\">
-                                            <div class=\"text-xs font-weight-bold text-danger text-uppercase mb-1\">
-                                                DETTE (MONTANT)</div>
+                                        <a href=\"#\" class=\"btn btn-danger\">
+                                            <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
+                                                <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  AJOUTER UN ELEVE
+                                            </div>
                                                 
-                                        </div>
+                                        
                                         </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -236,14 +209,12 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"php/dette/dette.php\">
-                                            <div class=\"text-xs font-weight-bold text-success text-uppercase mb-1\">
-                                                VERSEMENT (MONTANT)</div>
-                                                
-                                        </div>
+                                        <a href=\"#\" class=\"btn btn-success\" data-bs-toggle=\"modal\" data-bs-target=\"#monModal\">
+                                            <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
+                                                <i class=\"fas fa-list fa-2x text-gray-300\"></i>  LISTE ELEVE
+                                            </div>     
+                                        
                                         </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -251,43 +222,6 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class=\"col-xl-3 col-md-6 mb-4\">
-                            <div class=\"card border-left-dark shadow h-100 py-2\">
-                                <div class=\"card-body\">
-                                    <div class=\"row no-gutters align-items-center\">
-                                        <div class=\"col mr-2\">
-                                            <a href=\"php/caisse/liste.php\">
-                                                <div class=\"text-xs font-weight-bold text-dark text-uppercase mb-1\">
-                                                    CAISSE (MONTANT)</div>
-                                                    
-                                                </div>
-                                            </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class=\"col-xl-3 col-md-6 mb-4\">
-                            <div class=\"card border-left-dark shadow h-100 py-2\">
-                                <div class=\"card-body\">
-                                    <div class=\"row no-gutters align-items-center\">
-                                        <div class=\"col mr-2\">
-                                            <a href=\"php/depenses/liste.php\">
-                                                <div class=\"text-xs font-weight-bold text-dark text-uppercase mb-1\">
-                                                    DEPENSE (MONTANT)</div>
-                                                    
-                                                </div>
-                                            </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
                        
                         <!-- Earnings (Monthly) Card Example -->
                           
@@ -297,156 +231,11 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
 
                     <!-- Content Row -->
 
-                    <div class=\"row\">
-
-                        <!-- Area Chart -->
-                        <div class=\"col-xl-8 col-lg-7\">
-                            <div class=\"card shadow mb-4\">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class=\"card-header py-3 d-flex flex-row align-items-center justify-content-between\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Statistique semaine</h6>
-                                    <div class=\"dropdown no-arrow\">
-                                        <a class=\"dropdown-toggle\" href=\"#\" role=\"button\" id=\"dropdownMenuLink\"
-                                            data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                                            <i class=\"fas fa-ellipsis-v fa-sm fa-fw text-gray-400\"></i>
-                                        </a>
-                                        <div class=\"dropdown-menu dropdown-menu-right shadow animated--fade-in\"
-                                            aria-labelledby=\"dropdownMenuLink\">
-                                            <div class=\"dropdown-header\">Dropdown Header:</div>
-                                            <a class=\"dropdown-item\" href=\"#\">Action</a>
-                                            <button class=\"dropdown-item\" onclick=\"affichemontant()\">affiche</button>
-                                            <a class=\"dropdown-item\" href=\"#\">Another action</a>
-                                            <div class=\"dropdown-divider\" ></div>
-                                            <a class=\"dropdown-item\" href=\"#\">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class=\"card-body\">
-                                    <div class=\"chart-area\">
-                                        <canvas id=\"myAreaChart\"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pie Chart -->
-                        <div class=\"col-xl-4 col-lg-5\">
-                            <div class=\"card shadow mb-4\">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class=\"card-header py-3 d-flex flex-row align-items-center justify-content-between\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Revenue Sources</h6>
-                                    <div class=\"dropdown no-arrow\">
-                                        <a class=\"dropdown-toggle\" href=\"#\" role=\"button\" id=\"dropdownMenuLink\"
-                                            data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                                            <i class=\"fas fa-ellipsis-v fa-sm fa-fw text-gray-400\"></i>
-                                        </a>
-                                        <div class=\"dropdown-menu dropdown-menu-right shadow animated--fade-in\"
-                                            aria-labelledby=\"dropdownMenuLink\">
-                                            <div class=\"dropdown-header\">Dropdown Header:</div>
-                                            <a class=\"dropdown-item\" href=\"#\">Action</a>
-                                            <a class=\"dropdown-item\" href=\"#\">Another action</a>
-                                            <div class=\"dropdown-divider\"></div>
-                                            <a class=\"dropdown-item\" href=\"#\">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class=\"card-body\">
-                                    <div class=\"chart-pie pt-4 pb-2\">
-                                        <canvas id=\"myPieChart\"></canvas>
-                                    </div>
-                                    <div class=\"mt-4 text-center small\">
-                                        <span class=\"mr-2\">
-                                            <i class=\"fas fa-circle text-primary\"></i> Achat
-                                        </span>
-                                        <span class=\"mr-2\">
-                                            <i class=\"fas fa-circle text-success\"></i> vente
-                                        </span>
-                                        <span class=\"mr-2\">
-                                            <i class=\"fas fa-circle text-info\"></i> dette
-                                        </span>
-                                        <span class=\"mr-2\">
-                                            <i class=\"fas fa-circle text-warning\"></i> versement
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    ";
+        // line 229
+        yield "
                     <!-- Content Row -->
-                    <div class=\"row\">
-
-                        <!-- Content Column -->
-                        <div class=\"col-lg-6 mb-4\">
-
-                            <!-- Project Card Example -->
-                            <div class=\"card shadow mb-4\">
-                                <div class=\"card-header py-3\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Stock de produit</h6>
-                                </div>
-                                <div class=\"card-body\">
-                                      
-                                </div>
-                            </div>
-
-                            
-
-                            <!-- Project Card Example -->
-                            <div class=\"card shadow mb-4\">
-                                <div class=\"card-header py-3\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Top 20 des Produits les plus Venduent mois</h6>
-                                </div>
-                                <div class=\"card-body\">
-                                    
-                                </div>
-                            </div>
-
-                       
-
-                        </div>
-                        
-                        
-                        <div class=\"col-lg-6 mb-4\">
-
-                            <!-- Illustrations -->
-                            <div class=\"card shadow mb-4\">
-                                <div class=\"card-body\">
-                                    <div class=\"text-center\">
-                                    <div class=\"card shadow mb-4\">
-                                <div class=\"card-header py-3\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Quantite Vendu</h6>
-                                </div>
-                                <div class=\"card-body\">
-                                    <div class=\"chart-bar\">
-                                        <canvas id=\"myBarChart\"></canvas>
-                                    </div>
-                                    <hr>
-                                    
-                                </div>
-                            </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-
-                            
-                            <div class=\"card shadow mb-4\">
-                                <div class=\"card-header py-3\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Liste des 20 premiers clients</h6>
-                                </div>
-                                <div class=\"card-body\">
-                                
-                                    
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
+                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -455,14 +244,12 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class=\"sticky-footer bg-white\">
-                <div class=\"container my-auto\">
-                    <div class=\"copyright text-center my-auto\">
-                        <span>Copyright &copy; ";
-        // line 380
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y-m-d"), "html", null, true);
-        yield "</span>
-                    </div>
+            <footer class=\"text-center text-white mt-5\">
+                <div class=\"text-center p-3\" style=\"background-color: rgba(0, 0, 0, 0.2);\">
+                    © YOBS PRODUCTIONS ";
+        // line 242
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "html", null, true);
+        yield " - Tous droits réservés
                 </div>
             </footer>
             <!-- End of Footer -->
@@ -493,7 +280,7 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                 <div class=\"modal-footer\">
                     <button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Cancel</button>
                     <a class=\"btn btn-primary\" href=\"";
-        // line 411
+        // line 272
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         yield "\">Logout</a>
                 </div>
@@ -534,7 +321,7 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
      */
     public function getDebugInfo(): array
     {
-        return array (  497 => 411,  463 => 380,  156 => 75,  145 => 65,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
+        return array (  284 => 272,  251 => 242,  236 => 229,  174 => 91,  156 => 75,  145 => 65,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -619,51 +406,22 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                 <div class=\"container-fluid\">
 
                     <!-- Page Heading -->
-                    <div class=\"d-sm-flex align-items-center justify-content-between mb-4\">
-                        <h1 class=\"h3 mb-0 text-gray-800\">Dashboard</h1>
-                        <a href=\"#\" class=\"d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm\"><i
-                                class=\"fas fa-download fa-sm text-white-50\"></i> Generate Report</a>
-                    </div>
-                    <div class=\"d-sm-flex align-items-center justify-content-between mb-4\">
-                        <a href=\"#\" class=\"d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm\">
-                        Pharmacie</a>
-                    </div>
-                    <!-- Content Row -->
+                    
+                    <!-- Content Row data-bs-toggle=\"modal\" data-bs-target=\"#monModal\" -->
                     <div class=\"row\">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class=\"col-xl-3 col-md-6 mb-4\">
-                            <div class=\"card border-left-primary shadow h-100 py-2\">
-                                <div class=\"card-body\">
-                                    <div class=\"row no-gutters align-items-center\">
-                                        <div class=\"col mr-2\">
-                                            <a href=\"php/achat/liste.php\">
-                                            <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
-                                                    ACHAT (MONTANT)</div>
-                                                
-                                            </div>
-                                        </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-calendar fa-2x text-gray-300\"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                
                         <!-- Earnings (Monthly) Card Example -->
                         <div class=\"col-xl-3 col-md-6 mb-4\">
                             <div class=\"card border-left-success shadow h-100 py-2\">
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"php/vente/liste.php\" >
-                                            <div class=\"text-xs font-weight-bold text-success text-uppercase mb-1\">
-                                                VENTE (MONTANT)</div>
+                                        <a href=\"{{ path('app_classe') }}\" class=\"btn btn-success\" >
+                                            <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
+                                              <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  CREER UNE CLASSE
                                                     
                                             </div>
                                         </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -676,14 +434,13 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"php/dette/dette.php\">
-                                            <div class=\"text-xs font-weight-bold text-danger text-uppercase mb-1\">
-                                                DETTE (MONTANT)</div>
+                                        <a href=\"#\" class=\"btn btn-danger\">
+                                            <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
+                                                <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  AJOUTER UN ELEVE
+                                            </div>
                                                 
-                                        </div>
+                                        
                                         </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -696,14 +453,12 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"php/dette/dette.php\">
-                                            <div class=\"text-xs font-weight-bold text-success text-uppercase mb-1\">
-                                                VERSEMENT (MONTANT)</div>
-                                                
-                                        </div>
+                                        <a href=\"#\" class=\"btn btn-success\" data-bs-toggle=\"modal\" data-bs-target=\"#monModal\">
+                                            <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
+                                                <i class=\"fas fa-list fa-2x text-gray-300\"></i>  LISTE ELEVE
+                                            </div>     
+                                        
                                         </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -711,43 +466,6 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class=\"col-xl-3 col-md-6 mb-4\">
-                            <div class=\"card border-left-dark shadow h-100 py-2\">
-                                <div class=\"card-body\">
-                                    <div class=\"row no-gutters align-items-center\">
-                                        <div class=\"col mr-2\">
-                                            <a href=\"php/caisse/liste.php\">
-                                                <div class=\"text-xs font-weight-bold text-dark text-uppercase mb-1\">
-                                                    CAISSE (MONTANT)</div>
-                                                    
-                                                </div>
-                                            </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class=\"col-xl-3 col-md-6 mb-4\">
-                            <div class=\"card border-left-dark shadow h-100 py-2\">
-                                <div class=\"card-body\">
-                                    <div class=\"row no-gutters align-items-center\">
-                                        <div class=\"col mr-2\">
-                                            <a href=\"php/depenses/liste.php\">
-                                                <div class=\"text-xs font-weight-bold text-dark text-uppercase mb-1\">
-                                                    DEPENSE (MONTANT)</div>
-                                                    
-                                                </div>
-                                            </a>
-                                        <div class=\"col-auto\">
-                                            <i class=\"fas fa-dollar-sign fa-2x text-gray-300\"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
                        
                         <!-- Earnings (Monthly) Card Example -->
                           
@@ -757,7 +475,7 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
 
                     <!-- Content Row -->
 
-                    <div class=\"row\">
+                    {# <div class=\"row\">
 
                         <!-- Area Chart -->
                         <div class=\"col-xl-8 col-lg-7\">
@@ -835,78 +553,10 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> #}
 
                     <!-- Content Row -->
-                    <div class=\"row\">
-
-                        <!-- Content Column -->
-                        <div class=\"col-lg-6 mb-4\">
-
-                            <!-- Project Card Example -->
-                            <div class=\"card shadow mb-4\">
-                                <div class=\"card-header py-3\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Stock de produit</h6>
-                                </div>
-                                <div class=\"card-body\">
-                                      
-                                </div>
-                            </div>
-
-                            
-
-                            <!-- Project Card Example -->
-                            <div class=\"card shadow mb-4\">
-                                <div class=\"card-header py-3\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Top 20 des Produits les plus Venduent mois</h6>
-                                </div>
-                                <div class=\"card-body\">
-                                    
-                                </div>
-                            </div>
-
-                       
-
-                        </div>
-                        
-                        
-                        <div class=\"col-lg-6 mb-4\">
-
-                            <!-- Illustrations -->
-                            <div class=\"card shadow mb-4\">
-                                <div class=\"card-body\">
-                                    <div class=\"text-center\">
-                                    <div class=\"card shadow mb-4\">
-                                <div class=\"card-header py-3\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Quantite Vendu</h6>
-                                </div>
-                                <div class=\"card-body\">
-                                    <div class=\"chart-bar\">
-                                        <canvas id=\"myBarChart\"></canvas>
-                                    </div>
-                                    <hr>
-                                    
-                                </div>
-                            </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-
-                            
-                            <div class=\"card shadow mb-4\">
-                                <div class=\"card-header py-3\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Liste des 20 premiers clients</h6>
-                                </div>
-                                <div class=\"card-body\">
-                                
-                                    
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
+                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -915,11 +565,9 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class=\"sticky-footer bg-white\">
-                <div class=\"container my-auto\">
-                    <div class=\"copyright text-center my-auto\">
-                        <span>Copyright &copy; {{ \"now\" | date(\"Y-m-d\") }}</span>
-                    </div>
+            <footer class=\"text-center text-white mt-5\">
+                <div class=\"text-center p-3\" style=\"background-color: rgba(0, 0, 0, 0.2);\">
+                    © YOBS PRODUCTIONS {{ 'now'|date('Y') }} - Tous droits réservés
                 </div>
             </footer>
             <!-- End of Footer -->

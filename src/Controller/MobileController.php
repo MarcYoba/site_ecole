@@ -29,7 +29,8 @@ class MobileController extends AbstractController
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $mobile->setCreatAt(new \DateTime());
+            $date = \DateTime::createFromFormat('Y-m-d H:i:s', '2024-06-01 12:00:00');
+            $mobile->setCreateAt($date);
             $mobile->setUser($this->getUser());
             $mobile->setStatus(0);
             $em->persist($mobile);

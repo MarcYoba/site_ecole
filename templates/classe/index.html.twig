@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClasseController!{% endblock %}
+
+{% block body %}
+<section class="vh-100" style="background-color: #2779e2;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-9">
+
+        <h1 class="text-white mb-4">AJOUTER UNE CLASSE</h1>
+        {{ form_start(form) }}
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+
+            <hr class="mx-n3">
+
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">nom classe</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                {{ form_widget(form.nom) }}
+
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+
+            {# <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">Full name</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <textarea class="form-control" rows="3" placeholder="Message sent to the employer"></textarea>
+
+              </div>
+            </div> #}
+
+            <hr class="mx-n3">
+
+            <hr class="mx-n3">
+
+            <div class="px-5 py-4">
+              <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">ENREGISTRER</button>
+            </div>
+
+          </div>
+        </div>
+        {{ form_end(form)  }}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
