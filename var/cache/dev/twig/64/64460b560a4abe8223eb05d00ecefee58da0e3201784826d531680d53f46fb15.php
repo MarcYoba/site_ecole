@@ -190,7 +190,10 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"#\" class=\"btn btn-danger\">
+                                        <a href=\"";
+        // line 109
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_eleve");
+        yield "\" class=\"btn btn-danger\">
                                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                                                 <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  AJOUTER UN ELEVE
                                             </div>
@@ -321,7 +324,7 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
      */
     public function getDebugInfo(): array
     {
-        return array (  284 => 272,  251 => 242,  236 => 229,  174 => 91,  156 => 75,  145 => 65,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
+        return array (  287 => 272,  254 => 242,  239 => 229,  195 => 109,  174 => 91,  156 => 75,  145 => 65,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -434,7 +437,7 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"#\" class=\"btn btn-danger\">
+                                        <a href=\"{{ path('app_eleve') }}\" class=\"btn btn-danger\">
                                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                                                 <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  AJOUTER UN ELEVE
                                             </div>

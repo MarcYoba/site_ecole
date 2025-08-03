@@ -7,6 +7,7 @@ return [
     'Home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'app_classe' => [[], ['_controller' => 'App\\Controller\\ClasseController::index'], [], [['text', '/classe']], [], [], []],
     'app_ecole' => [[], ['_controller' => 'App\\Controller\\EcoleController::index'], [], [['text', '/ecole']], [], [], []],
+    'app_eleve' => [[], ['_controller' => 'App\\Controller\\EleveController::index'], [], [['text', '/eleve']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/home']], [], [], []],
     'app_home_dashboard' => [[], ['_controller' => 'App\\Controller\\HomeController::Dashboard'], [], [['text', '/home/dashboard']], [], [], []],
     'app_mobile' => [[], ['_controller' => 'App\\Controller\\MobileController::index'], [], [['text', '/mobile']], [], [], []],
