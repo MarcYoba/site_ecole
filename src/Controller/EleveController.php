@@ -40,4 +40,14 @@ class EleveController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/eleve/liste', name: 'app_eleve_liste')]
+    public function list(Request $request, EntityManagerInterface $entity_manager) : Response 
+    {
+        $eleve = $entity_manager->getRepository(Eleve::class)->findOneBy(["user"=> $this->getUser()]);
+
+        return $this->render('eleve/list.html.twig',[
+            "eleves" => $eleve
+        ]);
+    }
 }

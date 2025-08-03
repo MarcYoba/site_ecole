@@ -1,0 +1,412 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List Eleve{% endblock %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte d'Étudiant - Calctech Innovations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .print-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .student-card {
+            width: 85.6mm;
+            height: 53.98mm;
+            background: white;
+            border-radius: 4.5mm;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            transform: scale(1.5); /* Agrandissement pour prévisualisation */
+            transform-origin: center;
+            margin: 20px auto;
+        }
+        
+        .card-header {
+            background: #0d47a1;
+            color: white;
+            padding: 3.5mm 0;
+            text-align: center;
+            position: relative;
+            height: 14mm;
+        }
+        
+        .card-header::after {
+            content: "";
+            position: absolute;
+            bottom: -4.5mm;
+            left: 0;
+            width: 100%;
+            height: 5mm;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+        }
+        
+        .college-name {
+            font-size: 3.1mm;
+            font-weight: bold;
+            letter-spacing: 0.1mm;
+            line-height: 1.2;
+            padding: 0 4mm;
+        }
+        
+        .card-body {
+            padding: 4mm 4mm 2mm;
+        }
+        
+        .student-info {
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 2mm;
+            margin-bottom: 2mm;
+        }
+        
+        .student-name {
+            font-size: 4.2mm;
+            font-weight: 700;
+            margin-bottom: 1mm;
+            color: #0d47a1;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #555;
+            display: inline-block;
+            width: 30mm;
+            font-size: 3mm;
+        }
+        
+        .info-value {
+            font-size: 3mm;
+        }
+        
+        .card-footer {
+            background: #f8f9fa;
+            padding: 2mm 3mm;
+            text-align: center;
+            font-weight: 600;
+            color: #0d47a1;
+            font-style: italic;
+            border-top: 1px solid #eaeaea;
+            font-size: 2.8mm;
+        }
+        
+        .college-logo {
+            position: absolute;
+            top: 2.5mm;
+            right: 3mm;
+            width: 7mm;
+            height: 7mm;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 4mm;
+        }
+        
+        .id-photo {
+            position: absolute;
+            top: 16mm;
+            right: 4mm;
+            width: 20mm;
+            height: 24mm;
+            background: #f0f4f8;
+            border: 0.5px solid #ddd;
+            border-radius: 1mm;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ccc;
+            overflow: hidden;
+        }
+        
+        .id-photo-placeholder {
+            text-align: center;
+            padding: 1mm;
+        }
+        
+        .id-photo-placeholder i {
+            font-size: 8mm;
+            color: #bbb;
+            margin-bottom: 1mm;
+        }
+        
+        .id-photo-placeholder div {
+            font-size: 2.5mm;
+        }
+        
+        .course-badge {
+            background: #e3f2fd;
+            color: #0d47a1;
+            padding: 0.8mm 2mm;
+            border-radius: 3mm;
+            font-weight: 600;
+            font-size: 3mm;
+            display: inline-block;
+            margin-top: 0.5mm;
+        }
+        
+        .admission-number {
+            font-size: 3.2mm;
+            font-weight: 700;
+            color: #0d47a1;
+            text-align: center;
+            letter-spacing: 0.2mm;
+            margin-top: 1mm;
+        }
+        
+        .validity {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5mm;
+            padding-top: 1.5mm;
+            border-top: 1px dashed #ddd;
+            font-size: 2.8mm;
+        }
+        
+        .validity-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .validity-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 2.5mm;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            max-width: 400px;
+            margin-left: 30px;
+        }
+        
+        .controls h3 {
+            color: #0d47a1;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-print {
+            background: #0d47a1;
+            color: white;
+        }
+        
+        .btn-download {
+            background: #1e88e5;
+            color: white;
+        }
+        
+        .dimensions {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        .dimensions h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+        }
+        
+        .note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+            text-align: center;
+            max-width: 300px;
+        }
+        
+        @media print {
+            body, html {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .student-card {
+                transform: scale(1) !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                page-break-inside: avoid;
+            }
+            
+            .controls, .note, .print-header {
+                display: none;
+            }
+            
+            .print-container {
+                padding: 0;
+                width: 85.6mm;
+                height: 53.98mm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-header">
+        <h1 class="text-center text-white mb-4">Carte d'Étudiant - Calctech Innovations</h1>
+        <p class="text-center text-white mb-4">Dimensions exactes : 85.6 × 53.98 mm (taille standard)</p>
+    </div>
+    
+    <div class="d-flex flex-wrap justify-content-center">
+        <div class="print-container">
+            <div class="student-card">
+                <!-- En-tête de la carte -->
+                <div class="card-header">
+                    <div class="college-name">CALCTECH INNOVATIONS AND TECHNICAL COLLEGE</div>
+                    <div class="college-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+                
+                <!-- Corps de la carte -->
+                <div class="card-body">
+                    <div class="id-photo">
+                        <div class="id-photo-placeholder">
+                            <i class="fas fa-user"></i>
+                            <div>Photo</div>
+                        </div>
+                    </div>
+                    
+                    <div class="student-info">
+                        <div class="student-name">JOSEPH K. MAINA</div>
+                        
+                        <div class="mb-1">
+                            <span class="info-label">Date Of Birth :</span>
+                            <span class="info-value">01 - Jan - 2000</span>
+                        </div>
+                        
+                        <div class="mb-1">
+                            <span class="info-label">Date Joined :</span>
+                            <span class="info-value">01 - Jan - 2022</span>
+                        </div>
+                        
+                        <div class="mb-1">
+                            <span class="info-label">Expiry Date :</span>
+                            <span class="info-value">01 - Dec - 2026</span>
+                        </div>
+                        
+                        <div>
+                            <span class="info-label">Course :</span>
+                            <div class="course-badge">Diploma in ICT</div>
+                        </div>
+                    </div>
+                    
+                    <div class="admission-number">
+                        Admission Number : ICT/521555
+                    </div>
+                    
+                    <div class="validity">
+                        <div class="validity-item">
+                            <div class="validity-label">ISSUED</div>
+                            <div>01 Jan 2022</div>
+                        </div>
+                        <div class="validity-item">
+                            <div class="validity-label">VALID UNTIL</div>
+                            <div>01 Dec 2026</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pied de page de la carte -->
+                <div class="card-footer">
+                    <div>Powered by Intellect Driven by Values</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <h3>Contrôles de la Carte</h3>
+            <div class="dimensions">
+                <h4>Dimensions Exactes</h4>
+                <p><strong>85.6 mm × 53.98 mm</strong></p>
+                <p>Taille standard carte de crédit</p>
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn btn-print" onclick="window.print()">
+                    <i class="fas fa-print me-2"></i>Imprimer
+                </button>
+                <button class="btn btn-download" onclick="downloadCard()">
+                    <i class="fas fa-download me-2"></i>Télécharger
+                </button>
+            </div>
+            
+            <div class="note">
+                <p><strong>Note :</strong> La carte est affichée agrandie pour prévisualisation. 
+                Elle sera imprimée aux dimensions exactes de 85.6 × 53.98 mm.</p>
+                <p>Pour une impression précise, utilisez du papier cartonné de 300 g/m².</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadCard() {
+            alert("Fonctionnalité de téléchargement activée!\nEn production, cela sauvegarderait la carte au format PDF.");
+            // En production, vous utiliseriez une librairie comme jsPDF ou html2pdf
+        }
+        
+        // Ajustement pour l'impression
+        window.matchMedia('print').addListener((mql) => {
+            if (mql.matches) {
+                document.body.classList.add('printing');
+            } else {
+                document.body.classList.remove('printing');
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+{% endblock %}
