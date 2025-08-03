@@ -4389,6 +4389,12 @@
         <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
+    <service id=".service_locator.dlWxPc8" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entity_manager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
     <service id=".service_locator.1g4809_" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4404,12 +4410,13 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.gS2r5dQ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.yhaWG7J" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ClasseController::index" type="service_closure" id=".service_locator.l2QwsaZ"/>
         <argument key="App\Controller\EcoleController::index" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\EleveController::index" type="service_closure" id=".service_locator.l2QwsaZ"/>
+        <argument key="App\Controller\EleveController::list" type="service_closure" id=".service_locator.dlWxPc8"/>
         <argument key="App\Controller\MobileController::index" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\MobileController::validate" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\ProduitController::create" type="service_closure" id=".service_locator.5miB8_X"/>
@@ -4425,6 +4432,7 @@
         <argument key="App\Controller\ClasseController:index" type="service_closure" id=".service_locator.l2QwsaZ"/>
         <argument key="App\Controller\EcoleController:index" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\EleveController:index" type="service_closure" id=".service_locator.l2QwsaZ"/>
+        <argument key="App\Controller\EleveController:list" type="service_closure" id=".service_locator.dlWxPc8"/>
         <argument key="App\Controller\MobileController:index" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\MobileController:validate" type="service_closure" id=".service_locator.5miB8_X"/>
         <argument key="App\Controller\ProduitController:create" type="service_closure" id=".service_locator.5miB8_X"/>
@@ -4754,12 +4762,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.gS2r5dQ"/>
+      <argument type="service" id=".service_locator.yhaWG7J"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.gS2r5dQ"/>
+      <argument type="service" id=".service_locator.yhaWG7J"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -5450,14 +5458,14 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.gS2r5dQ"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.yhaWG7J"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.XDGmiR3" alias=".1_ServiceLocator~Z4Zvali"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
     <service id=".service_locator.KzzxdJe" alias=".service_locator.1g4809_"/>
-    <service id=".service_locator.qz4leDR" alias=".service_locator.gS2r5dQ"/>
+    <service id=".service_locator.UbkWSV6" alias=".service_locator.yhaWG7J"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.l6ELYLY"/>
     <service id=".service_locator.6_0nEnT" alias=".service_locator.XHr_IIi"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
@@ -5481,6 +5489,7 @@
     <service id=".service_locator.JBAFp66" alias=".service_locator.KfbR3DY"/>
     <service id=".service_locator.Er0_7SX" alias=".service_locator.l2QwsaZ"/>
     <service id=".service_locator.kydi4Ed" alias=".service_locator.5miB8_X"/>
+    <service id=".service_locator.D0kcllv" alias=".service_locator.dlWxPc8"/>
     <service id=".service_locator.b1odMWx" alias=".service_locator.1g4809_"/>
     <service id=".service_locator.kXCVHeG" alias=".service_locator.UDgw6Ol"/>
     <service id=".service_locator.ADknlmN" alias=".service_locator.l1ae.Qz"/>
