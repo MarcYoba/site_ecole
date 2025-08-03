@@ -16,7 +16,6 @@ class MobileController extends AbstractController
     public function index(Request $request, EntityManagerInterface $em): Response
     {
         $mobile = new Mobile();
-        $form = $this->createForm(MobileType::class, $mobile);
         $mobile = $em->getRepository(Mobile::class)->findOneBy(['user' => $this->getUser()]);
         if ($mobile) {
             if ($mobile->isStatus() == 1) {
@@ -26,11 +25,11 @@ class MobileController extends AbstractController
             }
             
         }
-        
+        $mobile = new Mobile();
+        $form = $this->createForm(MobileType::class, $mobile);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $date = \DateTime::createFromFormat('Y-m-d H:i:s', '2024-06-01 12:00:00');
-            $mobile->setCreateAt($date);
+            $mobile->setCreatAt(new \DateTime());
             $mobile->setUser($this->getUser());
             $mobile->setStatus(0);
             $em->persist($mobile);
