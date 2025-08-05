@@ -93,7 +93,10 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
     <meta name=\"description\" content=\"\">
     <meta name=\"author\" content=\"\">
-
+    <link href=\"";
+        // line 17
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/barge.css"), "html", null, true);
+        yield "\" rel=\"stylesheet\">
     <title>GESTION DE STOCK</title>
 
     <!-- Custom fonts for this template-->
@@ -111,37 +114,12 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
 
 <body id=\"page-top\">
 
-<div class=\"modal fade\" id=\"monModal\" tabindex=\"-1\" aria-labelledby=\"monModalLabel\" aria-hidden=\"true\">
-    <div class=\"modal-dialog\">
-        <div class=\"modal-content\">
-        <div class=\"modal-header text-primary\">
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" fill=\"currentColor\" class=\"bi bi-exclamation-triangle-fill flex-shrink-0 me-2\" viewBox=\"0 0 16 16\" role=\"img\" aria-label=\"Warning:\">
-                <path d=\"M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z\"/>
-            </svg>
-            <h5 class=\"modal-title\" id=\"monModalLabel\">Information de rapelle d'urgence</h5>
-            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Fermer\"></button>
-        </div>
-        <div class=\"modal-body\">
-            <div class=\"form-group row\">
-                <div class=\"col-sm-4\">
-                    commande en cour 
-                </div>
-            </div>
-        </div>
-        <div class=\"modal-footer\">
-        <a href=\"php/client/commandeliste.php\" type=\"button\" class=\"btn btn-primary\" ><i class=\"fa fa-download\" aria-hidden=\"true\"></i>Liste Commande</a>
-           
-        </div>
-        </div>
-    </div>
-    </div>
-
     <!-- Page Wrapper -->
     <div id=\"wrapper\">
 
         <!-- Sidebar -->
       ";
-        // line 65
+        // line 40
         yield "        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -149,11 +127,6 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
 
             <!-- Main Content -->
             <div id=\"content\">
-
-                <!-- Topbar -->
-                  ";
-        // line 75
-        yield "                <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class=\"container-fluid\">
@@ -165,66 +138,66 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class=\"col-xl-3 col-md-6 mb-4\">
+                            <a href=\"";
+        // line 58
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_classe");
+        yield "\" class=\"btn\" >
                             <div class=\"card border-left-success shadow h-100 py-2\">
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"";
-        // line 91
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_classe");
-        yield "\" class=\"btn btn-success\" >
+                                        
                                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                                               <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  CREER UNE CLASSE
                                                     
                                             </div>
-                                        </a>
+                                        
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                          <!-- Earnings (Monthly) Card Example -->
                          <div class=\"col-xl-3 col-md-6 mb-4\">
+                            <a href=\"";
+        // line 78
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_eleve");
+        yield "\">
                             <div class=\"card border-left-danger shadow h-100 py-2\">
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"";
-        // line 109
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_eleve");
-        yield "\" class=\"btn btn-danger\">
+                                        
                                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                                                 <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  AJOUTER UN ELEVE
                                             </div>
-                                                
-                                        
-                                        </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                         <!-- Earnings (Monthly) Card Example data-bs-toggle=\"modal\" data-bs-target=\"#monModal\" -->
                         <div class=\"col-xl-3 col-md-6 mb-4\">
+                            <a href=\"";
+        // line 96
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_eleve_liste");
+        yield "\">
                             <div class=\"card border-left-success shadow h-100 py-2\">
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"";
-        // line 128
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_eleve_liste");
-        yield "\" class=\"btn btn-success\" >
                                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                                                 <i class=\"fas fa-list fa-2x text-gray-300\"></i>  LISTE ELEVE
                                             </div>     
-                                        
-                                        </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
@@ -237,9 +210,8 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
 
                     <!-- Content Row -->
 
-                    ";
-        // line 229
-        yield "
+                    
+
                     <!-- Content Row -->
                     
 
@@ -253,7 +225,7 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
             <footer class=\"text-center text-white mt-5\">
                 <div class=\"text-center p-3\" style=\"background-color: rgba(0, 0, 0, 0.2);\">
                     © YOBS PRODUCTIONS ";
-        // line 242
+        // line 135
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "html", null, true);
         yield " - Tous droits réservés
                 </div>
@@ -272,27 +244,6 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
     </a>
 
     <!-- Logout Modal-->
-    <div class=\"modal fade\" id=\"logoutModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"
-        aria-hidden=\"true\">
-        <div class=\"modal-dialog\" role=\"document\">
-            <div class=\"modal-content\">
-                <div class=\"modal-header\">
-                    <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ready to Leave?</h5>
-                    <button class=\"close\" type=\"button\" data-dismiss=\"modal\" aria-label=\"Close\">
-                        <span aria-hidden=\"true\">×</span>
-                    </button>
-                </div>
-                <div class=\"modal-body\">Select \"Logout\" below if you are ready to end your current session.</div>
-                <div class=\"modal-footer\">
-                    <button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Cancel</button>
-                    <a class=\"btn btn-primary\" href=\"";
-        // line 272
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-        yield "\">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap core JavaScript-->
       
@@ -327,7 +278,7 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
      */
     public function getDebugInfo(): array
     {
-        return array (  290 => 272,  257 => 242,  242 => 229,  217 => 128,  195 => 109,  174 => 91,  156 => 75,  145 => 65,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
+        return array (  229 => 135,  187 => 96,  166 => 78,  143 => 58,  123 => 40,  98 => 17,  85 => 6,  75 => 5,  58 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -348,7 +299,7 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
     <meta name=\"description\" content=\"\">
     <meta name=\"author\" content=\"\">
-
+    <link href=\"{{ asset('css/barge.css') }}\" rel=\"stylesheet\">
     <title>GESTION DE STOCK</title>
 
     <!-- Custom fonts for this template-->
@@ -366,31 +317,6 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
 
 <body id=\"page-top\">
 
-<div class=\"modal fade\" id=\"monModal\" tabindex=\"-1\" aria-labelledby=\"monModalLabel\" aria-hidden=\"true\">
-    <div class=\"modal-dialog\">
-        <div class=\"modal-content\">
-        <div class=\"modal-header text-primary\">
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" fill=\"currentColor\" class=\"bi bi-exclamation-triangle-fill flex-shrink-0 me-2\" viewBox=\"0 0 16 16\" role=\"img\" aria-label=\"Warning:\">
-                <path d=\"M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z\"/>
-            </svg>
-            <h5 class=\"modal-title\" id=\"monModalLabel\">Information de rapelle d'urgence</h5>
-            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Fermer\"></button>
-        </div>
-        <div class=\"modal-body\">
-            <div class=\"form-group row\">
-                <div class=\"col-sm-4\">
-                    commande en cour 
-                </div>
-            </div>
-        </div>
-        <div class=\"modal-footer\">
-        <a href=\"php/client/commandeliste.php\" type=\"button\" class=\"btn btn-primary\" ><i class=\"fa fa-download\" aria-hidden=\"true\"></i>Liste Commande</a>
-           
-        </div>
-        </div>
-    </div>
-    </div>
-
     <!-- Page Wrapper -->
     <div id=\"wrapper\">
 
@@ -404,10 +330,6 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
             <!-- Main Content -->
             <div id=\"content\">
 
-                <!-- Topbar -->
-                  {# {% include \"topbar.html.twig\" %}  #}
-                <!-- End of Topbar -->
-
                 <!-- Begin Page Content -->
                 <div class=\"container-fluid\">
 
@@ -418,57 +340,57 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
                 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class=\"col-xl-3 col-md-6 mb-4\">
+                            <a href=\"{{ path('app_classe') }}\" class=\"btn\" >
                             <div class=\"card border-left-success shadow h-100 py-2\">
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"{{ path('app_classe') }}\" class=\"btn btn-success\" >
+                                        
                                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                                               <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  CREER UNE CLASSE
                                                     
                                             </div>
-                                        </a>
+                                        
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                          <!-- Earnings (Monthly) Card Example -->
                          <div class=\"col-xl-3 col-md-6 mb-4\">
+                            <a href=\"{{ path('app_eleve') }}\">
                             <div class=\"card border-left-danger shadow h-100 py-2\">
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"{{ path('app_eleve') }}\" class=\"btn btn-danger\">
+                                        
                                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                                                 <i class=\"fas fa-plus fa-2x text-gray-300\"></i>  AJOUTER UN ELEVE
                                             </div>
-                                                
-                                        
-                                        </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                         <!-- Earnings (Monthly) Card Example data-bs-toggle=\"modal\" data-bs-target=\"#monModal\" -->
                         <div class=\"col-xl-3 col-md-6 mb-4\">
+                            <a href=\"{{ path('app_eleve_liste') }}\">
                             <div class=\"card border-left-success shadow h-100 py-2\">
                                 <div class=\"card-body\">
                                     <div class=\"row no-gutters align-items-center\">
                                         <div class=\"col mr-2\">
-                                        <a href=\"{{ path('app_eleve_liste') }}\" class=\"btn btn-success\" >
                                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                                                 <i class=\"fas fa-list fa-2x text-gray-300\"></i>  LISTE ELEVE
                                             </div>     
-                                        
-                                        </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
@@ -481,85 +403,7 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
 
                     <!-- Content Row -->
 
-                    {# <div class=\"row\">
-
-                        <!-- Area Chart -->
-                        <div class=\"col-xl-8 col-lg-7\">
-                            <div class=\"card shadow mb-4\">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class=\"card-header py-3 d-flex flex-row align-items-center justify-content-between\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Statistique semaine</h6>
-                                    <div class=\"dropdown no-arrow\">
-                                        <a class=\"dropdown-toggle\" href=\"#\" role=\"button\" id=\"dropdownMenuLink\"
-                                            data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                                            <i class=\"fas fa-ellipsis-v fa-sm fa-fw text-gray-400\"></i>
-                                        </a>
-                                        <div class=\"dropdown-menu dropdown-menu-right shadow animated--fade-in\"
-                                            aria-labelledby=\"dropdownMenuLink\">
-                                            <div class=\"dropdown-header\">Dropdown Header:</div>
-                                            <a class=\"dropdown-item\" href=\"#\">Action</a>
-                                            <button class=\"dropdown-item\" onclick=\"affichemontant()\">affiche</button>
-                                            <a class=\"dropdown-item\" href=\"#\">Another action</a>
-                                            <div class=\"dropdown-divider\" ></div>
-                                            <a class=\"dropdown-item\" href=\"#\">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class=\"card-body\">
-                                    <div class=\"chart-area\">
-                                        <canvas id=\"myAreaChart\"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pie Chart -->
-                        <div class=\"col-xl-4 col-lg-5\">
-                            <div class=\"card shadow mb-4\">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class=\"card-header py-3 d-flex flex-row align-items-center justify-content-between\">
-                                    <h6 class=\"m-0 font-weight-bold text-primary\">Revenue Sources</h6>
-                                    <div class=\"dropdown no-arrow\">
-                                        <a class=\"dropdown-toggle\" href=\"#\" role=\"button\" id=\"dropdownMenuLink\"
-                                            data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                                            <i class=\"fas fa-ellipsis-v fa-sm fa-fw text-gray-400\"></i>
-                                        </a>
-                                        <div class=\"dropdown-menu dropdown-menu-right shadow animated--fade-in\"
-                                            aria-labelledby=\"dropdownMenuLink\">
-                                            <div class=\"dropdown-header\">Dropdown Header:</div>
-                                            <a class=\"dropdown-item\" href=\"#\">Action</a>
-                                            <a class=\"dropdown-item\" href=\"#\">Another action</a>
-                                            <div class=\"dropdown-divider\"></div>
-                                            <a class=\"dropdown-item\" href=\"#\">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class=\"card-body\">
-                                    <div class=\"chart-pie pt-4 pb-2\">
-                                        <canvas id=\"myPieChart\"></canvas>
-                                    </div>
-                                    <div class=\"mt-4 text-center small\">
-                                        <span class=\"mr-2\">
-                                            <i class=\"fas fa-circle text-primary\"></i> Achat
-                                        </span>
-                                        <span class=\"mr-2\">
-                                            <i class=\"fas fa-circle text-success\"></i> vente
-                                        </span>
-                                        <span class=\"mr-2\">
-                                            <i class=\"fas fa-circle text-info\"></i> dette
-                                        </span>
-                                        <span class=\"mr-2\">
-                                            <i class=\"fas fa-circle text-warning\"></i> versement
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> #}
+                    
 
                     <!-- Content Row -->
                     
@@ -590,24 +434,6 @@ class __TwigTemplate_62c115b518b10784a57ea2b80dac5dc2ab119ad7f7acc49c1e4543c8009
     </a>
 
     <!-- Logout Modal-->
-    <div class=\"modal fade\" id=\"logoutModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"
-        aria-hidden=\"true\">
-        <div class=\"modal-dialog\" role=\"document\">
-            <div class=\"modal-content\">
-                <div class=\"modal-header\">
-                    <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ready to Leave?</h5>
-                    <button class=\"close\" type=\"button\" data-dismiss=\"modal\" aria-label=\"Close\">
-                        <span aria-hidden=\"true\">×</span>
-                    </button>
-                </div>
-                <div class=\"modal-body\">Select \"Logout\" below if you are ready to end your current session.</div>
-                <div class=\"modal-footer\">
-                    <button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Cancel</button>
-                    <a class=\"btn btn-primary\" href=\"{{ path('app_logout') }}\">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap core JavaScript-->
       

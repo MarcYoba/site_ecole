@@ -297,7 +297,7 @@
         <h1 class="text-center text-white mb-4">Carte d'Étudiant - Calctech Innovations</h1>
         <p class="text-center text-white mb-4">Dimensions exactes : 85.6 × 53.98 mm (taille standard)</p>
     </div>
-    
+    {% for eleve in eleves %}
     <div class="d-flex flex-wrap justify-content-center">
         <div class="print-container">
             <div class="student-card">
@@ -319,26 +319,26 @@
                     </div>
                     
                     <div class="student-info">
-                        <div class="student-name">JOSEPH K. MAINA</div>
+                        <div class="student-name">{{ eleve.nom }}</div>
                         
-                        <div class="mb-1">
-                            <span class="info-label">Date Of Birth :</span>
-                            <span class="info-value">01 - Jan - 2000</span>
+                        <div class="col-mb-1">
+                            <span class="info-label">NE le</span>
+                            <span class="info-value">{{ eleve.naissance | date('Y-m-d') }}</span>
                         </div>
                         
                         <div class="mb-1">
-                            <span class="info-label">Date Joined :</span>
-                            <span class="info-value">01 - Jan - 2022</span>
+                            <span class="info-label">Classe</span>
+                            <span class="info-value">{{ eleve.classe.nom }} </span>
                         </div>
                         
                         <div class="mb-1">
-                            <span class="info-label">Expiry Date :</span>
-                            <span class="info-value">01 - Dec - 2026</span>
+                            <span class="info-label">Pere/ Mere</span>
+                            <span class="info-value">{{ eleve.pere }} / {{ eleve.mere }}</span>
                         </div>
                         
                         <div>
-                            <span class="info-label">Course :</span>
-                            <div class="course-badge">Diploma in ICT</div>
+                            <span class="info-label">Telephone/ Matricule </span>
+                            <div class="course-badge">{{ eleve.telephone }} / {{ eleve.matricule }}</div>
                         </div>
                     </div>
                     
@@ -389,7 +389,7 @@
             </div>
         </div>
     </div>
-
+    {% endfor %}
     <script>
         function downloadCard() {
             alert("Fonctionnalité de téléchargement activée!\nEn production, cela sauvegarderait la carte au format PDF.");
