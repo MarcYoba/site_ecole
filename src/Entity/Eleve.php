@@ -41,11 +41,11 @@ class Eleve
     #[ORM\ManyToOne(inversedBy: 'eleves')]
     private ?User $user = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Classe $classe = null;
-
     #[ORM\Column(length: 255)]
     private ?string $sexe = null;
+
+    #[ORM\ManyToOne(inversedBy: 'eleves')]
+    private ?Classe $classe = null;
 
     public function getId(): ?int
     {
@@ -160,17 +160,6 @@ class Eleve
         return $this;
     }
 
-    public function getClasse(): ?Classe
-    {
-        return $this->classe;
-    }
-
-    public function setClasse(?Classe $classe): static
-    {
-        $this->classe = $classe;
-
-        return $this;
-    }
 
     public function getSexe(): ?string
     {
@@ -180,6 +169,18 @@ class Eleve
     public function setSexe(string $sexe): static
     {
         $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): static
+    {
+        $this->classe = $classe;
 
         return $this;
     }
