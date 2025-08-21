@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Eleve;
 use App\Entity\Classe;
+use App\Entity\Ecole;
 use App\Form\EleveType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,8 +56,10 @@ class EleveController extends AbstractController
     public function detais (Request $request, EntityManagerInterface $entity_manager) : Response
     {
         $eleve = $entity_manager->getRepository(Eleve::class)->findBy(["user"=> $this->getUser()]);
+        $ecole = $entity_manager->getRepository(Ecole::class)->findOneBy(["user"=> $this->getUser()]);
         return $this->render('eleve/detail.html.twig',[
-            "eleves" => $eleve
+            "eleves" => $eleve,
+            "ecoles" => $ecole,
         ]);
     }
 }
