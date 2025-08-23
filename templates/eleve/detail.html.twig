@@ -9,108 +9,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte d'Étudiant </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/eleve.css') }}">
 </head>
 <body>
-    <div class="print-header">
-        <h1 class="text-center text-white mb-4">Carte d'Étudiant - {{ecoles.nom}}</h1>
-        <p class="text-center text-white mb-4">Dimensions exactes : 85.6 × 53.98 mm (taille standard)</p>
-    </div>
-    {% for eleve in eleves %}
-    <div class="d-flex flex-wrap justify-content-center">
-        <div class="print-container">
-            <div class="student-card">
-                <!-- En-tête de la carte -->
-                <div class="card-header">
-                    <div class="college-name">{{ecoles.nom}}</div>
-                    <div class="college-logo">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                </div>
-                
-                <!-- Corps de la carte -->
-                <div class="card-body">
-                    <div class="id-photo">
-                        <div class="id-photo-placeholder">
-                            <i class="fas fa-user"></i>
-                            <div>Photo</div>
+        <!--<h1 class="text-center text-white">Carte d'Étudiant - {{ecoles.nom}}</h1>
+        <br> -->
+    <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <tbody>
+                    {% set valeur = 0 %}
+
+                    {% for eleve in eleves %}
+                    {% if valeur == 0 %}
+                        <tr>
+                    {% endif %}
+                    <td>
+                        <div class="controls">
+                                <!-- En-tête de la carte <div class="student-card"> -->
+                                <div class="card-header">
+                                    <div class="college-name">{{ecoles.nom}}</div>
+                                    <div class="college-logo">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Corps de la carte -->
+                                <div class="card-body">
+                                    <div class="id-photo">
+                                        <div class="id-photo-placeholder">
+                                            <i class="fas fa-user"></i>
+                                            <div>Photo</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="student-info">
+                                        <div class="student-name">{{ eleve.nom }}</div>
+                                        
+                                        <div class="col-mb-1">
+                                            <span class="info-label">NE le</span>
+                                            <span class="info-value">{{ eleve.naissance | date('Y-m-d') }}</span>
+                                        </div>
+                                        
+                                        <div class="mb-1">
+                                            <span class="info-label">Classe</span>
+                                            <span class="info-value">{{ eleve.classe.nom }} </span>
+                                        </div>
+                                        
+                                        <div class="mb-1">
+                                            <span class="info-label">Pere/ Mere</span>
+                                            <span class="info-value">{{ eleve.pere }} / {{ eleve.mere }}</span>
+                                        </div>
+                                        
+                                        <div>
+                                            <span class="info-label">Telephone/ Matricule </span>
+                                            <div class="course-badge">{{ eleve.telephone }} / {{ eleve.matricule }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>        
+                                <!-- Pied de page de la carte </div>-->
+                                <div class="card-footer">
+                                    <div>Powered by Intellect Driven by Values</div>
+                                </div>
+                            
+                        
+                        
+                        <div class="controls">
+                            <h3>Contrôles de la Carte</h3>
+                            <div class="dimensions">
+                                <h4>Dimensions Exactes</h4>
+                                <p><strong>85.6 mm × 53.98 mm</strong></p>
+                                <p>Taille standard carte de crédit</p>
+                            </div>
+                            
+                            <div class="btn-group">
+                                <button class="btn btn-print" onclick="window.print()">
+                                    <i class="fas fa-print me-2"></i>Imprimer
+                                </button>
+                                <button class="btn btn-download" onclick="downloadCard()">
+                                    <i class="fas fa-download me-2"></i>Télécharger
+                                </button>
+                            </div>
+                            
+                            <div class="note">
+                                <p><strong>Note :</strong> La carte est affichée agrandie pour prévisualisation. 
+                                Elle sera imprimée aux dimensions exactes de 85.6 × 53.98 mm.</p>
+                                <p>Pour une impression précise, utilisez du papier cartonné de 300 g/m².</p>
+                            </div>
                         </div>
-                    </div>
                     
-                    <div class="student-info">
-                        <div class="student-name">{{ eleve.nom }}</div>
-                        
-                        <div class="col-mb-1">
-                            <span class="info-label">NE le</span>
-                            <span class="info-value">{{ eleve.naissance | date('Y-m-d') }}</span>
-                        </div>
-                        
-                        <div class="mb-1">
-                            <span class="info-label">Classe</span>
-                            <span class="info-value">{{ eleve.classe.nom }} </span>
-                        </div>
-                        
-                        <div class="mb-1">
-                            <span class="info-label">Pere/ Mere</span>
-                            <span class="info-value">{{ eleve.pere }} / {{ eleve.mere }}</span>
-                        </div>
-                        
-                        <div>
-                            <span class="info-label">Telephone/ Matricule </span>
-                            <div class="course-badge">{{ eleve.telephone }} / {{ eleve.matricule }}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="admission-number">
-                        Admission Number : ICT/521555
-                    </div>
-                    
-                    <div class="validity">
-                        <div class="validity-item">
-                            <div class="validity-label">ISSUED</div>
-                            <div>01 Jan 2022</div>
-                        </div>
-                        <div class="validity-item">
-                            <div class="validity-label">VALID UNTIL</div>
-                            <div>01 Dec 2026</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pied de page de la carte -->
-                <div class="card-footer">
-                    <div>Powered by Intellect Driven by Values</div>
-                </div>
-            </div>
+                    </td>
+                            {% set valeur = valeur + 1 %}   
+                            {% if valeur > 2 %}
+                                </tr>
+                                {% set valeur = 0 %}
+                            {% endif %}
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        
-        <div class="controls">
-            <h3>Contrôles de la Carte</h3>
-            <div class="dimensions">
-                <h4>Dimensions Exactes</h4>
-                <p><strong>85.6 mm × 53.98 mm</strong></p>
-                <p>Taille standard carte de crédit</p>
-            </div>
-            
-            <div class="btn-group">
-                <button class="btn btn-print" onclick="window.print()">
-                    <i class="fas fa-print me-2"></i>Imprimer
-                </button>
-                <button class="btn btn-download" onclick="downloadCard()">
-                    <i class="fas fa-download me-2"></i>Télécharger
-                </button>
-            </div>
-            
-            <div class="note">
-                <p><strong>Note :</strong> La carte est affichée agrandie pour prévisualisation. 
-                Elle sera imprimée aux dimensions exactes de 85.6 × 53.98 mm.</p>
-                <p>Pour une impression précise, utilisez du papier cartonné de 300 g/m².</p>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
     <script>
         function downloadCard() {
             alert("Fonctionnalité de téléchargement activée!\nEn production, cela sauvegarderait la carte au format PDF.");

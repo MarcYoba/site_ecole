@@ -273,65 +273,79 @@
     </style>
 </head>
 <body>
-        <div class="form-group row">
-        {% set valeur = 0%}
-        {% for eleve in eleves %}
-            {% if valeur >2 %}
-                <div class="form-group row">
-                {% set valeur = 0%}
-            {% endif %}
-            {% set valeur = valeur + 1 %}
-        <div class="col-md-4">
-                    <div class="student-card">
-                        <!-- En-tête de la carte -->
-                        <div class="card-header">
-                            <div class="college-name">{{ecoles.nom}}</div>
-                            <div class="college-logo">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                        </div>
+
+        <div class="container mt-4">
+        <h1>Liste des eleve {{ecoles.nom}}</h1>
+        
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <tbody>
+                  {% set valeur = 0 %}
+                    {% for eleve in eleves %}
                         
-                        <!-- Corps de la carte -->
-                        <div class="card-body">
-                            <div class="id-photo">
-                                <div class="id-photo-placeholder">
-                                    <i class="fas fa-user"></i>
-                                    <div>Photo</div>
+                        {% if valeur == 0 %}
+                            <tr>
+                        {% endif %}
+                        <td>
+                                <div class="controls">
+                                    <!-- En-tête de la carte -->
+                                    <div class="card-header">
+                                        <div class="college-name">{{ecoles.nom}}</div>
+                                        <div class="college-logo">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Corps de la carte -->
+                                    <div class="card-body">
+                                        
+                                           <div class="id-photo">
+                                                <div class="id-photo-placeholder">
+                                                    <i class="fas fa-user"></i>
+                                                    <div>Photo</div>
+                                                </div>
+                                            </div>
+                                        
+                                        
+                                        <div class="student-info">
+                                            <div class="student-name">{{ eleve.nom }}</div>
+                                            
+                                            <div class="col-mb-1">
+                                                <span class="info-label">NE le</span>
+                                                <span class="info-value">{{ eleve.naissance | date('Y-m-d') }}</span>
+                                            </div>
+                                            
+                                            <div class="col-mb-1">
+                                                <span class="info-label">Classe</span>
+                                                <span class="info-value">{{ eleve.classe.nom }} </span>
+                                            </div>
+                                            
+                                            <div class="col-mb-1">
+                                                <span class="info-label">Pere/ Mere</span>
+                                                <span class="info-value">{{ eleve.pere }} / {{ eleve.mere }}</span>
+                                            </div>
+                                            
+                                            <div class="col-mb-1">
+                                                <span class="info-label">Telephone/ Matricule </span>
+                                                <span class="course-badge">{{ eleve.telephone }} / {{ eleve.matricule }}</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <!-- Pied de page de la carte -->
                                 </div>
-                            </div>
-                            
-                            <div class="student-info">
-                                <div class="student-name">{{ eleve.nom }}</div>
-                                
-                                <div class="col-mb-1">
-                                    <span class="info-label">NE le</span>
-                                    <span class="info-value">{{ eleve.naissance | date('Y-m-d') }}</span>
-                                </div>
-                                
-                                <div class="col-mb-1">
-                                    <span class="info-label">Classe</span>
-                                    <span class="info-value">{{ eleve.classe.nom }} </span>
-                                </div>
-                                
-                                <div class="col-mb-1">
-                                    <span class="info-label">Pere/ Mere</span>
-                                    <span class="info-value">{{ eleve.pere }} / {{ eleve.mere }}</span>
-                                </div>
-                                
-                                <div class="<div class="form-group row">">
-                                    <span class="info-label">Telephone/ Matricule </span>
-                                    <span class="course-badge">{{ eleve.telephone }} / {{ eleve.matricule }}</span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                        <!-- Pied de page de la carte -->
-                    </div>
-                
-            
+                        </td>
+                        {% set valeur = valeur + 1 %}   
+                        {% if valeur > 2 %}
+                            </tr>
+                             {% set valeur = 0 %}
+                        {% endif %}
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        {% endfor %}
     </div>
 </body>
 </html>
