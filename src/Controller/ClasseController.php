@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ClasseController extends AbstractController
 {
-    #[Route('/classe', name: 'app_classe')]
+    #[Route('/classe/create', name: 'app_classe')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $classe = new Classe();
@@ -30,6 +30,15 @@ class ClasseController extends AbstractController
         }
         return $this->render('classe/index.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/classe/list', name: 'app_classe_liste')]
+    public function list(EntityManagerInterface $em) : Response {
+        $classe = $em->getRepository(Classe::class)->findAll();
+
+        return $this->render('classe/list.html.twig', [
+          'classes' => $classe,  
         ]);
     }
 }

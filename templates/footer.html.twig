@@ -1,0 +1,17 @@
+<footer class="footer mt-auto py-4 bg-light border-top">
+    <div class="container text-center">
+        <span class="text-muted small">
+            &copy; {{ 'now'|date('Y') }} <strong>YOBS PRODUCTIONS</strong>. Tous droits réservés.
+        </span>
+    </div>
+</footer>
+<style>
+    /* Correction pour s'assurer que le footer reste en bas si peu de contenu */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    /* Style spécifique pour les bordures de cartes Bootstrap */
+    .border-start { border-left: 4px solid !important; }
+</style>

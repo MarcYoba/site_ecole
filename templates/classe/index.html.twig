@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ClasseController!{% endblock %}
+{% block title %}YOBS{% endblock %}
 
 {% block body %}
-<section class="vh-100" style="background-color: #2779e2;">
-  <div class="container h-100">
+{% include "navbar.html.twig" %}
+<section class="vh-100">
+  <div class="container ">
    
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-xl-9">
@@ -15,7 +16,7 @@
           <div class="card-body">
             <div class="form-group row">
               <div class="col-md-3">
-                <a class="btn btn-primary" href="{{ path('app_home_dashboard') }}"> Retour</a>
+                <a class="btn btn-primary" href="{{ path('app_classe_liste') }}"> Liste</a>
               </div>
             </div>
             <hr class="mx-n3">
@@ -35,22 +36,6 @@
 
             <hr class="mx-n3">
 
-            {# <div class="row align-items-center py-3">
-              <div class="col-md-3 ps-5">
-
-                <h6 class="mb-0">Full name</h6>
-
-              </div>
-              <div class="col-md-9 pe-5">
-
-                <textarea class="form-control" rows="3" placeholder="Message sent to the employer"></textarea>
-
-              </div>
-            </div> #}
-
-            <hr class="mx-n3">
-
-            <hr class="mx-n3">
 
             <div class="px-5 py-4">
               <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">ENREGISTRER</button>
@@ -63,4 +48,5 @@
     </div>
   </div>
 </section>
+{% include "footer.html.twig" %}
 {% endblock %}

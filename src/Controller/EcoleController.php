@@ -12,13 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EcoleController extends AbstractController
 {
-    #[Route('/ecole', name: 'app_ecole')]
+    #[Route('/ecole/create', name: 'app_ecole')]
     public function index(Request $request, EntityManagerInterface $em): Response
     {
         $ecole = new Ecole();
         $presence = $em->getRepository(Ecole::class)->findOneBy(['user' => $this->getUser()]);
         if ($presence) {
-            return $this->redirectToRoute('app_mobile');
+            return $this->redirectToRoute('app_home_dashboard');
         }
 
         $form = $this->createForm(EcoleType::class, $ecole);
@@ -27,7 +27,7 @@ class EcoleController extends AbstractController
             $ecole->setUser($this->getUser());
             $em->persist($ecole);
             $em->flush();
-            return $this->redirectToRoute('app_mobile');
+            return $this->redirectToRoute('app_home_dashboard');
         }
 
         return $this->render('ecole/index.html.twig', [
