@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EleveController extends AbstractController
 {
-    #[Route('/eleve', name: 'app_eleve')]
+    #[Route('/eleve/create', name: 'app_eleve')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $eleve = new Eleve();

@@ -52,6 +52,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Eleve::class)]
     private Collection $eleves;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $ecole = null;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -282,6 +285,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $elefe->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEcole(): ?int
+    {
+        return $this->ecole;
+    }
+
+    public function setEcole(?int $ecole): static
+    {
+        $this->ecole = $ecole;
 
         return $this;
     }

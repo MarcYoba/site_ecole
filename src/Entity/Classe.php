@@ -28,6 +28,18 @@ class Classe
     #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Eleve::class)]
     private Collection $eleves;
 
+    #[ORM\Column]
+    private ?int $niveau = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
+    #[ORM\Column]
+    private ?int $capacite = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $cession = null;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
@@ -100,6 +112,54 @@ class Classe
                 $elefe->setClasse(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNiveau(): ?int
+    {
+        return $this->niveau;
+    }
+
+    public function setNiveau(int $niveau): static
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCapacite(): ?int
+    {
+        return $this->capacite;
+    }
+
+    public function setCapacite(int $capacite): static
+    {
+        $this->capacite = $capacite;
+
+        return $this;
+    }
+
+    public function getCession(): ?string
+    {
+        return $this->cession;
+    }
+
+    public function setCession(string $cession): static
+    {
+        $this->cession = $cession;
 
         return $this;
     }
