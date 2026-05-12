@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Note{% endblock %}
+
+{% block body %}
+{% include "navbar.html.twig" %}
+<main class="flex-shrink-0 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-md-6 mb-4">
+                <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" data-page-length='25' data-order='[[0, "desc"]]'>
+                                    <thead>
+                                       
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Eleve</th>
+                                            <th>Matiere</th>
+                                            <th>Moyenne</th>
+                                            <th>Date</th>
+                                            <th>Operation</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Eleve</th>
+                                            <th>Matiere</th>
+                                            <th>Moyenne</th>
+                                            <th>Date</th>
+                                            <th>Operation</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for note in notes %}
+                                            <tr>
+                                                <td>{{ note.id }}</td>                                     
+                                                <td>{{ note.eleve.nom }}</td>
+                                                <td>{{ note.matiere.nom }}</td>
+                                                <td>{{ note.moyenne }}</td>
+                                                <td>{{ note.createtAt | date('Y-m-d') }}</td>
+                                                <td>
+                                                    <a href='#' class='btn btn-primary' ><i class='fas fa-pencil-alt '></i></a>
+                                                    <a href='#' class='btn btn-danger' onclick='return confirm("Êtes-vous sûr de vouloir supprimer cet row ? si vous suprimer cet row elle sera supprimer du stock");' id='suppresioner'><i class='fas fa-trash-alt'></i></a>
+                                                    <a href='#' class='btn btn-primary' id='modification'><i class='far fa-file-image'></i></a>
+                                                </td>
+                                                
+                                            </tr> 
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% include "footer.html.twig" %}
+{% endblock %}

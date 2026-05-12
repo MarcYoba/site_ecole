@@ -141,6 +141,56 @@
                     </div>
                 </div>
 
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-warning border-4 shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Enregistrement des matieres
+                                    </div>
+                                    <div class="h6 mb-2 font-weight-bold text-gray-800">
+                                        Total : {{ matiereCount |default(0) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <a href="{{ path('app_matiere') }} " class="btn btn-sm btn-primary">
+                                    <i class="fas fa-plus"></i> Ajouter
+                                </a>
+                                <a href="{{ path('app_matiere_list') }}" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-list"></i> liste
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-warning border-4 shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Enregistrement des Notes
+                                    </div>
+                                    <div class="h6 mb-2 font-weight-bold text-gray-800">
+                                        Total : {{ noteCount |default(0) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <a href="{{ path('app_note') }} " class="btn btn-sm btn-primary">
+                                    <i class="fas fa-plus"></i> Ajouter
+                                </a>
+                                <a href="{{ path('app_note_list') }}" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-list"></i> liste
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {# Carte : Statistiques générales #}
                 <div class="col-xl-4 col-md-6 mb-4">
                     <div class="card border-0 border-start border-secondary border-4 shadow h-100 py-2">

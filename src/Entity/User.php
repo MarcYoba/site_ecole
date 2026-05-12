@@ -55,12 +55,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?int $ecole = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Matiere::class)]
+    private Collection $matieres;
+
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Note::class)]
+    private Collection $notes;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
         $this->mobiles = new ArrayCollection();
         $this->classes = new ArrayCollection();
         $this->eleves = new ArrayCollection();
+        $this->matieres = new ArrayCollection();
+        $this->notes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -297,6 +305,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEcole(?int $ecole): static
     {
         $this->ecole = $ecole;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Matiere>
+     */
+    public function getMatieres(): Collection
+    {
+        return $this->matieres;
+    }
+
+    public function addMatiere(Matiere $matiere): static
+    {
+        if (!$this->matieres->contains($matiere)) {
+            $this->matieres->add($matiere);
+            $matiere->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMatiere(Matiere $matiere): static
+    {
+        if ($this->matieres->removeElement($matiere)) {
+            // set the owning side to null (unless already changed)
+            if ($matiere->getUser() === $this) {
+                $matiere->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Note>
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function addNote(Note $note): static
+    {
+        if (!$this->notes->contains($note)) {
+            $this->notes->add($note);
+            $note->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNote(Note $note): static
+    {
+        if ($this->notes->removeElement($note)) {
+            // set the owning side to null (unless already changed)
+            if ($note->getUser() === $this) {
+                $note->setUser(null);
+            }
+        }
 
         return $this;
     }

@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Classe;
 use App\Entity\Eleve;
 use App\Entity\Enseignant;
+use App\Entity\Matiere;
+use App\Entity\Note;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,12 +28,16 @@ class HomeController extends AbstractController
         $classCount = $em->getRepository(Classe::class)->findAll();
         $eleve = $em->getRepository(Eleve::class)->findAll();
         $enseignant = $em->getRepository(Enseignant::class)->findAll();
+        $matiere = $em->getRepository(Matiere::class)->findAll();
+        $note = $em->getRepository(Note::class)->findAll();
 
         return $this->render('home/Dashboard.html.twig', [
             'controller_name' => 'HomeController',
             'classCount' => count($classCount),
             'eleveCount' => count($eleve),
             'enseignantCount' => count($enseignant),
+            'matiereCount' => count($matiere),
+            'noteCount' => count($note),
         ]);
     }
 }
