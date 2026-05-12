@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EleveController extends AbstractController
 {
-    #[Route('/eleve', name: 'app_eleve')]
+    #[Route('/eleve/create', name: 'app_eleve')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $eleve = new Eleve();
@@ -26,6 +26,12 @@ class EleveController extends AbstractController
             return $this->redirectToRoute('app_classe');
         }
 
+        $numero = str_pad(random_int(0, 99), 3, '0', STR_PAD_LEFT);
+        $datePart = date('Ymd');
+        $lettres = chr(random_int(65, 90)) . chr(random_int(65, 90));
+            
+        $matricule = $numero . $datePart . $lettres;
+        $eleve->setMatricule($matricule);
         $form = $this->createForm(EleveType::class,$eleve);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

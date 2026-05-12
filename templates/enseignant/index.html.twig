@@ -26,14 +26,12 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      {{ form_label(form.nom) }}
                       {{ form_widget(form.nom) }}
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      {{ form_label(form.matricule) }}
-                      {{ form_widget(form.matricule) }}
+                      {{ form_widget(form.prenom) }}
                     </div>
                   </div>
                 </div>
@@ -41,42 +39,47 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      {{ form_label(form.naissance) }}
-                      {{ form_widget(form.naissance) }}
+                      {{ form_widget(form.dateNaissance) }}
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      {{ form_label(form.ville) }}
-                      {{ form_widget(form.ville) }}
+                      {{ form_widget(form.genre) }}
                     </div>
                   </div>
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                  {{ form_label(form.pere) }}
-                  {{ form_widget(form.pere) }}
+                  {{ form_widget(form.matricule) }}
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                  {{ form_label(form.mere) }}
-                  {{ form_widget(form.mere) }}
+                  {{ form_widget(form.dateEmbauche) }}
                 </div>
 
                 <div class="row">
                   <div class="col-md-6 mb-4">
-                    {{ form_label(form.classe) }}
-                    {{ form_widget(form.classe) }}
+                    {{ form_widget(form.specialite) }}
                   </div>
                   <div class="col-md-6 mb-4">
-                    {{ form_label(form.sexe) }}
-                    {{ form_widget(form.sexe) }}
+                    {{ form_widget(form.grade) }}
                   </div>
                 </div>
-                <div data-mdb-input-init class="form-outline mb-4">
-                  {{ form_label(form.telephone) }}
-                  {{ form_widget(form.telephone) }}
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    {{ form_widget(form.contrat) }}
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    {{ form_widget(form.statut) }}
+                  </div>
                 </div>
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  {{ form_widget(form.contact) }}
+                </div>
+
+                
 
                 <div class="d-flex justify-content-end pt-3">
                   <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg">Reset all</button>

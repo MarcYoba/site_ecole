@@ -7,24 +7,8 @@
 <main class="flex-shrink-0 my-5">
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 col-md-6 mb-4">
-                <a href="{{ path('app_classe') }}" class="text-decoration-none">
-                    <div class="card border-0 border-start border-success border-4 shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Classes</div>
-                                    <div class="h6 mb-0 font-weight-bold text-gray-800">Ajouter une classe</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-plus fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            {# {% for classe in classes %} #}
+            
+            {% for classe in classes %} 
             <div class="col-xl-4 col-md-6 mb-4">
                 <div class="card border-0 border-start border-success border-4 shadow h-100">
                     <div class="card-body">
@@ -34,7 +18,7 @@
                                     Classe
                                 </div>
                                 <div class="h5 mb-1 font-weight-bold text-gray-800">
-                                    <i class="fas fa-chalkboard text-gray-300 me-2"></i>Nom : <span class="text-primary">6ème A</span>
+                                    <i class="fas fa-chalkboard text-gray-300 me-2"></i>Nom : <span class="text-primary">{{ classe.nom }}</span>
                                 </div>
                                 <div class="small mb-0 font-weight-bold text-muted">
                                     <i class="fas fa-user-tie text-gray-300 me-2"></i>Enseignant : <span class="text-dark">M. Dupont</span>
@@ -58,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            {# {% endfor %} #}
+            {% endfor %}
         </div>
     </div>
 

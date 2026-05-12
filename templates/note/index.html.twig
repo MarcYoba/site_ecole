@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eleve!{% endblock %}
+{% block title %}Note!{% endblock %}
 
 {% block body %}
 <section class="h-100 bg-dark">
@@ -16,7 +16,7 @@
             </div>
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
-                <h3 class="mb-5 text-uppercase">Student registration </h3>
+                <h3 class="mb-5 text-uppercase">Matiere registration </h3>
                 <div class="form-group row">
                     <div class="col-md-3">
                         <a class="btn btn-primary" href="{{ path('app_home_dashboard') }}"> Retour</a>
@@ -26,14 +26,14 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      {{ form_label(form.nom) }}
-                      {{ form_widget(form.nom) }}
+                        {{ form_label(form.createtAt) }}
+                        {{ form_widget(form.createtAt) }}
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      {{ form_label(form.matricule) }}
-                      {{ form_widget(form.matricule) }}
+                        {{ form_label(form.eleve) }}
+                        {{ form_widget(form.eleve) }}
                     </div>
                   </div>
                 </div>
@@ -41,41 +41,16 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      {{ form_label(form.naissance) }}
-                      {{ form_widget(form.naissance) }}
+                      {{ form_label(form.matiere) }}
+                      {{ form_widget(form.matiere) }}
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      {{ form_label(form.ville) }}
-                      {{ form_widget(form.ville) }}
+                      {{ form_label(form.moyenne) }}
+                      {{ form_widget(form.moyenne) }}
                     </div>
                   </div>
-                </div>
-
-                <div data-mdb-input-init class="form-outline mb-4">
-                  {{ form_label(form.pere) }}
-                  {{ form_widget(form.pere) }}
-                </div>
-
-                <div data-mdb-input-init class="form-outline mb-4">
-                  {{ form_label(form.mere) }}
-                  {{ form_widget(form.mere) }}
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    {{ form_label(form.classe) }}
-                    {{ form_widget(form.classe) }}
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    {{ form_label(form.sexe) }}
-                    {{ form_widget(form.sexe) }}
-                  </div>
-                </div>
-                <div data-mdb-input-init class="form-outline mb-4">
-                  {{ form_label(form.telephone) }}
-                  {{ form_widget(form.telephone) }}
                 </div>
 
                 <div class="d-flex justify-content-end pt-3">
@@ -98,3 +73,4 @@
   </div>
 </footer>
 {% endblock %}
+

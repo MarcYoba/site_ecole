@@ -66,3 +66,12 @@ Thumbs.db
 # Other common excludes
 /.phpunit.cache
 /.php-cs-fixer.cacheack-encore-bundle ###
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log

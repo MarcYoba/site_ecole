@@ -1922,6 +1922,21 @@ csso@^5.0.5:
   dependencies:
     css-tree "~2.2.0"
 
+datatables.net-bs5@^2.3.8:
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/datatables.net-bs5/-/datatables.net-bs5-2.3.8.tgz#7266636ff488429988ca664bc8cb0b7c5e48c563"
+  integrity sha512-TbFH99QSWm93Kn3teHLFKeyOqYbaiddlHvRFdXUwAvh/fjTMhACWmHG+I43ss8d23OEFHV0WIbN4lpPusZm5zw==
+  dependencies:
+    datatables.net "2.3.8"
+    jquery ">=1.7"
+
+datatables.net@2.3.8:
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-2.3.8.tgz#55a8dbe3bd2196951c498ab79bf44602a2bf3229"
+  integrity sha512-uhViowhlDlheAuo5a8TrkQqADsjrtGeOyvrigvr4t0+K3MyAWqClORXWAYIcN9VLX6iIX0C8O9gwJNd01hITRg==
+  dependencies:
+    jquery ">=1.7"
+
 debug@2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -2744,10 +2759,10 @@ jest-worker@^29.4.3:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jquery@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
-  integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
+jquery@>=1.7, jquery@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-4.0.0.tgz#95c33ac29005ff72ec444c5ba1cf457e61404fbb"
+  integrity sha512-TXCHVR3Lb6TZdtw1l3RTLf8RBWVGexdxL6AC8/e0xZKEpBflBsjh9/8LXw+dkNFuOyW9B7iB3O1sP7hS0Kiacg==
 
 js-tokens@^4.0.0:
   version "4.0.0"

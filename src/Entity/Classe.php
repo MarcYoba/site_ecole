@@ -28,9 +28,25 @@ class Classe
     #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Eleve::class)]
     private Collection $eleves;
 
+    #[ORM\Column]
+    private ?int $niveau = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
+    #[ORM\Column]
+    private ?int $capacite = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $cession = null;
+
+    #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Inscription::class)]
+    private Collection $inscriptions;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
+        $this->inscriptions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -98,6 +114,84 @@ class Classe
             // set the owning side to null (unless already changed)
             if ($elefe->getClasse() === $this) {
                 $elefe->setClasse(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getNiveau(): ?int
+    {
+        return $this->niveau;
+    }
+
+    public function setNiveau(int $niveau): static
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCapacite(): ?int
+    {
+        return $this->capacite;
+    }
+
+    public function setCapacite(int $capacite): static
+    {
+        $this->capacite = $capacite;
+
+        return $this;
+    }
+
+    public function getCession(): ?string
+    {
+        return $this->cession;
+    }
+
+    public function setCession(string $cession): static
+    {
+        $this->cession = $cession;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Inscription>
+     */
+    public function getInscriptions(): Collection
+    {
+        return $this->inscriptions;
+    }
+
+    public function addInscription(Inscription $inscription): static
+    {
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions->add($inscription);
+            $inscription->setClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Inscription $inscription): static
+    {
+        if ($this->inscriptions->removeElement($inscription)) {
+            // set the owning side to null (unless already changed)
+            if ($inscription->getClasse() === $this) {
+                $inscription->setClasse(null);
             }
         }
 
