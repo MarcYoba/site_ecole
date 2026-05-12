@@ -26,11 +26,13 @@ class EleveType extends AbstractType
             ->add('matricule',TextType::class,[
                 'label' => 'matricule comple éleve',
                 'attr' => ['placeholder' => 'matricule comple éleve',
-                'class' => 'form-control form-control-lg'
+                'class' => 'form-control form-control-lg',
+                'readonly' => true,
                 ]
             ])
             ->add('naissance', DateType::class,[
                 'label' => 'Date de naissance de l\'éleve',
+                'widget' => 'single_text',
                 'attr' => ['placeholder' => 'Date de naissance de l\'éleve',
                 'class' => 'form-control form-control-lg'
                 ]

@@ -44,6 +44,9 @@ class Enseignant
     #[ORM\Column(length: 255)]
     private ?string $statut = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $contact = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -165,6 +168,18 @@ class Enseignant
     public function setStatut(string $statut): static
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getContact(): ?string
+    {
+        return $this->contact;
+    }
+
+    public function setContact(string $contact): static
+    {
+        $this->contact = $contact;
 
         return $this;
     }
