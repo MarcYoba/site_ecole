@@ -7,6 +7,7 @@ use App\Entity\Eleve;
 use App\Entity\Enseignant;
 use App\Entity\Matiere;
 use App\Entity\Note;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +31,7 @@ class HomeController extends AbstractController
         $enseignant = $em->getRepository(Enseignant::class)->findAll();
         $matiere = $em->getRepository(Matiere::class)->findAll();
         $note = $em->getRepository(Note::class)->findAll();
+        $listuser = $em->getRepository(User::class)->findAll(); 
 
         return $this->render('home/Dashboard.html.twig', [
             'controller_name' => 'HomeController',
@@ -38,6 +40,7 @@ class HomeController extends AbstractController
             'enseignantCount' => count($enseignant),
             'matiereCount' => count($matiere),
             'noteCount' => count($note),
+            'userCount' => count($listuser),
         ]);
     }
 }

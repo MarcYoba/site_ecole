@@ -7,6 +7,7 @@ use App\Entity\Matiere;
 use App\Entity\Note;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -47,7 +48,23 @@ class NoteType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
-        ;
+            ->add('sequence',ChoiceType::class, [
+                'label' => 'Séquence',
+                'choices' => [
+                    'Séquence 1' => 'sequence1',
+                    'Séquence 2' => 'sequence2',
+                    'Séquence 3' => 'sequence3',
+                    'Séquence 4' => 'sequence4',
+                    'Séquence 5' => 'sequence5',
+                    'Séquence 6' => 'sequence6',
+                    'Séquence 7' => 'sequence7',
+                    'Séquence 8' => 'sequence8',
+                    'Séquence 9' => 'sequence9',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
