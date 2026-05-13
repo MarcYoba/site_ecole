@@ -29,6 +29,9 @@ class Note
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $createtAt = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $sequence = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Note
     public function setCreatetAt(\DateTimeInterface $createtAt): static
     {
         $this->createtAt = $createtAt;
+
+        return $this;
+    }
+
+    public function getSequence(): ?string
+    {
+        return $this->sequence;
+    }
+
+    public function setSequence(string $sequence): static
+    {
+        $this->sequence = $sequence;
 
         return $this;
     }

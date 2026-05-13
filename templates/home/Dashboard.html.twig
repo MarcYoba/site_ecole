@@ -216,6 +216,38 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-secondary border-4 shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                        Utilisateurs du systeme
+                                    </div>
+                                    <div class="h6 mb-2 font-weight-bold text-gray-800">
+                                        École 
+                                    </div>
+                                    <div class="h6 mb-2 font-weight-bold text-gray-800">
+                                        Total : {{ userCount |default(0) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <a href="{{ path('app_user_list') }}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-list"></i> List
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-chart-line"></i> Consultation
+                                </a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-file-pdf"></i> Téléchargement
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </main>
