@@ -7,6 +7,8 @@ use App\Entity\Classe;
 use App\Entity\Ecole;
 use App\Form\EleveType;
 use Doctrine\ORM\EntityManagerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,7 +43,7 @@ class EleveController extends AbstractController
             $entityManager->persist($eleve);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_home_dashboard');
+            return $this->redirectToRoute('app_eleve_liste');
         }
         return $this->render('eleve/index.html.twig', [
             'form' => $form->createView(),
@@ -67,5 +69,38 @@ class EleveController extends AbstractController
             "eleves" => $eleve,
             "ecoles" => $ecole,
         ]);
+    }
+    #[Route('/eleve/print/{id}', name: 'app_eleve_print')]
+    public function print(EntityManagerInterface $em, int $id) :Response {
+        $eleve = $em->getRepository(Eleve::class)->find($id);
+        if (!$eleve) {
+            return $this->redirectToRoute('app_eleve_liste');
+        }
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Permet les assets distants (CSS/images)
+        $dompdf = new Dompdf($options);
+        $ecole = $em->getRepository(Ecole::class)->findOneBy(["id"=> 1]);
+
+        $html = $this->renderView('eleve/print.html.twig', [
+            'eleve' => $eleve,
+            'date' => date("Y-m-d"),
+            'ecole' => $ecole,
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+
+        // 5. Rendre le PDF
+        $dompdf->render();
+        $document = "fiche_".$eleve->getNom().".pdf";
+        // 6. Retourner le PDF dans la réponse
+        return new Response(
+            $dompdf->output(),
+            Response::HTTP_OK,
+            [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="'.$document.'"', // 'inline' pour affichage navigateur
+            ]
+        );
     }
 }

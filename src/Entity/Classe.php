@@ -43,10 +43,14 @@ class Classe
     #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Inscription::class)]
     private Collection $inscriptions;
 
+    #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Enseignant::class)]
+    private Collection $enseignants;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
+        $this->enseignants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,6 +196,36 @@ class Classe
             // set the owning side to null (unless already changed)
             if ($inscription->getClasse() === $this) {
                 $inscription->setClasse(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Enseignant>
+     */
+    public function getEnseignants(): Collection
+    {
+        return $this->enseignants;
+    }
+
+    public function addEnseignant(Enseignant $enseignant): static
+    {
+        if (!$this->enseignants->contains($enseignant)) {
+            $this->enseignants->add($enseignant);
+            $enseignant->setClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnseignant(Enseignant $enseignant): static
+    {
+        if ($this->enseignants->removeElement($enseignant)) {
+            // set the owning side to null (unless already changed)
+            if ($enseignant->getClasse() === $this) {
+                $enseignant->setClasse(null);
             }
         }
 

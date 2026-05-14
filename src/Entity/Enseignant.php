@@ -47,6 +47,9 @@ class Enseignant
     #[ORM\Column(length: 255)]
     private ?string $contact = null;
 
+    #[ORM\ManyToOne(inversedBy: 'enseignants')]
+    private ?Classe $classe = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -180,6 +183,18 @@ class Enseignant
     public function setContact(string $contact): static
     {
         $this->contact = $contact;
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): static
+    {
+        $this->classe = $classe;
 
         return $this;
     }

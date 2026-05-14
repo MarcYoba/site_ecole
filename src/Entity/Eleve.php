@@ -55,6 +55,39 @@ class Eleve
     #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: Note::class)]
     private Collection $notes;
 
+    #[ORM\Column(length: 255)]
+    private ?string $age = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Lieu = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $autoriseMere = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $autorisePere = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $professionMere = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $professionPere = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $telephoneMere = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $autreResponsable = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $fonction = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $telephoneResponsable = null;
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
@@ -255,6 +288,138 @@ class Eleve
                 $note->setEleve(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAge(): ?string
+    {
+        return $this->age;
+    }
+
+    public function setAge(string $age): static
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): static
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getLieu(): ?string
+    {
+        return $this->Lieu;
+    }
+
+    public function setLieu(string $Lieu): static
+    {
+        $this->Lieu = $Lieu;
+
+        return $this;
+    }
+
+    public function getAutoriseMere(): ?string
+    {
+        return $this->autoriseMere;
+    }
+
+    public function setAutoriseMere(string $autoriseMere): static
+    {
+        $this->autoriseMere = $autoriseMere;
+
+        return $this;
+    }
+
+    public function getAutorisePere(): ?string
+    {
+        return $this->autorisePere;
+    }
+
+    public function setAutorisePere(string $autorisePere): static
+    {
+        $this->autorisePere = $autorisePere;
+
+        return $this;
+    }
+
+    public function getProfessionMere(): ?string
+    {
+        return $this->professionMere;
+    }
+
+    public function setProfessionMere(string $professionMere): static
+    {
+        $this->professionMere = $professionMere;
+
+        return $this;
+    }
+
+    public function getProfessionPere(): ?string
+    {
+        return $this->professionPere;
+    }
+
+    public function setProfessionPere(string $professionPere): static
+    {
+        $this->professionPere = $professionPere;
+
+        return $this;
+    }
+
+    public function getTelephoneMere(): ?string
+    {
+        return $this->telephoneMere;
+    }
+
+    public function setTelephoneMere(string $telephoneMere): static
+    {
+        $this->telephoneMere = $telephoneMere;
+
+        return $this;
+    }
+
+    public function getAutreResponsable(): ?string
+    {
+        return $this->autreResponsable;
+    }
+
+    public function setAutreResponsable(string $autreResponsable): static
+    {
+        $this->autreResponsable = $autreResponsable;
+
+        return $this;
+    }
+
+    public function getFonction(): ?string
+    {
+        return $this->fonction;
+    }
+
+    public function setFonction(string $fonction): static
+    {
+        $this->fonction = $fonction;
+
+        return $this;
+    }
+
+    public function getTelephoneResponsable(): ?string
+    {
+        return $this->telephoneResponsable;
+    }
+
+    public function setTelephoneResponsable(string $telephoneResponsable): static
+    {
+        $this->telephoneResponsable = $telephoneResponsable;
 
         return $this;
     }
