@@ -1,6 +1,6 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <i class="fas fa-boxes me-2"></i>
                 <span class="fw-bold text-uppercase">YOBS</span>
@@ -9,7 +9,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ecole
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ path('app_home_dashboard')}}">Tableau de bord</a>
                     </li>
@@ -18,6 +29,8 @@
                     </li>
                 </ul>
             </div>
+            
         </div>
+        
     </nav>
 </header>

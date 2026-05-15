@@ -23,23 +23,29 @@ class EleveType extends AbstractType
                 'class' => 'form-control form-control-lg'
                 ]
             ])
+            ->add('prenom',TextType::class,[
+                'label' => 'prenom de éleve',
+                'attr' => ['placeholder' => 'prenom comple éleve',
+                'class' => 'form-control form-control-lg'
+                ]
+            ])
             ->add('matricule',TextType::class,[
-                'label' => 'matricule comple éleve',
+                'label' => 'matricule de éleve',
                 'attr' => ['placeholder' => 'matricule comple éleve',
                 'class' => 'form-control form-control-lg',
                 'readonly' => true,
                 ]
             ])
             ->add('naissance', DateType::class,[
-                'label' => 'Date de naissance de l\'éleve',
+                'label' => 'Date de naissance',
                 'widget' => 'single_text',
-                'attr' => ['placeholder' => 'Date de naissance de l\'éleve',
+                'attr' => ['placeholder' => 'Date de naissance',
                 'class' => 'form-control form-control-lg'
                 ]
             ])
             ->add('ville',TextType::class,[
-                'label' => 'Ville de residance éleve',
-                'attr' => ['placeholder' => 'Ville de residance éleve',
+                'label' => 'Ville de residance',
+                'attr' => ['placeholder' => 'Ville de residance',
                 'class' => 'form-control form-control-lg'
                 ]
             ])
@@ -56,7 +62,7 @@ class EleveType extends AbstractType
                 ]
             ])
             ->add('telephone',TextType::class,[
-                'label' => 'Numero de téléphone',
+                'label' => 'téléphone pere',
                 'attr' => ['placeholder' => 'Nom de la téléphone',
                 'class' => 'form-control form-control-lg'
                 ]
@@ -79,6 +85,78 @@ class EleveType extends AbstractType
                 'attr' => [
                     'class' => 'form-control form-control-lg',
                 ],
+            ])
+            ->add('age',TextType::class,[
+                'label' => 'Age de l\'éleve',
+                'attr' => ['placeholder' => 'Age de l\'éleve',
+                'class' => 'form-control form-control-lg'
+                ]
+            ])
+            ->add('lieu',TextType::class,[
+                'label' => 'Lieu de naissance',
+                'attr' => ['placeholder' => 'Lieu de naissance',
+                'class' => 'form-control form-control-lg'
+                ]
+            ])
+            ->add('autoriseMere',ChoiceType::class,[
+                'label' => 'Autorisation mère',
+                'choices' => [
+                    'Oui' => 'Oui',
+                    'Non' => 'Non',
+                ],
+                'placeholder' => 'Autorisation de la mère',
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control form-control-lg',
+                ],
+            ])
+            ->add('autorisePere',ChoiceType::class,[
+                'label' => 'Autorisation père',
+                'choices' => [
+                    'Oui' => 'Oui',
+                    'Non' => 'Non',
+                ],
+                'placeholder' => 'Autorisation du père',
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control form-control-lg',
+                ],
+            ])
+            ->add('professionMere',TextType::class,[
+                'label' => 'Profession mère',
+                'attr' => ['placeholder' => 'Profession de la mère',
+                'class' => 'form-control form-control-lg'
+                ]
+            ])
+            ->add('professionPere',TextType::class,[
+                'label' => 'Profession du père',
+                'attr' => ['placeholder' => 'Profession du père',
+                'class' => 'form-control form-control-lg'
+                ]
+            ])
+            ->add('telephoneMere',TextType::class,[
+                'label' => 'Téléphone mère',
+                'attr' => ['placeholder' => 'Téléphone de la mère',
+                'class' => 'form-control form-control-lg'
+                ]
+            ])
+            ->add('autreResponsable',TextType::class,[
+                'label' => 'Nom autre responsable',
+                'attr' => ['placeholder' => 'Nom de l\'autre responsable',
+                'class' => 'form-control form-control-lg'
+                ]
+            ])
+            ->add('fonction',TextType::class,[
+                'label' => 'Fonction de l\'autre responsable',
+                'attr' => ['placeholder' => 'Fonction de l\'autre responsable',
+                'class' => 'form-control form-control-lg'
+                ]
+            ])
+            ->add('telephoneResponsable',TextType::class,[
+                'label' => 'Téléphone autre responsable',
+                'attr' => ['placeholder' => 'Téléphone de l\'autre responsable',
+                'class' => 'form-control form-control-lg'
+                ]
             ])
         ;
     }

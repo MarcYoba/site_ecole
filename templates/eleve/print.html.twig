@@ -1,0 +1,104 @@
+{# form_fiche_renseignements.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}fiche{% endblock %}
+
+{% block body %}
+<section class="fiche-container" style="max-width: 800px; margin: auto; font-family: sans-serif; font-size: 12px;">
+    
+    {# En-tête de l'administration #}
+    <div class="header-section" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+        <div>
+            <p>Académie de : {{date | date("Y")}}</p>
+            <p><strong>Inspection académique</strong></p>
+            <p>_________________________________</p>
+        </div>
+        <div>
+            <p><strong>École :</strong> {{ ecole.nom }}</p>
+        </div>
+    </div>
+
+    <h2 style="text-align: center; text-decoration: underline; text-transform: uppercase;">Fiche de Renseignements</h2>
+
+    <div style="display: flex; gap: 20px; margin-bottom: 10px;">
+        <p><strong>Année scolaire :</strong> {{(date | date("Y")-1)}} / {{date | date("Y")}}</p>
+        <p><strong>Niveau :</strong> {{eleve.classe.niveau}}</p>
+        <p><strong>Classe :</strong> {{eleve.classe.nom}}</p>
+    </div>
+
+    {# Section ÉLÈVE #}
+    <div style="background-color: #ccc; padding: 2px 5px; font-weight: bold;">ÉLÈVE</div>
+    <div class="section-body" style="padding: 10px 0;">
+        <div style="display: flex; justify-content: space-between;">
+            <span><strong>NOM :</strong> {{eleve.nom}}</span>
+            <span><strong>MATRICULE :</strong> {{eleve.matricule | default('----')}}</span>
+            <span>
+            <strong>Sexe :</strong> 
+            M <span style="border: 1px solid #000; padding: 0 5px; min-width: 15px; display: inline-block; text-align: center;">
+                {% if eleve.sexe == 'H' %}X{% endif %}
+            </span> 
+            F <span style="border: 1px solid #000; padding: 0 5px; min-width: 15px; display: inline-block; text-align: center;">
+                {% if eleve.sexe == 'F' %}X{% endif %}
+            </span>
+        </span>
+        </div>
+        <p><strong>Prénom(s) :</strong> {{eleve.prenom}}</p>
+        <p><strong>Né(e) le :</strong> {{eleve.naissance | date("Y-m-d")}}&nbsp;&nbsp; <strong>Lieu de naissance : </strong> {{eleve.lieu | default('----')}}</p>
+        <p><strong>Adresse :</strong> {{eleve.ville | default('----')}}</p>
+    </div>
+
+
+    {# Section RESPONSABLES LÉGAUX #}
+    <div style="background-color: #ccc; padding: 2px 5px; font-weight: bold;">RESPONSABLES LÉGAUX</div>
+
+    {# Mère #}
+    <div class="responsable-section" style="border-bottom: 1px solid #000; padding-bottom: 10px; margin-top: 5px;">
+        <div style="display: flex; justify-content: space-between; font-weight: bold;">
+            <span>Mère</span>
+            <span>Autorité parentale : {{eleve.autoriseMere | default('Non')}}</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <span><strong>NOM :</strong> {{(eleve.mere|upper) | default('----')}}</span>
+            <span><strong>NOM marital (nom d'usage) :</strong> {{eleve.nomMaritalMere | default('----')}}</span>
+            <span><strong>Profession :</strong> {{eleve.professionMere | default('----')}}</span>
+        </div>
+        <p><strong>Télephone :</strong> {{eleve.telephoneMere | default('----')}} &nbsp; </p>
+        
+    </div>
+
+    {# Père #}
+    <div class="responsable-section" style="border-bottom: 1px solid #000; padding-bottom: 10px; margin-top: 5px;">
+        <div style="display: flex; justify-content: space-between; font-weight: bold;">
+            <span>Père</span>
+            <span>Autorité parentale : {{eleve.autorisePere | default('Non')}}</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <span><strong>NOM :</strong> {{(eleve.pere|upper) | default('----')}}</span>
+            <span><strong>Profession :</strong> {{eleve.professionPere | default('----')}}</span>
+        </div>
+        <p><strong>Télephone :</strong> {{eleve.telephone | default('----')}} &nbsp;</p>
+    </div>
+
+    {# Autre responsable #}
+    <div class="responsable-section" style="margin-top: 5px;">
+        <div style="display: flex; justify-content: space-between; font-weight: bold;">
+            <span>Autre responsable légal <small>(personne physique ou morale)</small></span>
+            <span>Autorité parentale : {{eleve.autreResponsable ? 'Oui' : 'Non'}}
+             NOM : {{(eleve.autreResponsable|upper) | default('----')}}</span>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <span><strong>Fonction :</strong> {{eleve.fonction | default('----')}}</span>
+        </div>
+        <p> <strong>Tél. portable :</strong> {{eleve.telephoneResponsable | default('----')}}</p>
+    </div>
+
+    {# Notes de bas de page #}
+    <footer style="margin-top: 30px; font-size: 10px; line-height: 1.2;">
+        <p>(1) Cameroun</p>
+        
+        <p style="font-style: italic;">* <strong>Responsables légaux :</strong> Il est important de renseigner le document concernant les deux responsables légaux pour la transmission des résultats scolaires...</p>
+    </footer>
+
+</section>
+{% endblock %}

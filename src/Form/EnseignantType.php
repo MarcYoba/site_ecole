@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Classe;
 use App\Entity\Enseignant;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -90,6 +92,14 @@ class EnseignantType extends AbstractType
                 'attr' => ['placeholder' => 'Contact',
                     'class' => 'form-control form-control-lg'
                 ]
+            ])
+            ->add('classe', EntityType::class, [
+                'class' => Classe::class,
+                'choice_label' => 'nom', // Remplacez 'nom' par le champ à afficher
+                'placeholder' => 'Sélectionnez une classe',
+                'attr' => [
+                    'class' => 'form-control form-control-lg',
+                ],
             ])
         ;
     }

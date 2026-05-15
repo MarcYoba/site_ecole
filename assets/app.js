@@ -1,39 +1,30 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
-
-// any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
+
+// 1. Imports CSS (Laissez Webpack gérer les fichiers sources si possible)
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
-// start the Stimulus application
-import './bootstrap';
-import $ from 'jquery';
-import DataTable from 'datatables.net-bs5';
-
-// Importation du CSS de DataTables version Bootstrap 5
 import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css';
 
-// Rendre jQuery global (parfois nécessaire selon votre config)
+// 2. JS - Importez Bootstrap proprement
+// "bootstrap" seul suffit car le package.json pointe déjà vers le bundle avec Popper
+import 'bootstrap'; 
+
+// 3. jQuery & Plugins
+import $ from 'jquery';
+import 'slick-carousel';
+import DataTable from 'datatables.net-bs5';
+
+// Rendre jQuery global pour les plugins à l'ancienne
 window.$ = window.jQuery = $;
 
-global.$ = global.jQuery = $;
-
+// 4. Initialisation
 $(document).ready(function() {
-  console.log('jQuery 3.4.1 est chargé !');
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const dataTable = document.getElementById('dataTable');
-    if (dataTable) {
-        $(dataTable).DataTable();
+    if ($('#dataTable').length > 0) {
+        $('#dataTable').DataTable();
     }
-});
+})
+
+// Start Stimulus
+import './bootstrap';
