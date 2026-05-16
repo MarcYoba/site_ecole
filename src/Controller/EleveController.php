@@ -103,4 +103,16 @@ class EleveController extends AbstractController
             ]
         );
     }
+    #[Route('/eleve/classe/{id}', name: 'app_eleve_classe')]
+    public function classe(EntityManagerInterface $em, int $id) : Response {
+        $classe = $em->getRepository(Classe::class)->find($id);
+        if (!$classe) {
+            return $this->redirectToRoute('app_classe_liste');
+        }
+        $eleves = $em->getRepository(Eleve::class)->findBy(["classe"=>$classe]);
+        return $this->render('eleve/classe.html.twig', [
+            'eleves' => $eleves,
+            'classe' => $classe,
+        ]);
+    }   
 }

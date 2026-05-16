@@ -1,36 +1,46 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="container-fluid"> {# Utilisation de container-fluid pour une structure Bootstrap propre #}
+            
+            {# Brand/Logo #}
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <i class="fas fa-boxes me-2"></i>
                 <span class="fw-bold text-uppercase">YOBS</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            
+            {# Bouton Burger pour mobile #}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            {# Le conteneur de la navigation (unique !) #}
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
+                    {# Dropdown École corrigé #}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Ecole
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ecole
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
                     </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ path('app_home_dashboard')}}">Tableau de bord</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light btn-sm ms-lg-3 px-3" href="{{ path('app_logout')}}">Déconnexion</a>
-                    </li>
                 </ul>
+                
+                {# Bouton déconnexion aligné à droite #}
+                <div class="d-flex">
+                    <a class="nav-link btn btn-outline-dark btn-sm px-3" href="{{ path('app_logout')}}">Déconnexion</a>
+                </div>
             </div>
             
         </div>
-        
     </nav>
 </header>
