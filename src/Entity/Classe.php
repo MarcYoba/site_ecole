@@ -46,11 +46,15 @@ class Classe
     #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Enseignant::class)]
     private Collection $enseignants;
 
+    #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Solde::class)]
+    private Collection $soldes;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
         $this->enseignants = new ArrayCollection();
+        $this->soldes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -226,6 +230,36 @@ class Classe
             // set the owning side to null (unless already changed)
             if ($enseignant->getClasse() === $this) {
                 $enseignant->setClasse(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Solde>
+     */
+    public function getSoldes(): Collection
+    {
+        return $this->soldes;
+    }
+
+    public function addSolde(Solde $solde): static
+    {
+        if (!$this->soldes->contains($solde)) {
+            $this->soldes->add($solde);
+            $solde->setClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSolde(Solde $solde): static
+    {
+        if ($this->soldes->removeElement($solde)) {
+            // set the owning side to null (unless already changed)
+            if ($solde->getClasse() === $this) {
+                $solde->setClasse(null);
             }
         }
 

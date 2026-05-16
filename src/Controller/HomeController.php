@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Classe;
+use App\Entity\Ecole;
 use App\Entity\Eleve;
 use App\Entity\Enseignant;
 use App\Entity\Matiere;
@@ -28,6 +29,7 @@ class HomeController extends AbstractController
     #[Route('/home/dashboard', name: 'app_home_dashboard')]
     public function Dashboard(EntityManagerInterface $em,ChartBuilderInterface $chartBuilder): Response
     {
+        $ecole  = $em->getRepository(Ecole::class)->find(1);
         $classCount = $em->getRepository(Classe::class)->findAll();
         $eleve = $em->getRepository(Eleve::class)->findAll();
         $enseignant = $em->getRepository(Enseignant::class)->findAll();
@@ -72,6 +74,7 @@ class HomeController extends AbstractController
         return $this->render('home/Dashboard.html.twig', [
             'controller_name' => 'HomeController',
             'monGraphique' => $chart,
+            'ecole' => $ecole,
         ]);
     }
 }
