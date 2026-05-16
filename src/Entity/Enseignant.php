@@ -50,6 +50,12 @@ class Enseignant
     #[ORM\ManyToOne(inversedBy: 'enseignants')]
     private ?Classe $classe = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $createtAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'enseignants')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -195,6 +201,30 @@ class Enseignant
     public function setClasse(?Classe $classe): static
     {
         $this->classe = $classe;
+
+        return $this;
+    }
+
+    public function getCreatetAt(): ?\DateTimeInterface
+    {
+        return $this->createtAt;
+    }
+
+    public function setCreatetAt(\DateTimeInterface $createtAt): static
+    {
+        $this->createtAt = $createtAt;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

@@ -1,132 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}List Eleve{% endblock %}
+{% block title %}Inscriptions{% endblock %}
 
 {% block body %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte d'Étudiant</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="{{ asset('css/barge.css') }}" rel="stylesheet">
-</head>
-<body>
-    {% include "navbar.html.twig" %}
-    <div class="container mt-4">
-        <h1>Liste des eleves</h1>
-        
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <tbody>
-                    
-                        <!-- En-tête de la carte -->
-                        {% set valeur = 0 %}
-                        {% for ensignant in ensignants %}
-                            {% if valeur == 0 %}
-                                <tr>
-                            {% endif %}
-                            <td>
-                            <div class="student-card">
-                                <div class="card-header">
-                                    <h3 class="mb-0">YOBS TIE</h3>
-                                    <div class="college-logo">
-                                        <i class="fas fa-graduation-cap"></i>
-                                    </div>
-                                </div>
-                                
-                                <!-- Corps de la carte -->
-                                <div class="card-body">
-                                    <div class="id-photo">
-                                        <div class="id-photo-placeholder">
-                                            <i class="fas fa-user"></i>
-                                            <div>Photo</div>
-                                        </div>
-                                    </div>
-                                    
-                                        
-                                    <div class="student-info">
-                                        <div class="student-name">{{ ensignant.nom }}</div>
-                                        
-                                        <div class="mb-2">
-                                            <span class="info-label">prenom</span>
-                                            <span>{{ ensignant.prenom }}</span>
-                                        </div>
-                                        
-                                        <div class="mb-2">
-                                            <span class="info-label">Date naissance</span>
-                                            <span>{{ ensignant.dateNaissance | date('Y-m-d') }}</span>
-                                        </div>
-                                        
-                                        <div class="mb-3">
-                                            <span class="info-label">genre</span>
-                                            <span>{{ ensignant.genre }}</span>
-                                        </div>
-                                        
-                                        <div>
-                                            <span class="info-label">matricule</span>
-                                            <div class="course-badge">{{ ensignant.matricule }}</div>
-                                        </div>
-                                        <div>
-                                            <span class="info-label">date Embauche</span>
-                                            <div class="course-badge">{{ ensignant.dateEmbauche |  date('Y-m-d')}}</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="admission-number">
-                                        specialite : {{ ensignant.specialite }}
-                                    </div>
-                                    
-                                    <div class="validity">
-                                        <div class="validity-item">
-                                            <div class="validity-label">grade</div>
-                                            <div>{{ ensignant.grade }}</div>
-                                        </div>
-                                        <div class="validity-item">
-                                            <div class="validity-label">contrat</div>
-                                            <div>{{ ensignant.contrat }}</div>
-                                        </div>
-                                        <div class="validity-item">
-                                            <div class="validity-label">contact</div>
-                                            <div>{{ ensignant.contact }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <a class="btn btn-primary"href="#">Details</a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a class="btn btn-warning"href="">Edition</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Pied de page de la carte -->
-                                <footer class="text-center text-white mt-5">
-                                    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                                        © YOBS PRODUCTIONS {{ 'now'|date('Y') }} - Tous droits réservés
-                                    </div>
-                                </footer>
+{% include "navbar.html.twig" %}
+<main class="flex-shrink-0 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-md-6 mb-4">
+                <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" data-page-length='25' data-order='[[0, "desc"]]'>
+                                    <thead>
+                                       
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>Matricule</th>
+                                            <th>Date Embauche</th>
+                                            <th>Grade</th>
+                                            <th>Contact</th>
+                                            <th>Date</th>
+                                            <th>Operation</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>Matricule</th>
+                                            <th>Date_embauche</th>
+                                            <th>Grade</th>
+                                            <th>contact</th>
+                                            <th>Date</th>
+                                            <th>Operation</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for ensignant in ensignants %}
+                                            <tr>
+                                                <td>{{ ensignant.id }}</td>                                     
+                                                <td>{{ ensignant.nom }}</td>
+                                                <td>{{ ensignant.prenom }}</td>
+                                                <td>{{ ensignant.matricule }}</td>
+                                                <td>{{ ensignant.dateEmbauche | date('Y-m-d') }}</td>
+                                                <td>{{ ensignant.grade}}</td>
+                                                <td>{{ ensignant.contact }}</td>
+                                                <td>{{ ensignant.createtAt | date('Y-m-d') }}</td> 
+                                                
+                                                    <td>
+                                                        <a href='#' class='btn btn-primary' ><i class='fas fa-pencil-alt '></i></a>
+                                                        <a href='#' class='btn btn-danger' onclick='return confirm("Êtes-vous sûr de vouloir supprimer cet row ? si vous suprimer cet row elle sera supprimer du stock");' id='suppresioner'><i class='fas fa-trash-alt'></i></a>
+                                                        <a href='#' class='btn btn-primary' id='modification'><i class='far fa-file-image'></i></a>
+                                                        <a href='{{ path("app_eleve_print", {"id": ensignant.id}) }}' class='btn btn-primary' id='modification'><i class='fas fa-download'></i></a>
+                                                    </td>
+                                                
+                                            </tr> 
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
-                            </td>
-                            {% set valeur = valeur + 1 %}   
-                            {% if valeur > 2 %}
-                                </tr>
-                                {% set valeur = 0 %}
-                            {% endif %}
-                        
-                        {% endfor %}
-                        </tr>
-                </tbody>
-            </table>
+                        </div>
+            </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    {% include "footer.html.twig" %}
-</body>
-</html>
 
-
+</main>
+{% include "footer.html.twig" %}
 {% endblock %}

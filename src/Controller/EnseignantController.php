@@ -20,6 +20,8 @@ class EnseignantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $ensignants->setUser($this->getUser());
+            $ensignants->setCreatetAt(new \DateTime());
             $em->persist($ensignants);
             $em->flush();
             return $this->redirectToRoute('app_enseignant_liste');
