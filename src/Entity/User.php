@@ -64,6 +64,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Enseignant::class)]
     private Collection $enseignants;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Solde::class)]
+    private Collection $soldes;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -73,6 +76,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->matieres = new ArrayCollection();
         $this->notes = new ArrayCollection();
         $this->enseignants = new ArrayCollection();
+        $this->soldes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -397,6 +401,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($enseignant->getUser() === $this) {
                 $enseignant->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Solde>
+     */
+    public function getSoldes(): Collection
+    {
+        return $this->soldes;
+    }
+
+    public function addSolde(Solde $solde): static
+    {
+        if (!$this->soldes->contains($solde)) {
+            $this->soldes->add($solde);
+            $solde->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSolde(Solde $solde): static
+    {
+        if ($this->soldes->removeElement($solde)) {
+            // set the owning side to null (unless already changed)
+            if ($solde->getUser() === $this) {
+                $solde->setUser(null);
             }
         }
 

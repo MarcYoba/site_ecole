@@ -20,6 +20,9 @@ class EnseignantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $nom = $form->get('nom')->getData();
+            $nom = mb_strtoupper($nom,'UTF-8');
+            $ensignants->setNom($nom);
             $ensignants->setUser($this->getUser());
             $ensignants->setCreatetAt(new \DateTime());
             $em->persist($ensignants);

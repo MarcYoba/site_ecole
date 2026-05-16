@@ -37,7 +37,15 @@ class EleveController extends AbstractController
         $form = $this->createForm(EleveType::class,$eleve);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $nom = $form->get('nom')->getData();
+            $prenom = $form->get('prenom')->getData();
+            
+            $nom = mb_strtoupper($nom,'UTF-8');
+            $prenom = mb_strtoupper($prenom,'UTF-8');
+
             $eleve->setUser($this->getUser());
+            $eleve->setNom($nom);
+            $eleve->setPrenom($prenom);
             $date = \DateTime::createFromFormat('Y-m-d H:i:s', '2024-06-01 12:00:00');
             $eleve->setCreatedAt($date);
             $entityManager->persist($eleve);

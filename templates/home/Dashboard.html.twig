@@ -13,7 +13,7 @@
 
             <div class="row">
                 {# Carte : Classes #}
-                <div class="col-xl-6 col-md-10 mb-4">
+                <div class="col-xl-8 col-md-10 mb-4">
                     <div class="card shadow">
                         <div class="card-header bg-primary text-white">
                             <h3 class="card-title mb-0">Statiatique generale</h3>
@@ -28,8 +28,43 @@
                 </div>
 
 
-                <div class="col-xl-3 col-md-6 mb-4">
-                    
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-success border-4 shadow h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="flex-grow-1">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                       Information Ecole
+                                    </div>
+                                    <div class="h5 mb-1 font-weight-bold text-gray-800">
+                                        Nom : <span class="text-primary">{{ ecole.nom }}</span>
+                                    </div>
+                                    <div class="small mb-0 font-weight-bold text-muted">
+                                        <i class="fas fa-user-tie text-gray-300 me-2"></i>Enseignant : <span class="text-dark">
+                                            ------- rien -- 
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="ms-2">
+                                    logo
+                                </div>
+                            </div>
+
+                            <hr class="my-2 text-gray-200">
+
+                            <div class="d-flex justify-content-between align-items-center pt-2">
+                                <a href="#" class="btn btn-sm btn-outline-primary border-0">
+                                    <i class="fas fa-edit me-1"></i> Modifier
+                                </a>
+                                <a href="#" class="btn btn-sm btn-outline-warning border-0">
+                                    <i class="fas fa-list"></i> Eleves
+                                </a>
+                                <a href="#" class="btn btn-sm btn-outline-danger border-0">
+                                    <i class="fas fa-trash me-1"></i> Supprimer
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 

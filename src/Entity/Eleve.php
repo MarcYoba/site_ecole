@@ -88,10 +88,14 @@ class Eleve
     #[ORM\Column(length: 255)]
     private ?string $telephoneResponsable = null;
 
+    #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: Solde::class)]
+    private Collection $soldes;
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
         $this->notes = new ArrayCollection();
+        $this->soldes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -420,6 +424,36 @@ class Eleve
     public function setTelephoneResponsable(string $telephoneResponsable): static
     {
         $this->telephoneResponsable = $telephoneResponsable;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Solde>
+     */
+    public function getSoldes(): Collection
+    {
+        return $this->soldes;
+    }
+
+    public function addSolde(Solde $solde): static
+    {
+        if (!$this->soldes->contains($solde)) {
+            $this->soldes->add($solde);
+            $solde->setEleve($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSolde(Solde $solde): static
+    {
+        if ($this->soldes->removeElement($solde)) {
+            // set the owning side to null (unless already changed)
+            if ($solde->getEleve() === $this) {
+                $solde->setEleve(null);
+            }
+        }
 
         return $this;
     }
