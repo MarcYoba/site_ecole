@@ -23,10 +23,10 @@ class EleveController extends AbstractController
         
         $user = $this->getUser();
         
-        $classe = $entityManager->getRepository(Classe::class)->findOneBy(["user"=>$user]);
-        if(!$classe){
-            return $this->redirectToRoute('app_classe');
-        }
+        // $classe = $entityManager->getRepository(Classe::class)->findOneBy(["user"=>$user]);
+        // if(!$classe){
+        //     return $this->redirectToRoute('app_classe');
+        // }
 
         $numero = str_pad(random_int(0, 99), 3, '0', STR_PAD_LEFT);
         $datePart = date('Ymd');
@@ -53,7 +53,7 @@ class EleveController extends AbstractController
     #[Route('/eleve/liste', name: 'app_eleve_liste')]
     public function list(Request $request, EntityManagerInterface $entity_manager) : Response 
     {
-        $eleve = $entity_manager->getRepository(Eleve::class)->findBy(["user"=> $this->getUser()]);
+        $eleve = $entity_manager->getRepository(Eleve::class)->findAll();
 
         return $this->render('eleve/list.html.twig',[
             "eleves" => $eleve

@@ -16,23 +16,107 @@
             {# Le conteneur de la navigation (unique !) #}
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ path('app_home_dashboard')}}">Tableau de bord</a>
+                    </li>
                     {# Dropdown École corrigé #}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Ecole
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Ecole</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_user_list')}}"><i class="fas fa-list"></i>Utilisateur</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Téléchargement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Classe
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ path('app_classe') }}"><i class="fas fa-plus-circle"></i> Ajouter</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_classe_liste')}}"><i class="fas fa-list"></i>List</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Téléchargement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="eleveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                           Élèves
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="eleveDropdown">
+                            <li><a class="dropdown-item" href="{{ path('app_eleve') }}"><i class="fas fa-plus-circle"></i> Ajouter</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_eleve_liste')}}"><i class="fas fa-list"></i>List</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Téléchargement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="eleveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Enseignants
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="eleveDropdown">
+                            <li><a class="dropdown-item" href="{{ path('app_enseignant') }}"><i class="fas fa-plus-circle"></i> Ajouter</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_enseignant_liste')}}"><i class="fas fa-list"></i>List</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Téléchargement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="eleveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Manuels
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="eleveDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-plus-circle"></i> Ajouter</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-list"></i>List</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Téléchargement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="eleveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Inscription
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="eleveDropdown">
+                            <li><a class="dropdown-item" href="{{ path('app_inscription') }} "><i class="fas fa-plus-circle"></i> Ajouter</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_inscription_list') }}"><i class="fas fa-list"></i>List</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Téléchargement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="eleveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Matieres
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="eleveDropdown">
+                            <li><a class="dropdown-item" href="{{ path('app_matiere') }}"><i class="fas fa-plus-circle"></i> Ajouter</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_matiere_list') }}"><i class="fas fa-list"></i>List</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Téléchargement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="eleveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Notes
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="eleveDropdown">
+                            <li><a class="dropdown-item" href="{{ path('app_note') }} "><i class="fas fa-plus-circle"></i> Ajouter</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_note_list') }}"><i class="fas fa-list"></i>List</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Téléchargement</a></li>
                         </ul>
                     </li>
                     
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ path('app_home_dashboard')}}">Tableau de bord</a>
-                    </li>
                 </ul>
                 
                 {# Bouton déconnexion aligné à droite #}

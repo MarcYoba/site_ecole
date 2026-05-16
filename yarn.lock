@@ -877,11 +877,6 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@kurkle/color@^0.3.0":
-  version "0.3.4"
-  resolved "https://registry.npmjs.org/@kurkle/color/-/color-0.3.4.tgz"
-  integrity sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==
-
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.5"
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.5.tgz"
@@ -916,6 +911,9 @@
     "@types/webpack-env" "^1.16.4"
     loader-utils "^2.0.0 || ^3.0.0"
     schema-utils "^3.0.0 || ^4.0.0"
+
+"@symfony/ux-chartjs@file:vendor/symfony/ux-chartjs/assets":
+  version "1.1.0"
 
 "@symfony/webpack-encore@^4.0.0":
   version "4.7.0"
@@ -1620,12 +1618,10 @@ chalk@^4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chart.js@^4.5.1:
-  version "4.5.1"
-  resolved "https://registry.npmjs.org/chart.js/-/chart.js-4.5.1.tgz"
-  integrity sha512-GIjfiT9dbmHRiYi6Nl2yFCq7kkwdkp1W/lp2J99rX0yo9tgJGn3lKQATztIjb5tVtevcBtIdICNWqlq5+E8/Pw==
-  dependencies:
-    "@kurkle/color" "^0.3.0"
+chart.js@^3.4.1:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.9.1.tgz#3abf2c775169c4c71217a107163ac708515924b8"
+  integrity sha512-Ro2JbLmvg83gXF5F4sniaQ+lTbSv18E+TIf2cOeiH1Iqd2PGFOtem+DUufMZsCJwFE7ywPOpfXFBwRTGq7dh6w==
 
 chokidar@^3.5.3:
   version "3.6.0"
@@ -1978,7 +1974,7 @@ datatables.net-fixedheader-bs5@^4.0.6:
     datatables.net-fixedheader "4.0.6"
     jquery ">=1.7"
 
-datatables.net-fixedheader@4.0.6:
+datatables.net-fixedheader@4.0.6, datatables.net-fixedheader@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/datatables.net-fixedheader/-/datatables.net-fixedheader-4.0.6.tgz#0c361a8a90542d75402f897db401085433efcebe"
   integrity sha512-icYg/qKDpqGDrAVRWfsjt0xQdngk48R7LWkS9t8kaZFp9c4xrLFcmmPtRLgPp5/S4JHZbbsxmVkF16kscjNZjg==
@@ -1993,7 +1989,7 @@ datatables.net@2.2.2:
   dependencies:
     jquery ">=1.7"
 
-datatables.net@2.3.8, datatables.net@^2, datatables.net@^2.3.8:
+datatables.net@2.3.8, datatables.net@^2:
   version "2.3.8"
   resolved "https://registry.npmjs.org/datatables.net/-/datatables.net-2.3.8.tgz"
   integrity sha512-uhViowhlDlheAuo5a8TrkQqADsjrtGeOyvrigvr4t0+K3MyAWqClORXWAYIcN9VLX6iIX0C8O9gwJNd01hITRg==

@@ -61,6 +61,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Note::class)]
     private Collection $notes;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Enseignant::class)]
+    private Collection $enseignants;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -69,6 +72,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->eleves = new ArrayCollection();
         $this->matieres = new ArrayCollection();
         $this->notes = new ArrayCollection();
+        $this->enseignants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -363,6 +367,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($note->getUser() === $this) {
                 $note->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Enseignant>
+     */
+    public function getEnseignants(): Collection
+    {
+        return $this->enseignants;
+    }
+
+    public function addEnseignant(Enseignant $enseignant): static
+    {
+        if (!$this->enseignants->contains($enseignant)) {
+            $this->enseignants->add($enseignant);
+            $enseignant->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnseignant(Enseignant $enseignant): static
+    {
+        if ($this->enseignants->removeElement($enseignant)) {
+            // set the owning side to null (unless already changed)
+            if ($enseignant->getUser() === $this) {
+                $enseignant->setUser(null);
             }
         }
 
