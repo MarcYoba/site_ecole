@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class HomeController extends AbstractController
 {
@@ -26,7 +27,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/home/dashboard', name: 'app_home_dashboard')]
+    #[Route('directeur/home/dashboard', name: 'app_home_dashboard')]
     public function Dashboard(EntityManagerInterface $em,ChartBuilderInterface $chartBuilder): Response
     {
         $ecole  = $em->getRepository(Ecole::class)->find(1);
