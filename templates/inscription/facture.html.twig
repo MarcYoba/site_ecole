@@ -159,6 +159,7 @@
         <div class="header">
             <h1>{{ ecoles.nom | default('----') }}</h1>
             <h2>{{ecoles.sigle | default('----') }}</h2>
+            <h3>ARRETE N=057/J2/4829/A/MINEDUB/SG/DSEPB DU 04 AOUT 2010</h3>
             <div class="contact">
                telephone {{ ecoles.telephone | default('----') }}
             </div>
@@ -208,7 +209,7 @@
                 </div>
                 <div class="ligne-double">
                     <span class="label"><i class="fas fa-chart-bar"></i> Balance :</span>
-                    <span class="value">{{ (factures.avance - factures.reste)|default(factures.montant)|number_format(0, ',', ' ') }} FCFA</span>
+                    <span class="value">{{ (factures.montant - factures.reste)|default(factures.montant)|number_format(0, ',', ' ') }} FCFA</span>
                 </div>
             </div>
 
@@ -220,11 +221,11 @@
         
         <div class="signature row">
             <div class="col-md-6">
-                <div style="text-align: left;">Signature de l'élève :</div>
+                <div style="text-align: left;">Signature du Parents :</div>
                 <div style="text-align: left;margin-top: 20px;">_________________________</div>
             </div>
             <div class="col-md-6">
-                <div >Signature de l'élève :</div>
+                <div >Signature du SG :</div>
                 <div style="margin-top: 20px;">_________________________</div>
             </div>
         </div>

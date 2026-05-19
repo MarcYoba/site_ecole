@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Matiere;
+use App\Entity\Note;
 use App\Form\MatiereType;
 use Doctrine\ORM\EntityManagerInterface;
+use Dom\Node;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,8 +21,6 @@ class MatiereController extends AbstractController
         $matier = new Matiere();
         $form = $this->createForm(MatiereType::class, $matier);
         $form->handleRequest($request);
-
-
         if ($form->isSubmitted() && $form->isValid()) {
             $mat = $form->get('nom')->getData();
             $existingMatiere = $em->getRepository(Matiere::class)->findOneBy(['nom' => $mat]);
@@ -28,6 +28,9 @@ class MatiereController extends AbstractController
                 $this->addFlash('error', 'Une matière avec ce nom existe déjà !');
                 return $this->redirectToRoute('app_matiere_list');
             }
+            $nom = strtoupper($mat);
+
+            $matier->setNom($nom);
             $matier->setUser($user);
             $em->persist($matier);
             $em->flush();
@@ -49,4 +52,45 @@ class MatiereController extends AbstractController
             'matieres' => $matieres,
         ]);
     }
+    #[Route('/matiere/edit/{id}', name: 'app_matiere_edit')]
+    public function edit(EntityManagerInterface $em, Request $request, $id): Response
+    {
+        $matieres = $em->getRepository(Matiere::class)->findOneBy(['id' => $id]);
+        if (!$matieres) {
+            return $this->redirectToRoute('app_matiere_list');
+        }
+
+        $form = $this->createForm(MatiereType::class, $matieres);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $nom = $form->get('nom')->getData();
+            $nom = strtoupper($nom);
+
+            $matieres->setNom($nom);
+            $em->persist($matieres);
+            $em->flush();
+
+            $this->addFlash('success', 'Matiere ajoutée avec succès !');
+
+            return $this->redirectToRoute('app_matiere_list');
+        }
+        return $this->render('matiere/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+    #[Route('/matiere/delete/{id}', name: 'app_matiere_delete')]
+    public function delete(EntityManagerInterface $em, $id) : Response 
+    {
+        $matiere = $em->getRepository(Matiere::class)->findOneBy(['id' => $id]);
+        $note = $em->getRepository(Note::class)->findOneBy(['matiere' => $matiere]);
+        if (!$matiere || $note) {
+            return $this->redirectToRoute('app_matiere_list');
+        }
+
+        $em->persist($matiere);
+        $em->flush();
+        
+        return $this->redirectToRoute('app_matiere_list');
+    }
+    
 }

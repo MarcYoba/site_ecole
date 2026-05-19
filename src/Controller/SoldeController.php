@@ -74,4 +74,25 @@ class SoldeController extends AbstractController
             ]
         );
     }
+    #[Route('/solde/edit/{id}', name: 'app_solde_edit')]
+    public function edit(EntityManagerInterface $em, Request $request, $id): Response
+    {
+        $solde = $em->getRepository(Solde::class)->findOneBy(['id' => $id]);
+        if (!$solde) {
+            return $this->redirectToRoute("app_solde_list");
+        }
+
+        $form = $this->createForm(SoldeType::class,$solde);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $em->persist($solde);
+            $em->flush();
+
+            return $this->redirectToRoute("app_solde_list");
+        }
+        return $this->render('solde/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }

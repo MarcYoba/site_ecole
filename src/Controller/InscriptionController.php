@@ -78,4 +78,22 @@ class InscriptionController extends AbstractController
             ]
         );
     }
+    #[Route('/inscription/edit/{id}', name: 'app_inscription_edit')]
+    public function Edit(EntityManagerInterface $em, Request $request, $id) : Response 
+    {
+        $inscription = $em->getRepository(Inscription::class)->findOneBy(['id' => $id]);
+        if (!$inscription) {
+            return $this->redirectToRoute('app_inscription_list');  
+        } 
+        $form = $this->createForm(InscriptionType::class, $inscription);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($inscription);
+            $em->flush();
+            return $this->redirectToRoute('app_inscription_list');
+        }
+        return $this->render('inscription/index.html.twig', [
+            'form' => $form->createView(),
+        ]);  
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Classe;
+use App\Entity\Eleve;
 use App\Form\ClasseType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,7 +27,7 @@ class ClasseController extends AbstractController
             $entityManager->persist($classe);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_home_dashboard');
+            return $this->redirectToRoute('app_classe_delete');
         }
         return $this->render('classe/index.html.twig', [
             'form' => $form->createView(),
@@ -40,5 +41,37 @@ class ClasseController extends AbstractController
         return $this->render('classe/list.html.twig', [
           'classes' => $classe,  
         ]);
+    }
+    #[Route('/classe/edit/{id}', name: 'app_classe_edit')]
+    public function Edit(EntityManagerInterface $em, Request $request,$id) : Response {
+        $classe = $em->getRepository(Classe::class)->findOneBy(['id' => $id]);
+        if (!$classe) {
+            return $this->redirectToRoute('app_classe_liste');
+        }
+        $form = $this->createForm(ClasseType::class,$classe);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($classe);
+            $em->flush();
+            return $this->redirectToRoute('app_classe_liste');
+        }
+        return $this->render('classe/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+    #[Route('/classe/delete/{id}', name: 'app_classe_delete')]
+    public function delete(EntityManagerInterface $em, $id) : Response {
+        $classe = $em->getRepository(Classe::class)->findOneBy(['id' => $id]);
+        if (!$classe) {
+            return $this->redirectToRoute('app_classe_liste');
+        }
+        $eleve = $em->getRepository(Eleve::class)->findOneBy(['classe' => $classe]);
+        if ($eleve) {
+            return $this->redirectToRoute('app_classe_liste');
+        }
+
+        $em->remove($classe);
+        $em->flush();
+        return $this->redirectToRoute('app_classe_liste');
     }
 }

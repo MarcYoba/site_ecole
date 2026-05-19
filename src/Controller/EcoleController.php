@@ -24,6 +24,9 @@ class EcoleController extends AbstractController
         $form = $this->createForm(EcoleType::class, $ecole);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $nom = $form->get('nom')->getData();
+            $nom = strtoupper($nom);
+            $ecole->setNom($nom);
             $ecole->setUser($this->getUser());
             $em->persist($ecole);
             $em->flush();
@@ -33,5 +36,27 @@ class EcoleController extends AbstractController
         return $this->render('ecole/index.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+    #[Route('/ecole/edit/{id}', name: 'app_classe_edit')]
+    public function Edit(EntityManagerInterface $em, Request $request, $id) : Response 
+    {
+        $ecole = $em->getRepository(Ecole::class)->findOneBy(['id' => $id]);
+        if (!$ecole) {
+            return $this->redirectToRoute('app_home_dashboard');
+        }
+        $form = $this->createForm(EcoleType::class, $ecole);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $nom = $form->get('nom')->getData();
+            $nom = strtoupper($nom);
+            $ecole->setNom($nom);
+            $em->persist($ecole);
+            $em->flush();
+            return $this->redirectToRoute('app_home_dashboard');
+        }
+        return $this->render('ecole/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+         
     }
 }

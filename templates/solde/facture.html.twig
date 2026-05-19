@@ -210,7 +210,7 @@
                 </div>
                 <div class="ligne-double">
                     <span class="label"><i class="fas fa-chart-bar"></i> Balance :</span>
-                    <span class="value">{{ (soldes.avance - soldes.reste)|default(soldes.montant)|number_format(0, ',', ' ') }} FCFA</span>
+                    <span class="value">{{ (soldes.montant - soldes.reste)|default(soldes.montant)|number_format(0, ',', ' ') }} FCFA</span>
                 </div>
             </div>
 

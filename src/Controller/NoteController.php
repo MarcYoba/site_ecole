@@ -39,4 +39,36 @@ class NoteController extends AbstractController
             'notes' => $notes,
         ]);
     }
+    #[Route('/note/edit/{id}', name: 'app_note_edit')]
+    public function edit(EntityManagerInterface $em,Request $request, $id): Response
+    {
+        $note = $em->getRepository(Note::class)->findOneBy(['id' => $id]);
+        if (!$note) {
+            return $this->redirectToRoute('app_note_list');
+        }
+        $form = $this->createForm(NoteType::class, $note);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($note);
+            $em->flush();
+            $this->addFlash('success', 'Note ajoutée avec succès !');
+            return $this->redirectToRoute('app_note_list');
+        }
+        return $this->render('note/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+    #[Route('/note/delete/{id}', name: 'app_note_delete')]
+    public function delete(EntityManagerInterface $em, $id): Response
+    {
+        $note = $em->getRepository(Note::class)->findOneBy(['id' => $id]);
+        if (!$note) {
+            return $this->redirectToRoute('app_note_list');
+        }
+        
+        $em->remove($note);
+        $em->flush();
+
+        return $this->redirectToRoute('app_note_list');
+    }
 }

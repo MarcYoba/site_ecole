@@ -36,13 +36,13 @@
                         <hr class="my-2 text-gray-200">
 
                         <div class="d-flex justify-content-between align-items-center pt-2">
-                            <a href="#" class="btn btn-sm btn-outline-primary border-0">
+                            <a href="{{ path('app_classe_edit',{'id': classe.id}) }}" class="btn btn-sm btn-outline-primary border-0">
                                 <i class="fas fa-edit me-1"></i> Modifier
                             </a>
-                            <a href="{{path('app_eleve_classe', {'id': classe.id})}}" class="btn btn-sm btn-outline-warning border-0">
+                            <a href="{{path('app_eleve_classe', {'id': classe.id}) }}" class="btn btn-sm btn-outline-warning border-0">
                                 <i class="fas fa-list"></i> Eleves
                             </a>
-                            <a href="#" class="btn btn-sm btn-outline-danger border-0">
+                            <a href="{{ path('app_classe_delete', {'id': classe.id}) }}" class="btn btn-sm btn-outline-danger border-0">
                                 <i class="fas fa-trash me-1"></i> Supprimer
                             </a>
                         </div>
