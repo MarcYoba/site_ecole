@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Eleve;
 use App\Entity\Classe;
 use App\Entity\Ecole;
+use App\Entity\Inscription;
 use App\Form\EleveType;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
@@ -122,5 +123,48 @@ class EleveController extends AbstractController
             'eleves' => $eleves,
             'classe' => $classe,
         ]);
-    }   
+    }
+    #[Route('/eleve/edite/{id}', name: 'eleve_edite_edite')]
+    public function Edit(EntityManagerInterface $em, Request $request, $id) : Response 
+    {
+        $eleve = $em->getRepository(Eleve::class)->findOneBy(["id" => $id]);
+        if (!$eleve) {
+            return $this->redirectToRoute('app_classe_liste');
+        }
+
+        $form = $this->createForm(EleveType::class,$eleve);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $nom = $form->get('nom')->getData();
+            $prenom = $form->get('prenom')->getData();
+            $nom = mb_strtoupper($nom,'UTF-8');
+            $prenom = mb_strtoupper($prenom,'UTF-8');
+            $eleve->setNom($nom);
+            $em->persist($eleve);
+            $em->flush();
+            return $this->redirectToRoute('app_eleve_liste');
+        }
+
+        return $this->render('eleve/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
+    } 
+    #[Route('/eleve/delete/{id}', name: 'app_eleve_delete')]
+    public function delete(EntityManagerInterface $em, $id) : Response 
+    {
+        $eleve = $em->getRepository(Eleve::class)->findOneBy(["id" => $id]);
+        if (!$eleve) {
+            return $this->redirectToRoute('app_eleve_liste');
+        }
+        $inscription = $em->getRepository(Inscription::class)->findOneBy(['eleve' => $eleve]);
+        if ($inscription) {
+            return $this->redirectToRoute('app_eleve_liste');
+        }
+
+        $em->remove($eleve);
+        $em->flush();
+
+        return $this->redirectToRoute('app_eleve_liste');
+    }
 }
