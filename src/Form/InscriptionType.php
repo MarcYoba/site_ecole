@@ -55,6 +55,8 @@ class InscriptionType extends AbstractType
                     'Espèces' => 'especes',
                     'Chèque' => 'cheque',
                     'Virement bancaire' => 'virement',
+                    'OM' => 'OM',
+                    'MOMO' => 'MOMO',
                 ],
                 'attr' => [
                     'class' => 'form-control',

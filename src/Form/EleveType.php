@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -158,6 +159,24 @@ class EleveType extends AbstractType
                 'class' => 'form-control form-control-lg'
                 ]
             ])
+            ->add('sante',ChoiceType::class,[
+                'label' => 'Il est maladif',
+                'choices' => [
+                    'Non' => 'Non',
+                    'Oui' => 'Oui',
+                ],
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control form-control-lg',
+                ],
+            ])
+            ->add('maladie',TextareaType::class,[
+                'label' => 'Saisir le type de maladie',
+                'attr' => ['placeholder' => 'Ils ou Elles soufrent de quoi ?',
+                'class' => 'form-control form-control-lg'
+                ]
+            ])
+
         ;
     }
 

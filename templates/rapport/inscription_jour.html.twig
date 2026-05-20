@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscriptions{% endblock %}
+
+{% block body %}
+
+<main class="flex-shrink-0 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-md-6 mb-4">
+                <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" data-page-length="25" data-order='[[0, "desc"]]'>
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nom</th>
+                                            <th>Classe</th>
+                                            <th>Type paiement</th>
+                                            <th>Montant</th>
+                                            <th>Avance</th>
+                                            <th>Reste</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for inscription in inscriptions %}
+                                            <tr>
+                                                <td>{{ inscription.id }}</td>                                    
+                                                <td>{{ inscription.eleve.nom }}</td>
+                                                <td>{{ inscription.classe.nom }}</td>
+                                                <td>{{ inscription.paiement }}</td>
+                                                <td>{{ inscription.montant }}</td>
+                                                <td>{{ inscription.avance }}</td>
+                                                <td>{{ inscription.reste }}</td>  
+                                                <td>{{ inscription.createtAt | date('Y-m-d') }}</td> 
+                                            </tr> 
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}

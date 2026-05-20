@@ -37,7 +37,7 @@ class UserController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
-    #[Route(path: 'directeur/user/list', name: 'app_user_list')]
+    #[Route(path: '/directeur/user/list', name: 'app_user_list')]
     public function list(EntityManagerInterface $em): Response
     {
         $users = $em->getRepository(User::class)->findAll();
@@ -46,7 +46,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route(path: 'directeur/user/edit/{id}', name:'app_user_edit')]
+    #[Route(path: '/directeur/user/edit/{id}', name:'app_user_edit')]
     public function edit(EntityManagerInterface $em, Request $request, $id, UserPasswordHasherInterface $userPasswordHasher) : Response {
         $users = $em->getRepository(User::class)->findOneBy(['id' => $id]);
         if (!$users) {

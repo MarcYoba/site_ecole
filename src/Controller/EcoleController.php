@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EcoleController extends AbstractController
 {
-    #[Route('/ecole/create', name: 'app_ecole')]
+    #[Route('/directeur/ecole/create', name: 'app_ecole')]
     public function index(Request $request, EntityManagerInterface $em): Response
     {
         $ecole = new Ecole();
@@ -37,7 +37,7 @@ class EcoleController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/ecole/edit/{id}', name: 'app_classe_edit')]
+    #[Route('/directeur/ecole/edit/{id}', name: 'app_ecole_edit')]
     public function Edit(EntityManagerInterface $em, Request $request, $id) : Response 
     {
         $ecole = $em->getRepository(Ecole::class)->findOneBy(['id' => $id]);
