@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EleveController extends AbstractController
 {
-    #[Route('/eleve/create', name: 'app_eleve')]
+    #[Route('/sg/eleve/create', name: 'app_eleve')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $eleve = new Eleve();
@@ -52,14 +52,14 @@ class EleveController extends AbstractController
             $entityManager->persist($eleve);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_eleve_liste');
+            return $this->redirectToRoute('app_classe_liste');
         }
         return $this->render('eleve/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
-    #[Route('/eleve/liste', name: 'app_eleve_liste')]
+    #[Route('/directeur/eleve/liste', name: 'app_eleve_liste')]
     public function list(Request $request, EntityManagerInterface $entity_manager) : Response 
     {
         $eleve = $entity_manager->getRepository(Eleve::class)->findAll();
@@ -69,17 +69,17 @@ class EleveController extends AbstractController
         ]);
     }
 
-    #[Route('/eleve/details', name: 'app_eleve_details')]
+    #[Route('/directeur/eleve/details', name: 'app_eleve_details')]
     public function detais (Request $request, EntityManagerInterface $entity_manager) : Response
     {
         $eleve = $entity_manager->getRepository(Eleve::class)->findBy(["user"=> $this->getUser()]);
         $ecole = $entity_manager->getRepository(Ecole::class)->findOneBy(["user"=> $this->getUser()]);
-        return $this->render('eleve/detail.html.twig',[
+        return $this->render('eleve/rapport.html.twig',[
             "eleves" => $eleve,
             "ecoles" => $ecole,
         ]);
     }
-    #[Route('/eleve/print/{id}', name: 'app_eleve_print')]
+    #[Route('/directeur/eleve/print/{id}', name: 'app_eleve_print')]
     public function print(EntityManagerInterface $em, int $id) :Response {
         $eleve = $em->getRepository(Eleve::class)->find($id);
         if (!$eleve) {
@@ -112,7 +112,7 @@ class EleveController extends AbstractController
             ]
         );
     }
-    #[Route('/eleve/classe/{id}', name: 'app_eleve_classe')]
+    #[Route('/sg/eleve/classe/{id}', name: 'app_eleve_classe')]
     public function classe(EntityManagerInterface $em, int $id) : Response {
         $classe = $em->getRepository(Classe::class)->find($id);
         if (!$classe) {
@@ -124,7 +124,7 @@ class EleveController extends AbstractController
             'classe' => $classe,
         ]);
     }
-    #[Route('/eleve/edite/{id}', name: 'eleve_edite_edite')]
+    #[Route('/directeur/eleve/edite/{id}', name: 'eleve_edite_edite')]
     public function Edit(EntityManagerInterface $em, Request $request, $id) : Response 
     {
         $eleve = $em->getRepository(Eleve::class)->findOneBy(["id" => $id]);
@@ -150,7 +150,7 @@ class EleveController extends AbstractController
         ]);
 
     } 
-    #[Route('/eleve/delete/{id}', name: 'app_eleve_delete')]
+    #[Route('/directeur/eleve/delete/{id}', name: 'app_eleve_delete')]
     public function delete(EntityManagerInterface $em, $id) : Response 
     {
         $eleve = $em->getRepository(Eleve::class)->findOneBy(["id" => $id]);

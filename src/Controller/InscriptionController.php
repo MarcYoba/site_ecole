@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class InscriptionController extends AbstractController
 {
-    #[Route('/inscription/crteat', name: 'app_inscription')]
+    #[Route('/sg/inscription/crteat', name: 'app_inscription')]
     public function index(EntityManagerInterface $em, Request $request): Response
     {
         $inscription = new Inscription();
@@ -36,7 +36,7 @@ class InscriptionController extends AbstractController
         ]);
     }
 
-    #[Route('/inscription/list', name: 'app_inscription_list')]
+    #[Route('/sg/inscription/list', name: 'app_inscription_list')]
     public function list(EntityManagerInterface $em): Response
     {
         $inscription = $em->getRepository(Inscription::class)->findAll();
@@ -45,7 +45,7 @@ class InscriptionController extends AbstractController
         ]);
     }
 
-    #[Route('/inscription/facture/{id}', name: 'app_inscription_facture')]
+    #[Route('/directeur/inscription/facture/{id}', name: 'app_inscription_facture')]
     public function facture(EntityManagerInterface $em, int $id): Response
     {
         $facture = $em->getRepository(Inscription::class)->find($id);
@@ -78,7 +78,7 @@ class InscriptionController extends AbstractController
             ]
         );
     }
-    #[Route('/inscription/edit/{id}', name: 'app_inscription_edit')]
+    #[Route('/directeur/inscription/edit/{id}', name: 'app_inscription_edit')]
     public function Edit(EntityManagerInterface $em, Request $request, $id) : Response 
     {
         $inscription = $em->getRepository(Inscription::class)->findOneBy(['id' => $id]);
@@ -96,4 +96,6 @@ class InscriptionController extends AbstractController
             'form' => $form->createView(),
         ]);  
     }
+    
+    
 }

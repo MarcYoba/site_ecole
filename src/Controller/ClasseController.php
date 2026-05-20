@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ClasseController extends AbstractController
 {
-    #[Route('/classe/create', name: 'app_classe')]
+    #[Route('/sg/classe/create', name: 'app_classe')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $classe = new Classe();
@@ -24,17 +24,21 @@ class ClasseController extends AbstractController
             $classe->setUser($this->getUser());
             $date = \DateTime::createFromFormat('Y-m-d H:i:s', '2024-06-01 12:00:00');
             $classe->setCreateAt($date);
+            $nom = $form->get('nom')->getData();
+            $nom = strtoupper($nom);
+
+            $classe->setNom($nom);
             $entityManager->persist($classe);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_classe_delete');
+            return $this->redirectToRoute('app_classe_liste');
         }
         return $this->render('classe/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
-    #[Route('/classe/list', name: 'app_classe_liste')]
+    #[Route('/sg/classe/list', name: 'app_classe_liste')]
     public function list(EntityManagerInterface $em) : Response {
         $classe = $em->getRepository(Classe::class)->findAll();
 
@@ -42,7 +46,7 @@ class ClasseController extends AbstractController
           'classes' => $classe,  
         ]);
     }
-    #[Route('/classe/edit/{id}', name: 'app_classe_edit')]
+    #[Route('/directeur/classe/edit/{id}', name: 'app_classe_edit')]
     public function Edit(EntityManagerInterface $em, Request $request,$id) : Response {
         $classe = $em->getRepository(Classe::class)->findOneBy(['id' => $id]);
         if (!$classe) {
@@ -51,6 +55,10 @@ class ClasseController extends AbstractController
         $form = $this->createForm(ClasseType::class,$classe);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $nom = $form->get('nom')->getData();
+            $nom = strtoupper($nom);
+
+            $classe->setNom($nom);
             $em->persist($classe);
             $em->flush();
             return $this->redirectToRoute('app_classe_liste');
@@ -59,7 +67,7 @@ class ClasseController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/classe/delete/{id}', name: 'app_classe_delete')]
+    #[Route('/directeur/classe/delete/{id}', name: 'app_classe_delete')]
     public function delete(EntityManagerInterface $em, $id) : Response {
         $classe = $em->getRepository(Classe::class)->findOneBy(['id' => $id]);
         if (!$classe) {

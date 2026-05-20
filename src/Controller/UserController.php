@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Dom\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -34,12 +37,41 @@ class UserController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
-    #[Route(path: '/user/list', name: 'app_user_list')]
+    #[Route(path: '/directeur/user/list', name: 'app_user_list')]
     public function list(EntityManagerInterface $em): Response
     {
         $users = $em->getRepository(User::class)->findAll();
         return $this->render('user/list.html.twig', [
             'users' => $users,
+        ]);
+    }
+
+    #[Route(path: '/directeur/user/edit/{id}', name:'app_user_edit')]
+    public function edit(EntityManagerInterface $em, Request $request, $id, UserPasswordHasherInterface $userPasswordHasher) : Response {
+        $users = $em->getRepository(User::class)->findOneBy(['id' => $id]);
+        if (!$users) {
+            $this->redirectToRoute('app_user_list');
+        }
+        $registrationForm = $this->createForm(RegistrationFormType::class,$users);
+        $registrationForm->handleRequest($request);
+        if ($registrationForm->isSubmitted() && $registrationForm->isValid()) {
+            $role = [$request->request->get('role')];
+            $users->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $users,
+                    $registrationForm->get('plainPassword')->getData()
+                )
+            );
+            $users->setRoles($role);
+            $em->persist($users);
+            $em->flush();
+            return $this->redirectToRoute('app_login');
+        }
+        return $this->render('user/edit.html.twig', [
+            'users' => $users,
+            'error' => 0,
+            'registrationForm' => $registrationForm->createView(),
+            
         ]);
     }
 }

@@ -91,6 +91,12 @@ class Eleve
     #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: Solde::class)]
     private Collection $soldes;
 
+    #[ORM\Column(length: 255)]
+    private ?string $sante = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $maladie = null;
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
@@ -454,6 +460,30 @@ class Eleve
                 $solde->setEleve(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSante(): ?string
+    {
+        return $this->sante;
+    }
+
+    public function setSante(string $sante): static
+    {
+        $this->sante = $sante;
+
+        return $this;
+    }
+
+    public function getMaladie(): ?string
+    {
+        return $this->maladie;
+    }
+
+    public function setMaladie(string $maladie): static
+    {
+        $this->maladie = $maladie;
 
         return $this;
     }

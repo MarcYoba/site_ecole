@@ -45,4 +45,16 @@ class InscriptionRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findBySemaine($date1,$date2): array
+    {        
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.createtAt BETWEEN :date1 AND :date2')
+            ->setParameter('date1', $date1)
+            ->setParameter('date2', $date2)
+            ->orderBy('i.id', 'ASC')
+            ->getQuery()
+           ->getResult()
+        ;
+   }
 }
