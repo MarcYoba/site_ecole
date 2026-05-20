@@ -8,6 +8,7 @@ use App\Entity\Eleve;
 use App\Entity\Enseignant;
 use App\Entity\Matiere;
 use App\Entity\Note;
+use App\Entity\Pensiont;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,7 +37,9 @@ class HomeController extends AbstractController
         $enseignant = $em->getRepository(Enseignant::class)->findAll();
         $matiere = $em->getRepository(Matiere::class)->findAll();
         $note = $em->getRepository(Note::class)->findAll();
-        $listuser = $em->getRepository(User::class)->findAll(); 
+        $listuser = $em->getRepository(User::class)->findAll();
+        $pensiont1 = $em->getRepository(Pensiont::class)->findBy(['niveau' => 1]);
+        $pensiont2 = $em->getRepository(Pensiont::class)->findBy(['niveau' => 2]);
 
         $classCount = count($classCount);
         $eleveCount = count($eleve);
@@ -76,6 +79,8 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'monGraphique' => $chart,
             'ecole' => $ecole,
+            'pensiont1' => $pensiont1,
+            'pensiont2' => $pensiont2,
         ]);
     }
 }
