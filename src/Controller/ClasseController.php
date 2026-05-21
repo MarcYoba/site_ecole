@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Classe;
 use App\Entity\Eleve;
+use App\Entity\Pensiont;
 use App\Form\ClasseType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,9 +26,12 @@ class ClasseController extends AbstractController
             $date = \DateTime::createFromFormat('Y-m-d H:i:s', '2024-06-01 12:00:00');
             $classe->setCreateAt($date);
             $nom = $form->get('nom')->getData();
+            $niveau = $form->get('niveau')->getData();
+            $pensiont = $entityManager->getRepository(Pensiont::class)->findOneBy(["niveau" => $niveau],['id' => 'DESC']);
             $nom = strtoupper($nom);
 
             $classe->setNom($nom);
+            $classe->setPensiont($pensiont);
             $entityManager->persist($classe);
             $entityManager->flush();
 

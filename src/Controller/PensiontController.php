@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Classe;
+use App\Entity\Eleve;
 use App\Entity\Pensiont;
+use App\Entity\Solde;
 use App\Form\PensiontType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -70,5 +73,45 @@ class PensiontController extends AbstractController
         $em->remove($pensiont);
         $em->flush();
         return $this->redirectToRoute('app_pensiont_list');
+    }
+    #[Route('/sg/pensiont/montant', name: 'app_pensiont_montant')]
+    public function montant(EntityManagerInterface $em, Request $request): Response
+    {
+        if ($request->isXmlHttpRequest() || $request->getContentType()==='json') {
+            $json = $request->getContent();
+            $donnees = json_decode($json, true);
+
+            $eleve = $em->getRepository(Eleve::class)->find($donnees['eleve']);
+            $solde = $em->getRepository(Solde::class)->findOneBy(['eleve' => $eleve],['id'=>'DESC']);
+            if ($solde) {
+                return $this->json([
+                    'success' => $solde->getReste()
+                    ], 
+                    200
+                ); 
+            }else{
+                $classe = $em->getRepository(Classe::class)->find($donnees['classe']);
+                $pensiont = $classe->getPensiont();
+
+                return $this->json([
+                    'success' => $pensiont->getMontant()
+                    ], 
+                    200
+                ); 
+            }
+
+            return $this->json([
+                'success' => $donnees
+                ], 
+                200
+            );
+        }
+
+
+        return $this->json([
+            'error' => 'Erreur de transfert de la donnee'
+            ], 
+            404
+        );
     }
 }
