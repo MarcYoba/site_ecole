@@ -49,6 +49,9 @@ class Classe
     #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Solde::class)]
     private Collection $soldes;
 
+    #[ORM\ManyToOne(inversedBy: 'classes')]
+    private ?Pensiont $pensiont = null;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
@@ -262,6 +265,18 @@ class Classe
                 $solde->setClasse(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPensiont(): ?Pensiont
+    {
+        return $this->pensiont;
+    }
+
+    public function setPensiont(?Pensiont $pensiont): static
+    {
+        $this->pensiont = $pensiont;
 
         return $this;
     }
