@@ -35,6 +35,9 @@ class Inscription
     #[ORM\Column]
     private ?int $reste = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $remise = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,18 @@ class Inscription
     public function setReste(int $reste): static
     {
         $this->reste = $reste;
+
+        return $this;
+    }
+
+    public function getRemise(): ?string
+    {
+        return $this->remise;
+    }
+
+    public function setRemise(string $remise): static
+    {
+        $this->remise = $remise;
 
         return $this;
     }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Classe;
 use App\Entity\Eleve;
+use App\Entity\Inscription;
 use App\Entity\Pensiont;
 use App\Entity\Solde;
 use App\Form\PensiontType;
@@ -83,7 +84,12 @@ class PensiontController extends AbstractController
 
             $eleve = $em->getRepository(Eleve::class)->find($donnees['eleve']);
             $solde = $em->getRepository(Solde::class)->findOneBy(['eleve' => $eleve],['id'=>'DESC']);
+            $inciption = $em->getRepository(Inscription::class)->findOneBy(['eleve' => $eleve],['id'=>'DESC']);
             if ($solde) {
+                   $classe = $solde->getClasse()->getId();
+            }
+         
+            if ($solde && $classe == $donnees['classe']) {
                 return $this->json([
                     'success' => $solde->getReste()
                     ], 
@@ -94,7 +100,7 @@ class PensiontController extends AbstractController
                 $pensiont = $classe->getPensiont();
 
                 return $this->json([
-                    'success' => $pensiont->getMontant()
+                    'success' => $pensiont->getMontant() - $inciption->getRemise()
                     ], 
                     200
                 ); 

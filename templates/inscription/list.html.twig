@@ -18,9 +18,10 @@
                                             <th>Nom</th>
                                             <th>classe</th>
                                             <th>Type paiement</th>
-                                            <th>montant</th>
-                                            <th>avance</th>
-                                            <th>reste</th>
+                                            <th>Montant</th>
+                                            <th>Avance</th>
+                                            <th>Reste</th>
+                                            <th>Remise</th>
                                             <th>Date</th>
                                             <th>Operation</th>
                                         </tr>
@@ -31,9 +32,10 @@
                                             <th>Nom</th>
                                             <th>classe</th>
                                             <th>Type paiement</th>
-                                            <th>montant</th>
-                                            <th>avance</th>
-                                            <th>reste</th>
+                                            <th>Montant</th>
+                                            <th>Avance</th>
+                                            <th>Reste</th>
+                                            <th>Remise</th>
                                             <th>Date</th>
                                             <th>Operation</th>
                                         </tr>
@@ -47,7 +49,8 @@
                                                 <td>{{ inscription.paiement }}</td>
                                                 <td>{{ inscription.montant }}</td>
                                                 <td>{{ inscription.avance}}</td>
-                                                <td>{{ inscription.reste }}</td>  
+                                                <td>{{ inscription.reste }}</td> 
+                                                <td>{{ inscription.remise |default('0') }}</td>  
                                                 <td>{{ inscription.createtAt | date('Y-m-d') }}</td> 
                                                 
                                                     <td>

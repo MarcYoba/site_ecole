@@ -38,6 +38,7 @@ class SoldeType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Entrez le montant',
+                    'readonly' => true,
                 ],
             ])
             ->add('createtAt',DateType::class, [
