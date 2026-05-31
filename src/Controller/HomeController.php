@@ -83,4 +83,25 @@ class HomeController extends AbstractController
             'pensiont2' => $pensiont2,
         ]);
     }
+    #[Route('/visiteur/new', name: 'app_visiteur')]
+    public function visiteur(): Response
+    {
+        return $this->render('home/visiteur.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+    #[Route('sg/surveillant/generale', name: 'app_surveillant')]
+    public function surveillant(): Response
+    {
+        return $this->render('home/surveillant.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+    #[Route('enseignant/generale', name: 'app_enseignant')]
+    public function enseignant(): Response
+    {
+        return $this->render('home/enseignant.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }

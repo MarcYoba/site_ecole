@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Ecole;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Dom\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,20 +54,17 @@ class UserController extends AbstractController
         if (!$users) {
             $this->redirectToRoute('app_user_list');
         }
-        $registrationForm = $this->createForm(RegistrationFormType::class,$users);
+        $registrationForm = $this->createForm(UserType::class,$users);
         $registrationForm->handleRequest($request);
         if ($registrationForm->isSubmitted() && $registrationForm->isValid()) {
             $role = [$request->request->get('role')];
-            $users->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $users,
-                    $registrationForm->get('plainPassword')->getData()
-                )
-            );
+            $ecole = $em->getRepository(Ecole::class)->findOneBy(['id' => 1],['id' => 'DESC']);
+            $users->setEcole($ecole->getId());
+            $users->setIsVerified(true);
             $users->setRoles($role);
             $em->persist($users);
             $em->flush();
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_user_list');
         }
         return $this->render('user/edit.html.twig', [
             'users' => $users,

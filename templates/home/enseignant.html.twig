@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard | YOBS{% endblock %}
+
+{% block body %}
+    {% include "navbarenseignant.html.twig" %}
+
+    <main class="flex-shrink-0 my-5">
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Tableau de bord</h1>
+            </div>
+
+            <div class="row">
+                {# Carte : Classes #}
+                
+
+                <div class="col-xl-6 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-success border-4 shadow h-100">
+                        <div class="card-body">
+                            
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-success border-4 shadow h-100">
+                        <div class="card-body">
+                            
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+            </div>
+        </div>
+    </main>
+
+    {% include "footer.html.twig" %}
+{% endblock %}

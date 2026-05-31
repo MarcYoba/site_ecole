@@ -34,7 +34,7 @@ security:
     access_control:
         - { path: ^/directeur/, roles: ROLE_DIRECTEUR }
         - { path: ^/sg, roles: [ROLE_SG , ROLE_DIRECTEUR] }
-        - { path: ^/enseignant, roles: ROLE_ENSIEGNENT }
+        - { path: ^/enseignant, roles: [ROLE_ENSIEGNANT, ROLE_SG, ROLE_DIRECTEUR] }
 
 when@test:
     security:
