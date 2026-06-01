@@ -96,6 +96,59 @@ class InscriptionController extends AbstractController
             'form' => $form->createView(),
         ]);  
     }
-    
+    #[Route('/sg/inscription/detail/{id}', name: 'app_inscription_detail')]
+    public function detail(EntityManagerInterface $em, $id) : Response {
+        $facture = $em->getRepository(Inscription::class)->find($id);
+        if (!$facture) {
+            return $this->redirectToRoute('app_inscription_list');
+        }
+
+        
+        $ecole = $em->getRepository(Ecole::class)->find(1);
+        return $this->render('inscription/detaille.html.twig', [
+            'factures' => $facture,
+            'ecoles' => $ecole,
+        ]);
+    }
+
+    #[Route('/sg/inscription/facture/{id}', name: 'app_inscription_facture_sg')]
+    public function facture_sg(EntityManagerInterface $em, int $id): Response
+    {
+        $facture = $em->getRepository(Inscription::class)->find($id);
+        if (!$facture) {
+            return $this->redirectToRoute('app_inscription_list');
+        }
+        if ($facture->getStatus() == 1) {
+            return $this->redirectToRoute('app_inscription_list');
+        }else{
+            $facture->setStatus(1);
+            $em->persist($facture);
+            $em->flush();
+        }
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Permet les assets distants (CSS/images)
+        $dompdf = new Dompdf($options);
+        $ecole = $em->getRepository(Ecole::class)->find(1);
+        $html = $this->renderView('inscription/facture.html.twig', [
+            'factures' => $facture,
+            'ecoles' => $ecole,
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+
+        // 5. Rendre le PDF
+        $dompdf->render();
+        $document = "facture_".$facture->getId().".pdf";
+        // 6. Retourner le PDF dans la réponse
+        return new Response(
+            $dompdf->output(),
+            Response::HTTP_OK,
+            [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="'.$document.'"', // 'inline' pour affichage navigateur
+            ]
+        );
+    }
     
 }

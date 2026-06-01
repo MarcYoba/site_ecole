@@ -38,6 +38,9 @@ class Inscription
     #[ORM\Column(length: 255)]
     private ?string $remise = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $status = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +138,18 @@ class Inscription
     public function setRemise(string $remise): static
     {
         $this->remise = $remise;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

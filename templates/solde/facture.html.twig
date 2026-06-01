@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eleve!{% endblock %}
+{% block title %}YOBSTIE{% endblock %}
 
 {% block body %}
 <!DOCTYPE html>
@@ -159,6 +159,7 @@
         <div class="header">
             <h1>{{ ecoles.nom | default('----') }}</h1>
             <h2>{{ecoles.sigle | default('----') }}</h2>
+            <h3>{{ecoles.code | default('ARRETE N=057/J2/4829/A/MINEDUB/SG/DSEPB DU 04 AOUT 2010')}}</h3>
             <div class="contact">
                telephone {{ ecoles.telephone | default('----') }}
             </div>
@@ -184,8 +185,8 @@
             </div>
 
             <div class="info-ligne">
-                <span class="label">La somme de :</span>
-                <span class="value somme">{{ soldes.montant|number_format(0, ',', ' ') }} FCFA</span>
+                <span class="label">La somme total :</span>
+                <span class="value somme">{{ pension.montant |number_format(0, ',', ' ') }} FCFA</span>
                 {# <div class="value" style="font-size:12px; color:#666; margin-top:4px;">
                      recu.somme_lettres
                 </div> #}
@@ -195,23 +196,20 @@
                 <span class="label">Pour :</span>
                 <span class="value"><strong>Paiement de pension  {{ soldes.eleve.classe.nom | default('----') }}</strong></span>
                 <br>
-                <strong> {{soldes.tranche |upper}}</strong>
+                <strong> Statistique Generale</strong>
             </div>
 
             {# Section paiement / avance / reste #}
             <div style="margin: 25px 0; background: #f9f9f9; padding: 15px;">
-                <div class="ligne-double">
-                    <span class="label"><i class="fas fa-piggy-bank"></i> Avance :</span>
-                    <span class="value">{{ soldes.avance|default(0)|number_format(0, ',', ' ') }} FCFA</span>
-                </div>
-                <div class="ligne-double">
-                    <span class="label"><i class="fas fa-scale-balanced"></i> Reste :</span>
-                    <span class="value">{{ soldes.reste|default(0)|number_format(0, ',', ' ') }} FCFA</span>
-                </div>
-                <div class="ligne-double">
-                    <span class="label"><i class="fas fa-chart-bar"></i> Balance :</span>
-                    <span class="value">{{ (soldes.montant - soldes.reste)|default(soldes.montant)|number_format(0, ',', ' ') }} FCFA</span>
-                </div>
+            
+                {% for versement in versements %}
+                    <div class="ligne-double">
+                        <span class="label"><i class="fas fa-piggy-bank"></i>Avance: {{ versement.avance|default(0) }} FCFA</span>
+                        <span class="label"><i class="fas fa-scale-balanced"></i> Reste: {{ versement.reste|default(0) }} FCFA</span>
+                        <span class="value"><i class="fas fa-chart-bar"></i>  {{ (versement.tranche)|default(0) }}</span> 
+                        <span class="value">{{versement.createtAt | date('Y-m-d')}}</span>
+                    </div>
+                {% endfor %}
             </div>
 
             <div class="info-ligne">

@@ -81,6 +81,8 @@ class HomeController extends AbstractController
             'ecole' => $ecole,
             'pensiont1' => $pensiont1,
             'pensiont2' => $pensiont2,
+            'enseignantCount' => $enseignantCount,
+            'enseignants' => $enseignant,
         ]);
     }
     #[Route('/visiteur/new', name: 'app_visiteur')]
