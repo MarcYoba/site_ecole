@@ -9,6 +9,7 @@ use App\Entity\Enseignant;
 use App\Entity\Matiere;
 use App\Entity\Note;
 use App\Entity\Pensiont;
+use App\Entity\Solde;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -93,17 +94,19 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('sg/surveillant/generale', name: 'app_surveillant')]
-    public function surveillant(): Response
+    public function surveillant(EntityManagerInterface $em): Response
     {
+        $eleve = $em->getRepository(Eleve::class)->findAll();
         return $this->render('home/surveillant.html.twig', [
-            'controller_name' => 'HomeController',
+            'eleves' => $eleve,
         ]);
     }
-    #[Route('enseignant/generale', name: 'app_enseignant')]
-    public function enseignant(): Response
+    #[Route('/enseignant/generale', name: 'app_enseignant')]
+    public function enseignant(EntityManagerInterface $em): Response
     {
+        $matiere = $em->getRepository(Matiere::class)->findAll();
         return $this->render('home/enseignant.html.twig', [
-            'controller_name' => 'HomeController',
+            'matieres' => $matiere,
         ]);
     }
 }

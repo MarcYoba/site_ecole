@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Classe;
 use App\Entity\Eleve;
+use App\Entity\Matiere;
 use App\Entity\Pensiont;
 use App\Form\ClasseType;
 use Symfony\Component\HttpFoundation\Request;
@@ -85,5 +86,16 @@ class ClasseController extends AbstractController
         $em->remove($classe);
         $em->flush();
         return $this->redirectToRoute('app_classe_liste');
+    }
+    #[Route('/enseignant/classe/note/{id}', name: 'app_classe_matire_note')]
+    public function classe_matiere(EntityManagerInterface $em, $id) : Response {
+        $matieres = $em->getRepository(Matiere::class)->findOneBy(['id' => $id]);
+        if (!$matieres) {
+            return $this->redirectToRoute('app_enseignant');
+        }
+        $classe = $em->getRepository(Classe::class)->findAll();
+        return $this->render('classe/note.html.twig', [
+            'classes' => $classe, 
+        ]);
     }
 }

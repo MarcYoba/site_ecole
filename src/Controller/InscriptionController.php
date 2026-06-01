@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Classe;
 use App\Entity\Ecole;
 use App\Entity\Inscription;
 use App\Form\InscriptionType;
@@ -23,10 +24,15 @@ class InscriptionController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $eleve = $form->get('eleve')->getData();
+            $classe = $form->get('classe')->getData();
             $inscrit = $em->getRepository(Inscription::class)->findOneBy(['eleve' => $eleve]);
+            $classe = $em->getRepository(Classe::class)->findOneBy(['id' => $classe]);
+
             if ($inscrit) {
                 return $this->redirectToRoute('app_inscription_list');
             }
+            $eleve->setClasse($classe);
+            $em->persist($eleve);
             $em->persist($inscription);
             $em->flush();
             return $this->redirectToRoute('app_inscription_list');
