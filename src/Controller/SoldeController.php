@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Ecole;
+use App\Entity\Pensiont;
 use App\Entity\Solde;
 use App\Form\SoldeType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SoldeController extends AbstractController
 {
-    #[Route('/solde', name: 'app_solde')]
+    #[Route('/sg/solde', name: 'app_solde')]
     public function index(EntityManagerInterface $em, Request $request): Response
     {
         $user = $this->getUser();
@@ -34,7 +35,7 @@ class SoldeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/solde/list', name: 'app_solde_list')]
+    #[Route('/sg/solde/list', name: 'app_solde_list')]
     public function list(EntityManagerInterface $em): Response
     {
         $solde = $em->getRepository(Solde::class)->findAll();
@@ -43,7 +44,7 @@ class SoldeController extends AbstractController
             'soldes' => $solde,
         ]);
     }
-    #[Route('/solde/facture/{id}', name: 'app_solde_facture')]
+    #[Route('/sg/solde/facture/{id}', name: 'app_solde_facture')]
     public function facture(EntityManagerInterface $em, $id): Response
     {
         $solde = $em->getRepository(Solde::class)->findOneBy(['id' => $id]);
@@ -55,10 +56,14 @@ class SoldeController extends AbstractController
         $dompdf = new Dompdf($options);
 
         $ecole = $em->getRepository(Ecole::class)->find(1);
+        $pension = $em->getRepository(Pensiont::class)->findOneBy(['niveau' => $solde->getClasse()->getNiveau()]);
+        $versement = $em->getRepository(Solde::class)->findBy(['eleve' => $solde->getEleve()]);
 
         $html = $this->renderView('solde/facture.html.twig', [
             'soldes' => $solde,
             'ecoles' => $ecole,
+            'pension' => $pension,
+            'versements' => $versement,
         ]);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
@@ -74,7 +79,7 @@ class SoldeController extends AbstractController
             ]
         );
     }
-    #[Route('/solde/edit/{id}', name: 'app_solde_edit')]
+    #[Route('/directeur/solde/edit/{id}', name: 'app_solde_edit')]
     public function edit(EntityManagerInterface $em, Request $request, $id): Response
     {
         $solde = $em->getRepository(Solde::class)->findOneBy(['id' => $id]);

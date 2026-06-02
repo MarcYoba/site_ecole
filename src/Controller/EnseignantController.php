@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EnseignantController extends AbstractController
 {
-    #[Route('/enseignant/create', name: 'app_enseignant')]
+    #[Route('/directeur/enseignant/create', name: 'app_enseignant')]
     public function index(EntityManagerInterface $em, Request $request): Response
     {
         $ensignants =  new Enseignant();
@@ -34,7 +34,7 @@ class EnseignantController extends AbstractController
         ]);
     }
 
-    #[Route('/enseignant/liste', name: 'app_enseignant_liste')]
+    #[Route('/directeur/enseignant/liste', name: 'app_enseignant_liste')]
     public function liste(EntityManagerInterface $em): Response
     {
         $ensignants = $em->getRepository(Enseignant::class)->findAll();
@@ -43,7 +43,7 @@ class EnseignantController extends AbstractController
         ]);
     }
 
-    #[Route('/enseignant/edit/{id}', name: 'app_enseignant_edit')]
+    #[Route('/directeur/enseignant/edit/{id}', name: 'app_enseignant_edit')]
     public function edit(EntityManagerInterface $em, Request $request, $id) : Response 
     {
         $ensignants = $em->getRepository(Enseignant::class)->findOneBy(['id' => $id]);
@@ -65,7 +65,7 @@ class EnseignantController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/enseignant/delete/{id}', name: 'app_enseignant_delete')]
+    #[Route('/directeur/enseignant/delete/{id}', name: 'app_enseignant_delete')]
     public function delete(EntityManagerInterface $em, $id) : Response 
     {
         $ensignants = $em->getRepository(Enseignant::class)->findOneBy(['id' => $id]);

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Matiere;
 use App\Entity\Note;
 use App\Form\NoteType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class NoteController extends AbstractController
 {
-    #[Route('/note', name: 'app_note')]
+    #[Route('/enseignant/note', name: 'app_note')]
     public function index(EntityManagerInterface $em, Request $request): Response
     {
         $user = $this->getUser();
@@ -31,7 +32,7 @@ class NoteController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/note/list', name: 'app_note_list')]
+    #[Route('/enseignant/note/list', name: 'app_note_list')]
     public function list(EntityManagerInterface $em): Response
     {
         $notes = $em->getRepository(Note::class)->findAll();
@@ -39,7 +40,7 @@ class NoteController extends AbstractController
             'notes' => $notes,
         ]);
     }
-    #[Route('/note/edit/{id}', name: 'app_note_edit')]
+    #[Route('/enseignant/note/edit/{id}', name: 'app_note_edit')]
     public function edit(EntityManagerInterface $em,Request $request, $id): Response
     {
         $note = $em->getRepository(Note::class)->findOneBy(['id' => $id]);
@@ -58,7 +59,7 @@ class NoteController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/note/delete/{id}', name: 'app_note_delete')]
+    #[Route('/enseignant/note/delete/{id}', name: 'app_note_delete')]
     public function delete(EntityManagerInterface $em, $id): Response
     {
         $note = $em->getRepository(Note::class)->findOneBy(['id' => $id]);
@@ -70,5 +71,13 @@ class NoteController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('app_note_list');
+    }
+    #[Route('/enseignant/note/matiere/{id}', name: 'app_note_matiere')]
+    public function note_matiere(EntityManagerInterface $em, $id) : Response {
+        $matieres = $em->getRepository(Matiere::class)->findOneBy(['id' => $id]);
+        if (!$matieres) {
+            return $this->redirectToRoute('app_enseignant');
+        }
+        return $this->redirectToRoute("");
     }
 }

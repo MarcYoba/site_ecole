@@ -159,7 +159,7 @@
         <div class="header">
             <h1>{{ ecoles.nom | default('----') }}</h1>
             <h2>{{ecoles.sigle | default('----') }}</h2>
-            <h3>{{ecoles.code | default('ARRETE N=057/J2/4829/A/MINEDUB/SG/DSEPB DU 04 AOUT 2010')}}</h3>
+            <h3>{{ecoles.code | default('ARRETE N=057/J2/4829/A/MINEDUB/SG/DSEPB DU 04 AOUT 2010')}} </h3>
             <div class="contact">
                telephone {{ ecoles.telephone | default('----') }}
             </div>
@@ -230,6 +230,10 @@
             </div>
         </div>
     </div>
+    <h2 class="text-center">
+        <button class="btn btn-primary" style="margin: 20px; padding: 30px 50px; font-size: 50px;">
+            <a href="{{ path('app_inscription_facture_sg',{'id':factures.id})}}" style="color: white; text-decoration: none;">Telecharger</a>
+    </h2>
 </body>
 </html>
 {% endblock %}

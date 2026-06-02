@@ -40,9 +40,25 @@
                                         Nom : <span class="text-primary">{{ ecole.nom }}</span>
                                     </div>
                                     <div class="small mb-0 font-weight-bold text-muted">
-                                        <i class="fas fa-user-tie text-gray-300 me-2"></i>Enseignant : <span class="text-dark">
-                                            ------- rien -- 
+                                        <i class="fas fa-user-tie text-gray-300 me-2"></i>Enseignant : {{enseignantCount}} <span class="text-dark">
+                                            
                                         </span>
+                                        {% for enseignant in enseignants %}
+                                        <div class=" mb-1 font-weight-bold ">
+                                            <i class="fas fa-user-tie text-gray-300 me-2"></i> 
+                                            <span class="text-dark">
+                                                {% if enseignant.genre == 'Masculin' %}
+                                                    Mr . 
+                                                {% else %}
+                                                    Mm .
+                                                {% endif %}
+                                                
+                                                {{ enseignant.nom }} {{ enseignant.prenom }} 
+                                                :  {{ enseignant.contact }} 
+                                            </span>
+                                            </br>
+                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                                 <div class="ms-2">
