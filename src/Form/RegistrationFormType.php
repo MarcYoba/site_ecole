@@ -33,10 +33,10 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('email',TextType::class,[
-                'label' => 'prenom',
+                'label' => 'Entrer l\'Email',
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Entrez la prenom',
+                    'placeholder' => 'Entrez l\'email',
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte en attente{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-body text-center">
+
+            <h1 class="mb-4">⏳ Compte en attente de validation</h1>
+
+            <p class="lead">
+                Votre compte a bien été créé.
+            </p>
+
+            <p>
+                Il est actuellement en attente d'autorisation par un administrateur.
+            </p>
+
+            <p>
+                Vous recevrez l'accès aux différentes fonctionnalités dès que votre compte sera validé.
+            </p>
+
+            <a href="{{ path('app_logout') }}" class="btn btn-danger mt-3">
+                Se déconnecter
+            </a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

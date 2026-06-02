@@ -31,13 +31,11 @@
               <div class="col-md-6 mb-4">
                 <div data-mdb-input-init class="form-outline">
                   {{ form_row(registrationForm.nom) }}
-                  <label class="form-label" for="form3Example1">Nom</label>
                 </div>
               </div>
               <div class="col-md-6 mb-4">
                 <div data-mdb-input-init class="form-outline">
                   {{ form_row(registrationForm.prenom) }}
-                  <label class="form-label" for="form3Example2">Prénom</label>
                 </div>
               </div>
             </div>
@@ -47,16 +45,27 @@
               <div class="col-md-6 mb-4">
                 <div data-mdb-input-init class="form-outline mb-4">
                   {{ form_row(registrationForm.email) }}
-                  <label class="form-label" for="form3Example3">Email address</label>
                 </div>
               </div>
               <!-- Password input -->
               <div class="col-md-6 mb-4">
                 <div data-mdb-input-init class="form-outline mb-4">
-                    {{ form_row(registrationForm.plainPassword, {
-                        label: 'Password'
-                    }) }}  
-                  <label class="form-label" for="form3Example4">Password</label>
+                    {{ form_label(registrationForm.plainPassword, 'Password') }} 
+                    <div class="input-group">
+                      {{ form_widget(registrationForm.plainPassword, {
+                          attr: {
+                              class: 'form-control',
+                              id: 'password-field'
+                          }
+                      }) }}
+
+                      <button
+                          class="btn btn-outline-secondary"
+                          type="button"
+                          id="toggle-password">
+                          👁
+                      </button>
+                  </div>
                 </div>
               </div>
               
@@ -100,6 +109,20 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.getElementById('toggle-password').addEventListener('click', function () {
+      const passwordField = document.getElementById('password-field');
+
+      if (passwordField.type === 'password') {
+          passwordField.type = 'text';
+          this.textContent = '🙈';
+      } else {
+          passwordField.type = 'password';
+          this.textContent = '👁';
+      }
+  });
+</script>
 <!-- Section: Design Block -->
     
 

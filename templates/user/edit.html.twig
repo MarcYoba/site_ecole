@@ -31,13 +31,11 @@
               <div class="col-md-6 mb-4">
                 <div data-mdb-input-init class="form-outline">
                   {{ form_row(registrationForm.nom) }}
-                  <label class="form-label" for="form3Example1">Nom</label>
                 </div>
               </div>
               <div class="col-md-6 mb-4">
                 <div data-mdb-input-init class="form-outline">
                   {{ form_row(registrationForm.prenom) }}
-                  <label class="form-label" for="form3Example2">Prénom</label>
                 </div>
               </div>
             </div>
@@ -47,38 +45,22 @@
               <div class="col-md-6 mb-4">
                 <div data-mdb-input-init class="form-outline mb-4">
                   {{ form_row(registrationForm.email) }}
-                  <label class="form-label" for="form3Example3">Email address</label>
                 </div>
               </div>
               <!-- Password input -->
-              <div class="col-md-6 mb-4">
-                <div data-mdb-input-init class="form-outline mb-4">
-                    {{ form_row(registrationForm.plainPassword, {
-                        label: 'Password'
-                    }) }}  
-                  <label class="form-label" for="form3Example4">Password</label>
-                </div>
-              </div>
+
               
             </div>
             
             <!-- Checkbox -->
             <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="form-check d-flex justify-content-center mb-4">
-                    {{ form_row(registrationForm.agreeTerms) }}
-                    <label class="form-check-label" for="form2Example33">
-                        
-                    </label>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
+                <div class="col-md-12 mb-4">
                     <label for="user-role">Attribuer un rôle :</label>
                     <select id="user-role" name="role" class="form-control">
                         <option value="" disabled selected>Choisir un rôle...</option>
                         <option value="ROLE_DIRECTEUR">Directeur</option>
                         <option value="ROLE_SG">Surveillant generale</option>
-                        <option value="ROLE_ENSIEGNENT">Ensiegnant</option> 
+                        <option value="ROLE_ENSIEGNANT">Ensiegnant</option> 
                     </select>
                 </div>
             </div>

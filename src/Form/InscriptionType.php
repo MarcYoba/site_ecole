@@ -40,6 +40,7 @@ class InscriptionType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Entrez le montant avancé',
+                    'value' => 0,
                 ],
             ])
             ->add('reste', NumberType::class, [
@@ -47,6 +48,7 @@ class InscriptionType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Entrez le montant restant',
+                    'value' => 0,
                 ],
             ])
             ->add('paiement', ChoiceType::class, [
@@ -78,6 +80,14 @@ class InscriptionType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
+            ->add('remise', NumberType::class, [
+                'label' => 'Montant de la remise sur pension',
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Entrez le montant de la remise pension',
+                    'value' => 0,
+                ],
+            ]);
         ;
     }
 
