@@ -46,7 +46,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         }
         $role = $token->getRoleNames();
         if (in_array('ROLE_DIRECTEUR', $role)) {
-            return new RedirectResponse($this->urlGenerator->generate('app_ecole'));
+            return new RedirectResponse($this->urlGenerator->generate('app_home_dashboard'));
         } elseif (in_array('ROLE_SG', $role)) {
             return new RedirectResponse($this->urlGenerator->generate('app_surveillant'));
         }elseif (in_array('ROLE_ENSIEGNANT', $role)) {
