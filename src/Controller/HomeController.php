@@ -109,4 +109,11 @@ class HomeController extends AbstractController
             'matieres' => $matiere,
         ]);
     }
+    #[Route('/error', name: 'app_error')]
+    public function error(): Response
+    {
+        return $this->render('error/password.html.twig', [
+            
+        ]);
+    }
 }

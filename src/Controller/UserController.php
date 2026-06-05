@@ -73,4 +73,27 @@ class UserController extends AbstractController
             
         ]);
     }
+    #[Route(path: '/directeur/user/password/{id}', name:'app_user_password')]
+    public function password(EntityManagerInterface $em, Request $request, $id, UserPasswordHasherInterface $userPasswordHasher) : Response {
+        $users = $em->getRepository(User::class)->findOneBy(['id' => $id]);
+        if (!$users) {
+            $this->redirectToRoute('app_user_list');
+        }
+        $form = $this->createForm(RegistrationFormType::class,$users);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $password = $form->get('plainPassword')->getData();
+            $hashedPassword = $userPasswordHasher->hashPassword($users, $password);
+            $users->setPassword($hashedPassword);
+            $em->persist($users);
+            $em->flush();
+            return $this->redirectToRoute('app_user_list');
+        }
+        return $this->render('user/password.html.twig', [
+            'users' => $users,
+            'registrationForm' => $form->createView(),
+            'error' => 0,
+            
+        ]);
+    }
 }

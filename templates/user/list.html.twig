@@ -1,5 +1,5 @@
 {% extends "base.html.twig" %}
-{% block title %}User List{% endblock %}
+{% block title %}YOBSTIE{% endblock %}
 
 {% block body %}
 {% include "navbar.html.twig" %}
@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User List</title>
+    <title>YOBSTIE</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
@@ -56,6 +56,12 @@
                                         <span class="fa-stack">
                                             <i class="fas fa-square fa-stack-2x"></i>
                                             <i class="fas fa-pencil fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                    <a href="{{ path('app_user_password', {'id': user.id}) }}" >
+                                        <span class="fa-stack text-danger">
+                                            
+                                            Password
                                         </span>
                                     </a>
                                 </td>
