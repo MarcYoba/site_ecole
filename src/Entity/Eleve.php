@@ -97,11 +97,15 @@ class Eleve
     #[ORM\Column(length: 255)]
     private ?string $maladie = null;
 
+    #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: Tenue::class)]
+    private Collection $tenues;
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
         $this->notes = new ArrayCollection();
         $this->soldes = new ArrayCollection();
+        $this->tenues = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -484,6 +488,36 @@ class Eleve
     public function setMaladie(string $maladie): static
     {
         $this->maladie = $maladie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tenue>
+     */
+    public function getTenues(): Collection
+    {
+        return $this->tenues;
+    }
+
+    public function addTenue(Tenue $tenue): static
+    {
+        if (!$this->tenues->contains($tenue)) {
+            $this->tenues->add($tenue);
+            $tenue->setEleve($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTenue(Tenue $tenue): static
+    {
+        if ($this->tenues->removeElement($tenue)) {
+            // set the owning side to null (unless already changed)
+            if ($tenue->getEleve() === $this) {
+                $tenue->setEleve(null);
+            }
+        }
 
         return $this;
     }
