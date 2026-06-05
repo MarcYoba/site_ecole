@@ -1,0 +1,38 @@
+menu:
+  dashboard: "Dashboard"
+  logout: "Log Out"
+
+eleve:
+  title: "Students"
+  add: "Add Student"
+  list: "Student List"
+
+enseignant:
+  title: "Teachers"
+  add: "Add Teacher"
+  list: "Teacher List"
+
+classe:
+  title: "Classes"
+  add: "Add Class"
+  list: "Class List"
+
+matiere:
+  title: "Subjects"
+  add: "Add Subject"
+  list: "Subject List"
+
+note:
+  title: "Grades"
+  add: "Add Grade"
+  list: "Grade List"
+
+solde:
+  title: "Fees" # Ou "Finance" / "Payments"
+  add: "Add Payment"
+  list: "Payment History"
+
+user:
+  title: "Users"
+  add: "Add User"
+  list: "User List"
