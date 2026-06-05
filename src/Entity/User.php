@@ -73,6 +73,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Tenue::class)]
     private Collection $tenues;
 
+    #[ORM\Column(length: 255)]
+    private ?string $langue = null;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -501,6 +504,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $tenue->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLangue(): ?string
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(string $langue): static
+    {
+        $this->langue = $langue;
 
         return $this;
     }

@@ -69,11 +69,18 @@
             </div>
             
             <!-- Checkbox -->
-            <div class="form-check d-flex justify-content-center mb-4">
-              {{ form_row(registrationForm.agreeTerms) }}
-              <label class="form-check-label" for="form2Example33">
-                
-              </label>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div data-mdb-input-init class="form-outline mb-4">
+                  {{ form_row(registrationForm.langue) }}
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                {{ form_row(registrationForm.agreeTerms) }}
+                <label class="form-check-label" for="form2Example33">
+                  {{ 'registration.agree_terms'|trans }}
+                </label>
+              </div>
             </div>
 
             <!-- Submit button -->

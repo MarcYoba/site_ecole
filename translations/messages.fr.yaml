@@ -1,0 +1,47 @@
+menu:
+  dashboard: "Tableau de bord"
+  logout: "Déconnexion"
+
+eleve:
+  title: "Élèves"
+  add: "Ajouter un élève"
+  list: "Liste des élèves"
+  list_date: "Liste par date" # Ajouté pour le menu "List eleve date"
+
+enseignant:
+  title: "Enseignants"
+  add: "Ajouter un enseignant"
+  list: "Liste des enseignants"
+
+classe:
+  title: "Classes"
+  add: "Ajouter une classe"
+  list: "Liste des classes"
+
+matiere:
+  title: "Manuels / Matières"
+  add: "Ajouter"
+  list: "Liste"
+
+note:
+  title: "Notes"
+  add: "Ajouter une note"
+  list: "Liste des notes"
+
+solde:
+  title: "Soldes"
+  add: "Ajouter"
+  list: "Liste"
+
+bulletin: # Ajouté pour la section Bulletins
+  title: "Bulletins"
+  list: "Liste des bulletins"
+
+user:
+  title: "Utilisateurs"
+  add: "Ajouter"
+  list: "Liste"
+
+action: # Ajouté pour regrouper les sous-menus répétitifs
+  consultation: "Consultation"
+  download: "Téléchargement"
