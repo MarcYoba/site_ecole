@@ -30,7 +30,7 @@
                     </div>
                 {% endif %}
                 <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                    <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                    {# <p class="lead fw-normal mb-0 me-3">Sign in with</p>
                     <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
                     <i class="fas fa-facebook-f"></i>
                     </button>
@@ -39,7 +39,7 @@
                     </button>
                     <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
                     <i class="fas fa-linkedin-in"></i>
-                    </button>
+                    </button> #}
                 </div>
                 <div class="divider d-flex align-items-center my-4">
                     <p class="text-center fw-bold mx-3 mb-0">Or</p>
@@ -52,7 +52,20 @@
                 </div>
                 <!-- Password input -->
                 <div data-mdb-input-init class="form-outline mb-3">
-                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    <div class="input-group">
+                        <input
+                            type="password"
+                            name="password"
+                            id="inputPassword"
+                            class="form-control"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
                     <label class="form-label" for="inputPassword">Password</label>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
@@ -62,7 +75,7 @@
                                     value="{{ csrf_token('authenticate') }}"
                                 >
                     </div>
-                    <a href="#!" class="text-body">Forgot password?</a>
+                    <a href="{{ path('app_error') }}" class="text-body">Forgot password?</a>
                 </div>
                 <div class="text-center text-lg-start mt-4 pt-2">
                     <button class="btn btn-lg btn-primary w-100" type="submit">
@@ -85,7 +98,7 @@
 
     <!-- Right -->
     <div>
-      <a href="#!" class="text-white me-4">
+      {# <a href="#!" class="text-white me-4">
         <i class="fas fa-facebook-f"></i>
       </a>
       <a href="#!" class="text-white me-4">
@@ -96,11 +109,27 @@
       </a>
       <a href="#!" class="text-white">
         <i class="fas fa-linkedin-in"></i>
-      </a>
+      </a> #}
     </div>
     <!-- Right -->
   </div>
 </section>
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const password = document.getElementById('inputPassword');
+        const icon = this.querySelector('i');
+
+        if (password.type === 'password') {
+            password.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            password.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    });
+</script>
 </body>
 </html>
 {% endblock %}
