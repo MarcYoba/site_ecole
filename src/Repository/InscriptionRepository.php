@@ -57,4 +57,28 @@ class InscriptionRepository extends ServiceEntityRepository
            ->getResult()
         ;
    }
+
+   public function findBySommeInscriptionDate($date): float
+    {        
+        $result =  $this->createQueryBuilder('i')
+            ->select('SUM(i.montant) as montant')
+            ->andWhere('i.createtAt = :date')
+            ->setParameter('date', $date)
+            ->orderBy('i.id', 'ASC')
+            ->getQuery()
+           ->getOneOrNullResult()
+        ;
+        return $result['montant'] ?? 0;
+   }
+
+   public function findByInscriptionDate($date): array
+    {        
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.createtAt = :date')
+            ->setParameter('date', $date)
+            ->orderBy('i.id', 'ASC')
+            ->getQuery()
+           ->getResult()
+        ;
+   }
 }

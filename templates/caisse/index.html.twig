@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard | YOBS{% endblock %}
+
+{% block body %}
+    {% include "navbarsg.html.twig" %}
+
+    <main class="flex-shrink-0 my-5">
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="col-xl-6 col-md-10 mb-4">
+                    <div class="card shadow">
+                        <div class="card-header bg-success text-white">
+                            <h3 class="card-title mb-0">Caisse D'inscriptions</h3>
+                        </div>
+                        <div class="card-body">
+                            
+                            {# C'est cette ligne unique qui affiche votre courbe #}
+                            {{ render_chart(caisse) }}
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-success border-4 shadow h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                
+                                <div class="ms-2">
+                                    Recapitulatif des incriptions de la semaine
+                                </div>
+                            </div>
+
+                            <hr class="my-2 text-gray-200">
+                            <div class=" form-group row">
+                                {% set total = 0 %}
+                                {% for item in insription %}
+                                        <div class="col-6">
+                                            <span class="text-gray-800">
+                                                {% if loop.index0 == 0 %}
+                                                    Lundi
+                                                {% elseif loop.index0 == 1 %}
+                                                    Mardi
+                                                {% elseif loop.index0 == 2 %}
+                                                    Mercredi
+                                                {% elseif loop.index0 == 3 %}
+                                                    Jeudi
+                                                {% elseif loop.index0 == 4 %}
+                                                    Vendredi
+                                                {% elseif loop.index0 == 5 %}
+                                                    Samedi
+                                                {% elseif loop.index0 == 6 %}
+                                                    Dimanche
+                                                {% endif %}
+                                            <span class=" btn btn-sm btn-outline-warning border-0 badge bg-primary text-white">{{ item }}</span>
+                                            {% set total = total + item %}
+                                        </div>
+                                {% endfor %}
+                                    TATAL = {{ total}}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {# ============================================================= #}
+               {# Solde de la semaine #}
+            {# ============================================================= #}
+
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="col-xl-6 col-md-10 mb-4">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="card-title mb-0">Caisse des Soldes</h3>
+                        </div>
+                        <div class="card-body">
+                            {# C'est cette ligne unique qui affiche votre courbe #}
+                            {{ render_chart(solde) }}
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-success border-4 shadow h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                
+                                <div class="ms-2">
+                                    Recapitulatif des incription de la semaine
+                                </div>
+                            </div>
+
+                            <hr class="my-2 text-gray-200">
+                            <div class=" form-group row">
+                                {% set total = 0 %}
+                                {% for item in tabsolde %}
+                                        <div class="col-6">
+                                            <span class="text-gray-800">
+                                                {% if loop.index0 == 0 %}
+                                                    Lundi
+                                                {% elseif loop.index0 == 1 %}
+                                                    Mardi
+                                                {% elseif loop.index0 == 2 %}
+                                                    Mercredi
+                                                {% elseif loop.index0 == 3 %}
+                                                    Jeudi
+                                                {% elseif loop.index0 == 4 %}
+                                                    Vendredi
+                                                {% elseif loop.index0 == 5 %}
+                                                    Samedi
+                                                {% elseif loop.index0 == 6 %}
+                                                    Dimanche
+                                                {% endif %}
+                                            <span class=" btn btn-sm btn-outline-primary border-0 badge bg-primary text-white">{{ item }}</span>
+                                            {% set total = total +item %}
+                                        </div>
+                                {% endfor %}
+                                    TOTAL = {{total }}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# ============================================================= #}
+               {# Vente des Tenues de la semaines #}
+            {# ============================================================= #}
+
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="col-xl-6 col-md-10 mb-4">
+                    <div class="card shadow">
+                        <div class="card-header bg-warning text-white">
+                            <h3 class="card-title mb-0">Caisse des Tenues</h3>
+                        </div>
+                        <div class="card-body">
+                            {# C'est cette ligne unique qui affiche votre courbe #}
+                            {{ render_chart(tenues) }}
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-warning border-4 shadow h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                
+                                <div class="ms-2">
+                                    Recapitulatif des ventes de tenu de la semaine
+                                </div>
+                            </div>
+
+                            <hr class="my-2 text-gray-200">
+                            <div class=" form-group row">
+                                {% set total = 0 %}
+                                {% for item in tabtenue %}
+                                        <div class="col-6">
+                                            <span class="text-gray-800">
+                                                {% if loop.index0 == 0 %}
+                                                    Lundi
+                                                {% elseif loop.index0 == 1 %}
+                                                    Mardi
+                                                {% elseif loop.index0 == 2 %}
+                                                    Mercredi
+                                                {% elseif loop.index0 == 3 %}
+                                                    Jeudi
+                                                {% elseif loop.index0 == 4 %}
+                                                    Vendredi
+                                                {% elseif loop.index0 == 5 %}
+                                                    Samedi
+                                                {% elseif loop.index0 == 6 %}
+                                                    Dimanche
+                                                {% endif %}
+                                            <span class=" btn btn-sm btn-outline-primary border-0 badge bg-primary text-white">{{ item }}</span>
+                                            {% set total = total +item %}
+                                        </div>
+                                {% endfor %}
+                                    TOTAL = {{total }}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    {% include "footer.html.twig" %}
+{% endblock %}

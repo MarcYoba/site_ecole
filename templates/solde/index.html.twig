@@ -9,14 +9,9 @@
       <div class="col">
         <div class="card card-registration my-4">
           <div class="row g-0">
-            <div class="col-xl-6 d-none d-xl-block">
-              {# <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
-                alt="Sample photo" class="img-fluid"
-                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" /> #}
-            </div>
-            <div class="col-xl-6">
+            <div class="col-xl-10">
               <div class="card-body p-md-5 text-black">
-                <h3 class="mb-5 text-uppercase">Student registration </h3>
+                <h3 class="mb-5 text-uppercase">Solde Scolarite </h3>
                 <div class="form-group row">
                     <div class="col-md-3">
                         <a class="btn btn-primary" href="{{ path('app_home_dashboard') }}"> Retour</a>
@@ -29,14 +24,26 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                        {{ form_label(form.createtAt) }}
-                        {{ form_widget(form.createtAt) }}
+                      {{ form_label(form.classe) }}
+                        <input type="text" id="rechercheclasse" onkeyup="SoldeClasse()" class="form-control form-control-lg" placeholder="Rechercher une Classe...">
+                      {{ form_widget(form.classe,{
+                        'attr':{
+                          'onclick': 'MontantPensiont()',
+                          'size' : 5
+                          }
+                        })
+                      }}
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
                         {{ form_label(form.eleve) }}
-                        {{ form_widget(form.eleve) }}
+                          <input type="text" id="recherche" onkeyup="Solde()" class="form-control form-control-lg" placeholder="Rechercher une eleve...">
+                        {{ form_widget(form.eleve,{
+                          'attr':{
+                            'size' : 5
+                          }
+                        }) }}
                     </div>
                   </div>
                 </div>
@@ -44,10 +51,11 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      {{ form_label(form.classe) }}
-                      {{ form_widget(form.classe,{'attr':{'onclick': 'MontantPensiont()'}}) }}
+                        {{ form_label(form.createtAt) }}
+                        {{ form_widget(form.createtAt) }}
                     </div>
                   </div>
+                  
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
                       {{ form_label(form.montant) }}
@@ -98,6 +106,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/solde/solde.js')}}"></script>
+    <script src="{{ asset('js/recherche/recherche.js') }}"></script>
 {% endblock %}
 
 

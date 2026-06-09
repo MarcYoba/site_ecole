@@ -45,4 +45,38 @@ class SoldeRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findBySemaine($date1,$date2): array
+    {        
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.createtAt BETWEEN :date1 AND :date2')
+            ->setParameter('date1', $date1)
+            ->setParameter('date2', $date2)
+            ->orderBy('s.id', 'ASC')
+            ->getQuery()
+           ->getResult()
+        ;
+    }
+
+    public function findBySommeSoldeDate($date): float
+    {        
+        $result = $this->createQueryBuilder('s')
+            ->select('SUM(s.avance) as somme')
+            ->andWhere('s.createtAt = :date')
+            ->setParameter('date', $date)
+            ->getQuery()
+           ->getOneOrNullResult()
+        ;
+        return $result['somme'] ?? 0; 
+    }
+
+    public function findBySoldeDate($date): array
+    {        
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.createtAt = :date')
+            ->setParameter('date', $date)
+            ->getQuery()
+           ->getResult()
+        ;
+    }
 }

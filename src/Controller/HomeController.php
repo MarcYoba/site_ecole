@@ -24,6 +24,7 @@ class HomeController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function index(): Response
     {
+        date_default_timezone_set('Africa/Douala');
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
@@ -32,6 +33,7 @@ class HomeController extends AbstractController
     #[Route('directeur/home/dashboard', name: 'app_home_dashboard')]
     public function Dashboard(EntityManagerInterface $em,ChartBuilderInterface $chartBuilder): Response
     {
+        date_default_timezone_set('Africa/Douala');
         $ecole  = $em->getRepository(Ecole::class)->find(1);
         $classCount = $em->getRepository(Classe::class)->findAll();
         $eleve = $em->getRepository(Eleve::class)->findAll();
@@ -65,6 +67,7 @@ class HomeController extends AbstractController
                 ],
             ],
         ]);
+        
 
         // 3. Options de configuration (Optionnel)
         $chart->setOptions([

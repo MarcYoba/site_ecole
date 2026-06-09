@@ -52,6 +52,22 @@ class TenueType extends AbstractType
                     'placeholder' => 'Type de paiement',
                 ],
             ])
+            ->add('typetenue',ChoiceType::class,[
+                'choices' => [
+                    'Tenue classe' => 'TC',
+                    'Tenue sport' => 'TS',
+                    'Pulle' => 'TP',
+                    'Tenue classe et sport' => 'TCS',
+                    'Tenue classe et pulle' => 'TCP',
+                    'Tenue sport et pulle' => 'TSP',
+                    'Tenue classe, sport et pulle' => 'TCSP',
+
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Type de tenue',
+                ],
+            ])
         ;
     }
 

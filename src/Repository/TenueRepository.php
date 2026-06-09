@@ -45,4 +45,37 @@ class TenueRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findBySemaine($date1,$date2): array
+    {        
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.createtAt BETWEEN :date1 AND :date2')
+            ->setParameter('date1', $date1)
+            ->setParameter('date2', $date2)
+            ->orderBy('t.id', 'ASC')
+            ->getQuery()
+           ->getResult()
+        ;
+    }
+
+    public function findBySommeTenueDate($date): float
+    {        
+        $result = $this->createQueryBuilder('t')
+            ->select('SUM(t.montant) as somme')
+            ->andWhere('t.createtAt = :date')
+            ->setParameter('date', $date)
+            ->getQuery()
+           ->getOneOrNullResult()
+        ;
+        return $result['somme'] ?? 0; 
+    }
+
+    public function findByTenueDate($date): array
+    {        
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.createtAt = :date')
+            ->setParameter('date', $date)
+            ->getQuery()
+           ->getResult()
+        ;
+    }
 }

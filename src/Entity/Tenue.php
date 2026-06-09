@@ -29,6 +29,9 @@ class Tenue
     #[ORM\Column(length: 255)]
     private ?string $typepaiement = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $typetenue = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Tenue
     public function setTypepaiement(string $typepaiement): static
     {
         $this->typepaiement = $typepaiement;
+
+        return $this;
+    }
+
+    public function getTypetenue(): ?string
+    {
+        return $this->typetenue;
+    }
+
+    public function setTypetenue(string $typetenue): static
+    {
+        $this->typetenue = $typetenue;
 
         return $this;
     }

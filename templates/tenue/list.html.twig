@@ -3,6 +3,7 @@
 {% block title %}Hello TenueController!{% endblock %}
 
 {% block body %}
+{% include "navbarsg.html.twig" %}
 <main class="flex-shrink-0 my-5">
     <div class="container">
         <div class="row">
@@ -18,6 +19,7 @@
                                             <th>classe</th>
                                             <th>montant</th>
                                             <th>Type paiement</th>
+                                            <th>Type tenue</th>
                                             <th>Date</th>
                                             <th>Operation</th>
                                         </tr>
@@ -29,6 +31,7 @@
                                             <th>classe</th>
                                             <th>montant</th>
                                             <th>Type paiement</th>
+                                            <th>Type tenue</th>
                                             <th>Date</th>
                                             <th>Operation</th>
                                         </tr>
@@ -40,7 +43,24 @@
                                                 <td>{{ tenue.eleve.nom }}</td>
                                                 <td>{{ tenue.eleve.classe.nom }}</td>
                                                 <td>{{ tenue.montant }}</td>
-                                                <td>{{ tenue.typepaiement }}</td>  
+                                                <td>{{ tenue.typepaiement }}</td>
+                                                {% if tenue.typetenue == "TC" %}
+                                                    <td>Tenue de classe</td>
+                                                {% elseif tenue.typetenue == "TS" %}
+                                                    <td>Tenue de sport</td>
+                                                {% elseif tenue.typetenue == "TP" %}
+                                                    <td>Pulle</td>
+                                                {% elseif tenue.typetenue == "TCS" %}
+                                                    <td>Tenue de classe et sport</td>
+                                                {% elseif tenue.typetenue == "TCP" %}
+                                                    <td>Tenue de classe et pulle</td>
+                                                {% elseif tenue.typetenue == "TSP" %}
+                                                    <td>Tenue de sport et pulle</td>
+                                                {% elseif tenue.typetenue == "TCSP" %}
+                                                    <td>Tenue de classe, sport et pulle</td>
+                                                {% else %}
+                                                    <td>0</td>
+                                                {% endif %}
                                                 <td>{{ tenue.createtAt | date('Y-m-d') }}</td> 
                                                 
                                                     <td>
