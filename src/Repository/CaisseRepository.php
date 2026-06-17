@@ -45,4 +45,30 @@ class CaisseRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findBySommeSortieCaisse($anne): float
+    {
+        $result = $this->createQueryBuilder('c')
+            ->select('SUM(c.montant) as montant')
+            ->where('c.montant < 0')
+            ->andWhere('YEAR(c.createtAt) = :val')
+            ->setParameter('val', $anne)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+        return $result['montant'] ?? 0;
+    }
+
+    public function findBySommeEntreCaisse($anne): float
+    {
+        $result = $this->createQueryBuilder('c')
+            ->select('SUM(c.montant) as montant')
+            ->where('c.montant > 0')
+            ->andWhere('YEAR(c.createtAt) = :val')
+            ->setParameter('val', $anne)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+        return $result['montant'] ?? 0;
+    }
 }

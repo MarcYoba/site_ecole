@@ -20,6 +20,12 @@ class CaisseController extends AbstractController
     #[Route('/sg/caisse/statistique', name: 'app_caisse')]
     public function index(ChartBuilderInterface $chartBuilder, EntityManagerInterface $em): Response
     {
+        $sommeInscription = $em->getRepository(Inscription::class)->findBySommeInscriptionYear(date("Y"));
+        $sommeSolde = $em->getRepository(Solde::class)->findBySommeSoldeYear(date("Y"));
+        $sommeTenue = $em->getRepository(Tenue::class)->findBySommeTenueYear(date("Y"));
+        $sorticaisse = $em->getRepository(Caisse::class)->findBySommeSortieCaisse(date("Y"));
+        $entrecaisse = $em->getRepository(Caisse::class)->findBySommeEntreCaisse(date("Y"));
+
         $insription=[0,0,0,0,0,0,0];
         $tabsolde = [0,0,0,0,0,0,0];
         $tabtenue = [0,0,0,0,0,0,0];
@@ -135,6 +141,11 @@ class CaisseController extends AbstractController
             'tabsolde' => $tabsolde,
             'tabtenue' => $tabtenue,
             'tenues' => $tenue,
+            'sommeinscription' => $sommeInscription,
+            'sommesolde' => $sommeSolde,
+            'sommetenue' => $sommeTenue,
+            'sortiecaisse' => $sorticaisse,
+            'entrecaisse' => $entrecaisse,
         ]);
     }
 
@@ -145,6 +156,12 @@ class CaisseController extends AbstractController
         $form = $this->createForm(CaisseType::class,$caisse);;
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $libelle = $form->get("operation")->getData();
+            $montant = $form->get("montant")->getData();
+            if ($libelle == "sortie") {
+                $montant = $montant * -1;
+            }
+            $caisse->setMontant($montant);
             $caisse->setUser($this->getUser());
             $em->persist($caisse);
             $em->flush();
