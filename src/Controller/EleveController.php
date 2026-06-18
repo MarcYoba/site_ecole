@@ -47,12 +47,12 @@ class EleveController extends AbstractController
             $eleve->setUser($this->getUser());
             $eleve->setNom($nom);
             $eleve->setPrenom($prenom);
-            $date = \DateTime::createFromFormat('Y-m-d H:i:s', '2024-06-01 12:00:00');
+            $date = new \DateTime('now');
             $eleve->setCreatedAt($date);
             $entityManager->persist($eleve);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_classe_liste');
+            return $this->redirectToRoute('app_eleve_liste');
         }
         return $this->render('eleve/index.html.twig', [
             'form' => $form->createView(),
@@ -166,5 +166,21 @@ class EleveController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('app_eleve_liste');
+    }
+
+    #[Route('/directeur/eleve/parents', name: 'app_eleve_parent')]
+    public function parents(EntityManagerInterface $em) : Response
+    {
+        $eleveparparent  =[];
+
+        $parents = $em->getRepository(Eleve::class)->findByParent(date("Y"));
+        foreach ($parents as $key => $value) {
+            $eleves = $em->getRepository(Eleve::class)->findByEleveParent($value['pere']);
+            array_push($eleveparparent,[$value['pere'], count($eleves),$eleves]);
+        }
+        
+        return $this->render('eleve/parent.html.twig', [
+            'eleves' => $eleveparparent,
+        ]);
     }
 }

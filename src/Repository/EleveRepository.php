@@ -45,4 +45,26 @@ class EleveRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findByParent($anne): array
+    {
+        return $this->createQueryBuilder('e')
+            ->select('e.pere as pere')
+            ->andWhere('YEAR(e.createdAt) = :val')
+            ->setParameter('val', $anne)
+            ->orderBy('e.pere', 'ASC')
+            ->groupBy('e.pere')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByEleveParent($parent): array
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.pere = :val')
+            ->setParameter('val', $parent)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
