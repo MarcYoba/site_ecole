@@ -69,6 +69,18 @@ class TenueRepository extends ServiceEntityRepository
         return $result['somme'] ?? 0; 
     }
 
+    public function findBySommeTenueYear($anne) : float 
+    {
+        $result = $this->createQueryBuilder('t')
+            ->select('SUM(t.montant) as somme')
+            ->andWhere('YEAR(t.createtAt) = :date')
+            ->setParameter('date', $anne)
+            ->getQuery()
+           ->getOneOrNullResult()
+        ;
+        return $result['somme'] ?? 0; 
+    }
+
     public function findByTenueDate($date): array
     {        
         return $this->createQueryBuilder('t')

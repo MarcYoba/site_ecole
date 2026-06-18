@@ -185,6 +185,50 @@
                 </div>
             </div>
 
+            <div class="col-xl-12 col-md-6 mb-4">
+                    <div class="card border-0 border-start border-warning border-4 shadow h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Recapitulatif Generale de la Caisse
+                                </div>
+                            </div>
+
+                            <hr class="my-2 text-gray-200">
+                            <div class="d-flex justify-content-between align-items-center pt-2">
+                                    <a href="#" class="btn btn-sm btn-primary border-0">
+                                        <i class="fas fa-money-bill"></i>Total Inscription :  {{ sommeinscription }} FCFA
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-warning border-0">
+                                        <i class="fas fa-money-bill"></i>Total Solde : {{sommesolde}} FCFA
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-success border-0">
+                                        <i class="fas fa-money-bill"></i>Total Tenue : {{sommetenue}} FCFA
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info border-0">
+                                        <i class="fas fa-money-bill"></i>Total Inscription + Solde +Tenue : {{sommetenue + sommeinscription + sommesolde}} FCFA
+                                    </a>
+                            </div>
+                            <hr class="my-2 text-gray-200">
+                            <div class="d-flex justify-content-between align-items-center pt-2">
+                                    <a href="#" class="btn btn-sm btn-secondary border-0">
+                                        <i class="fas fa-money-bill"></i>Total Sortie caisse :  {{ sortiecaisse }} FCFA
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-dark border-0">
+                                        <i class="fas fa-money-bill"></i>Total Entrée caisse : {{entrecaisse}} FCFA
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-light border-0">
+                                        <i class="fas fa-money-bill"></i>Total Entrée + Sortie : {{ entrecaisse + sortiecaisse}} FCFA
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger border-0">
+                                        <i class="fas fa-money-bill"></i>Net en caisee : {{sommetenue + sommeinscription + sommesolde + entrecaisse + sortiecaisse}} FCFA
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
         </div>
     </main>
 

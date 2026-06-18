@@ -2,14 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Caisse;
 use App\Entity\Classe;
 use App\Entity\Ecole;
 use App\Entity\Eleve;
 use App\Entity\Enseignant;
+use App\Entity\Inscription;
 use App\Entity\Matiere;
 use App\Entity\Note;
 use App\Entity\Pensiont;
 use App\Entity\Solde;
+use App\Entity\Tenue;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,6 +46,11 @@ class HomeController extends AbstractController
         $listuser = $em->getRepository(User::class)->findAll();
         $pensiont1 = $em->getRepository(Pensiont::class)->findBy(['niveau' => 1]);
         $pensiont2 = $em->getRepository(Pensiont::class)->findBy(['niveau' => 2]);
+        $sommeInscription = $em->getRepository(Inscription::class)->findBySommeInscriptionYear(date("Y"));
+        $sommeSolde = $em->getRepository(Solde::class)->findBySommeSoldeYear(date("Y"));
+        $sommeTenue = $em->getRepository(Tenue::class)->findBySommeTenueYear(date("Y"));
+        $sorticaisse = $em->getRepository(Caisse::class)->findBySommeSortieCaisse(date("Y"));
+        $entrecaisse = $em->getRepository(Caisse::class)->findBySommeEntreCaisse(date("Y"));
 
         $classCount = count($classCount);
         $eleveCount = count($eleve);
@@ -87,6 +95,11 @@ class HomeController extends AbstractController
             'pensiont2' => $pensiont2,
             'enseignantCount' => $enseignantCount,
             'enseignants' => $enseignant,
+            'sommeinscription' => $sommeInscription,
+            'sommesolde' => $sommeSolde,
+            'sommetenue' => $sommeTenue,
+            'sortiecaisse' => $sorticaisse,
+            'entrecaisse' => $entrecaisse,
         ]);
     }
     #[Route('/visiteur/new', name: 'app_visiteur')]

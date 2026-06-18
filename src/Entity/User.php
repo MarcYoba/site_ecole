@@ -76,6 +76,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $langue = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Caisse::class)]
+    private Collection $caisses;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -88,6 +91,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->soldes = new ArrayCollection();
         $this->pensionts = new ArrayCollection();
         $this->tenues = new ArrayCollection();
+        $this->caisses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -516,6 +520,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLangue(string $langue): static
     {
         $this->langue = $langue;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Caisse>
+     */
+    public function getCaisses(): Collection
+    {
+        return $this->caisses;
+    }
+
+    public function addCaiss(Caisse $caiss): static
+    {
+        if (!$this->caisses->contains($caiss)) {
+            $this->caisses->add($caiss);
+            $caiss->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCaiss(Caisse $caiss): static
+    {
+        if ($this->caisses->removeElement($caiss)) {
+            // set the owning side to null (unless already changed)
+            if ($caiss->getUser() === $this) {
+                $caiss->setUser(null);
+            }
+        }
 
         return $this;
     }

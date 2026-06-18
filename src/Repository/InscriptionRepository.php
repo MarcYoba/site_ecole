@@ -71,6 +71,18 @@ class InscriptionRepository extends ServiceEntityRepository
         return $result['montant'] ?? 0;
    }
 
+   public function findBySommeInscriptionYear($anne): float
+   {
+        $result =  $this->createQueryBuilder('i')
+            ->select('SUM(i.montant) as montant')
+            ->andWhere('YEAR(i.createtAt) = :date')
+            ->setParameter('date', $anne)
+            ->getQuery()
+           ->getOneOrNullResult()
+        ;
+        return $result['montant'] ?? 0;
+   }
+
    public function findByInscriptionDate($date): array
     {        
         return $this->createQueryBuilder('i')

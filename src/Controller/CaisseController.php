@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Caisse;
 use App\Entity\Inscription;
 use App\Entity\Solde;
 use App\Entity\Tenue;
+use App\Form\CaisseType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
@@ -17,6 +20,12 @@ class CaisseController extends AbstractController
     #[Route('/sg/caisse/statistique', name: 'app_caisse')]
     public function index(ChartBuilderInterface $chartBuilder, EntityManagerInterface $em): Response
     {
+        $sommeInscription = $em->getRepository(Inscription::class)->findBySommeInscriptionYear(date("Y"));
+        $sommeSolde = $em->getRepository(Solde::class)->findBySommeSoldeYear(date("Y"));
+        $sommeTenue = $em->getRepository(Tenue::class)->findBySommeTenueYear(date("Y"));
+        $sorticaisse = $em->getRepository(Caisse::class)->findBySommeSortieCaisse(date("Y"));
+        $entrecaisse = $em->getRepository(Caisse::class)->findBySommeEntreCaisse(date("Y"));
+
         $insription=[0,0,0,0,0,0,0];
         $tabsolde = [0,0,0,0,0,0,0];
         $tabtenue = [0,0,0,0,0,0,0];
@@ -132,6 +141,44 @@ class CaisseController extends AbstractController
             'tabsolde' => $tabsolde,
             'tabtenue' => $tabtenue,
             'tenues' => $tenue,
+            'sommeinscription' => $sommeInscription,
+            'sommesolde' => $sommeSolde,
+            'sommetenue' => $sommeTenue,
+            'sortiecaisse' => $sorticaisse,
+            'entrecaisse' => $entrecaisse,
+        ]);
+    }
+
+    #[Route('/sg/caisse/operation', name:'caisse_operation')]
+    public function operation(EntityManagerInterface $em, Request $request) : Response 
+    {
+        $caisse = new Caisse();
+        $form = $this->createForm(CaisseType::class,$caisse);;
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $libelle = $form->get("operation")->getData();
+            $montant = $form->get("montant")->getData();
+            if ($libelle == "sortie") {
+                $montant = $montant * -1;
+            }
+            $caisse->setMontant($montant);
+            $caisse->setUser($this->getUser());
+            $em->persist($caisse);
+            $em->flush();
+
+            return $this->redirectToRoute('caisse_list');
+        }
+        return $this->render('caisse/operation.html.twig',[
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/sg/caisse/operation/list', name:'caisse_list')]
+    public function list(EntityManagerInterface $em) : Response 
+    {
+        $caisse = $em->getRepository(Caisse::class)->findAll();
+        return $this->render('caisse/list.html.twig',[
+            'caisses' => $caisse,
         ]);
     }
 }

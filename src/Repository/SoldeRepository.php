@@ -70,6 +70,18 @@ class SoldeRepository extends ServiceEntityRepository
         return $result['somme'] ?? 0; 
     }
 
+    public function findBySommeSoldeYear($anne): float
+    {
+        $result = $this->createQueryBuilder('s')
+            ->select('SUM(s.avance) as somme')
+            ->andWhere('YEAR(s.createtAt) = :date')
+            ->setParameter('date', $anne)
+            ->getQuery()
+           ->getOneOrNullResult()
+        ;
+        return $result['somme'] ?? 0; 
+    }
+
     public function findBySoldeDate($date): array
     {        
         return $this->createQueryBuilder('s')
