@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscriptions{% endblock %}
+
+{% block body %}
+{% include "navbar.html.twig" %}
+<main class="flex-shrink-0 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-md-6 mb-4">
+                <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" data-page-length='25' data-order='[[0, "desc"]]'>
+                                    <thead>
+                                       
+                                        <tr>
+                                            <th>Parents</th>
+                                            <th>Nombre Enfant</th>
+                                            <th>List efant</th>
+                                            <th>Telephone</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Parents</th>
+                                            <th>Nombre Enfant</th>
+                                            <th>List efant</th>
+                                            <th>Telephone</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for eleve in eleves %}
+                                            <tr>
+                                                <td>{{ eleve[0] }}</td>
+                                                <td>{{ eleve[1] }}</td>
+                                                <td>                                       
+                                                {% for item in eleve[2] %}
+                                                    {{ item.nom }} {{item.prenom }}<br>
+                                                {% endfor %}
+                                                </td> 
+                                                <td>                                       
+                                                {% for item in eleve[2] %}
+                                                    {{ item.telephone }} / {{ item.telephoneMere}}
+                                                {% endfor %}
+                                                </td>    
+                                            </tr> 
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% include "footer.html.twig" %}
+{% endblock %}
