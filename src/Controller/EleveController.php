@@ -183,4 +183,38 @@ class EleveController extends AbstractController
             'eleves' => $eleveparparent,
         ]);
     }
+
+    #[Route('/sg/eleve/fiche/enregistrement', name:'app_eleve_enregistrement')]
+    public function fiche() : response {
+         // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        // $pdfOptions->set('defaultFont', 'Arial');
+        // $pdfOptions->set('isRemoteEnabled', true);
+        
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // HTML content
+        $html = $this->renderView('eleve/fiche.html.twig', [
+            
+        ]);
+        
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+        
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+        
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        return new Response(
+            $dompdf->output(),
+            Response::HTTP_OK,
+            [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="document.pdf"'
+            ]
+        );
+    }
 }
