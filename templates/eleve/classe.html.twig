@@ -26,9 +26,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% set numero = 1 %}
                                     {% for eleve in eleves %}
                                         <tr>
-                                            <td>{{ eleve.id }}</td>                                     
+                                            <td>{{ numero }}</td>                                     
                                             <td>{{ eleve.nom }}</td> {# Corrigé : Accolades fermées #}
                                             <td>{{ eleve.matricule }}</td> {# Corrigé : Suppression du € et ajout de </td> #}
                                             <td>{{ eleve.age }}</td>
@@ -43,6 +44,7 @@
                                                 <a href='{{ path("app_eleve_print", {"id": eleve.id}) }}' class='btn btn-primary' id='modification'><i class='fas fa-download'></i></a>
                                             </td>
                                         </tr>
+                                        {% set numero = numero + 1 %}
                                     {% endfor %}
                                 </tbody>
                             </table>

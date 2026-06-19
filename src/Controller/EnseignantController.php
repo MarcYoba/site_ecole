@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EnseignantController extends AbstractController
 {
-    #[Route('/directeur/enseignant/create', name: 'app_enseignant')]
+    #[Route('/sg/enseignant/create', name: 'app_enseignant_create')]
     public function index(EntityManagerInterface $em, Request $request): Response
     {
         $ensignants =  new Enseignant();
@@ -34,7 +34,7 @@ class EnseignantController extends AbstractController
         ]);
     }
 
-    #[Route('/directeur/enseignant/liste', name: 'app_enseignant_liste')]
+    #[Route('/sg/enseignant/liste', name: 'app_enseignant_liste')]
     public function liste(EntityManagerInterface $em): Response
     {
         $ensignants = $em->getRepository(Enseignant::class)->findAll();
@@ -43,7 +43,7 @@ class EnseignantController extends AbstractController
         ]);
     }
 
-    #[Route('/directeur/enseignant/edit/{id}', name: 'app_enseignant_edit')]
+    #[Route('/sg/enseignant/edit/{id}', name: 'app_enseignant_edit')]
     public function edit(EntityManagerInterface $em, Request $request, $id) : Response 
     {
         $ensignants = $em->getRepository(Enseignant::class)->findOneBy(['id' => $id]);
