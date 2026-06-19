@@ -79,7 +79,7 @@ class EleveController extends AbstractController
             "ecoles" => $ecole,
         ]);
     }
-    #[Route('/directeur/eleve/print/{id}', name: 'app_eleve_print')]
+    #[Route('/sg/eleve/print/{id}', name: 'app_eleve_print')]
     public function print(EntityManagerInterface $em, int $id) :Response {
         $eleve = $em->getRepository(Eleve::class)->find($id);
         if (!$eleve) {
