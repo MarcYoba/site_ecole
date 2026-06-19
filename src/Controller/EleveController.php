@@ -59,7 +59,7 @@ class EleveController extends AbstractController
         ]);
     }
 
-    #[Route('/directeur/eleve/liste', name: 'app_eleve_liste')]
+    #[Route('/sg/eleve/liste', name: 'app_eleve_liste')]
     public function list(Request $request, EntityManagerInterface $entity_manager) : Response 
     {
         $eleve = $entity_manager->getRepository(Eleve::class)->findAll();
@@ -69,7 +69,7 @@ class EleveController extends AbstractController
         ]);
     }
 
-    #[Route('/directeur/eleve/details', name: 'app_eleve_details')]
+    #[Route('/sg/eleve/details', name: 'app_eleve_details')]
     public function detais (Request $request, EntityManagerInterface $entity_manager) : Response
     {
         $eleve = $entity_manager->getRepository(Eleve::class)->findBy(["user"=> $this->getUser()]);

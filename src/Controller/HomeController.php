@@ -110,11 +110,50 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('sg/surveillant/generale', name: 'app_surveillant')]
-    public function surveillant(EntityManagerInterface $em): Response
+    public function surveillant(EntityManagerInterface $em,ChartBuilderInterface $chartBuilder): Response
     {
         $eleve = $em->getRepository(Eleve::class)->findAll();
+        $fille = $em->getRepository(Eleve::class)->findBy(['sexe' => "F"]);
+        $garcon = $em->getRepository(Eleve::class)->findBy(['sexe' => "H"]);
+        // 1. Créer le graphique de type Doughnut (Anneau)
+        $chart = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
+
+        // 2. Ajouter les données et les couleurs exactes de votre image
+        $chart->setData([
+            'labels' => ['Fille', 'Garcon'],
+            'datasets' => [
+                [
+                    'data' => [count($fille), count($garcon)], // Vos valeurs
+                    'backgroundColor' => [
+                        '#4e73df', // Bleu (Achat)
+                        '#1cc88a', // Vert (Vente)
+                        '#36b9cc', // Turquoise (Dette)
+                        '#f6c23e'  // Jaune (Versement)
+                    ],
+                    'borderWidth' => 5,
+                    'borderColor' => '#ffffff',
+                ],
+            ],
+        ]);
+
+        // 3. Ajouter les options d'affichage pour la légende en bas avec des ronds
+        $chart->setOptions([
+            'maintainAspectRatio' => false,
+            'cutout' => '68%', // Épaisseur de l'anneau central
+            'plugins' => [
+                'legend' => [
+                    'position' => 'bottom',
+                    'labels' => [
+                        'usePointStyle' => true, // Transforme les carrés de légende en ronds
+                        'boxWidth' => 12,
+                        'padding' => 25,
+                    ]
+                ]
+            ]
+        ]);
         return $this->render('home/surveillant.html.twig', [
             'eleves' => $eleve,
+            'monGraphique' => $chart,
         ]);
     }
     #[Route('/enseignant/generale', name: 'app_enseignant')]
