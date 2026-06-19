@@ -52,12 +52,16 @@ class Classe
     #[ORM\ManyToOne(inversedBy: 'classes')]
     private ?Pensiont $pensiont = null;
 
+    #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Examen::class)]
+    private Collection $examens;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
         $this->enseignants = new ArrayCollection();
         $this->soldes = new ArrayCollection();
+        $this->examens = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -277,6 +281,36 @@ class Classe
     public function setPensiont(?Pensiont $pensiont): static
     {
         $this->pensiont = $pensiont;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Examen>
+     */
+    public function getExamens(): Collection
+    {
+        return $this->examens;
+    }
+
+    public function addExamen(Examen $examen): static
+    {
+        if (!$this->examens->contains($examen)) {
+            $this->examens->add($examen);
+            $examen->setClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExamen(Examen $examen): static
+    {
+        if ($this->examens->removeElement($examen)) {
+            // set the owning side to null (unless already changed)
+            if ($examen->getClasse() === $this) {
+                $examen->setClasse(null);
+            }
+        }
 
         return $this;
     }

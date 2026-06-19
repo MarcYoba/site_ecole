@@ -100,12 +100,16 @@ class Eleve
     #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: Tenue::class)]
     private Collection $tenues;
 
+    #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: Examen::class)]
+    private Collection $examens;
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
         $this->notes = new ArrayCollection();
         $this->soldes = new ArrayCollection();
         $this->tenues = new ArrayCollection();
+        $this->examens = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -516,6 +520,36 @@ class Eleve
             // set the owning side to null (unless already changed)
             if ($tenue->getEleve() === $this) {
                 $tenue->setEleve(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Examen>
+     */
+    public function getExamens(): Collection
+    {
+        return $this->examens;
+    }
+
+    public function addExamen(Examen $examen): static
+    {
+        if (!$this->examens->contains($examen)) {
+            $this->examens->add($examen);
+            $examen->setEleve($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExamen(Examen $examen): static
+    {
+        if ($this->examens->removeElement($examen)) {
+            // set the owning side to null (unless already changed)
+            if ($examen->getEleve() === $this) {
+                $examen->setEleve(null);
             }
         }
 
