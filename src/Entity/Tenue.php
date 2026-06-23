@@ -32,6 +32,9 @@ class Tenue
     #[ORM\Column(length: 255)]
     private ?string $typetenue = null;
 
+    #[ORM\Column]
+    private ?int $quantite = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Tenue
     public function setTypetenue(string $typetenue): static
     {
         $this->typetenue = $typetenue;
+
+        return $this;
+    }
+
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(int $quantite): static
+    {
+        $this->quantite = $quantite;
 
         return $this;
     }

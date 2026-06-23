@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Produit;
 use App\Entity\Tenue;
 use App\Form\TenueType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,6 +20,85 @@ class TenueController extends AbstractController
         $form = $this->createForm(TenueType::class, $tenue);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $typetenue = $form->get('typetenue')->getData();
+            $quantite = $form->get('quantite')->getData();
+
+            $produit = 0;
+                    // '' => '',
+                    // '' => '',
+                
+                    // 'Tenue classe et pulle' => '',
+                    // 'Tenue sport et pulle' => '',
+                    // 'Tenue classe, sport et pulle' => 'TCSP',
+            switch ($typetenue) {
+                case 'TC':
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Tenue classe"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    break;
+                case 'TS':
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Tenue sport"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    break;
+                case 'TP':
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Pulle"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    break;
+                case 'TCS':
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Tenue classe"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Tenue sport"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    break;
+                case 'TCP':
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Tenue classe"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Pulle"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    break;
+
+                case 'TSP':
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Tenue sport"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Pulle"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    break;
+                
+                default:
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Tenue sport"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Pulle"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['nom' => "Tenue classe"]);
+                    if ($produit) {
+                        $produit->setQuantite($produit->getQuantite()-$quantite);
+                    }
+                    break;
+                    
+            }
+            $entityManager->persist($produit);
             $entityManager->persist($tenue);
             $entityManager->flush();
 

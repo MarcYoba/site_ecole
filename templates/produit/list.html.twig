@@ -1,49 +1,96 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProduitController!{% endblock %}
+{% block title %}YOBS{% endblock %}
 
 {% block body %}
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste de produits</title>
-</head>
-<body>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Quantité</th>
-            <th>Prix</th>
-            <th>Date de création</th>
-            <th>Caractéristiques</th>
-            <th>Description</th>
-            <th>Image</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for produit in produits %}
-            <tr>
-                <td>{{ produit.id }}</td>
-                <td>{{ produit.nom }}</td>
-                <td>{{ produit.quantite }}</td>
-                <td>{{ produit.prix }}</td>
-                <td>{{ produit.createAt|date('Y-m-d') }}</td>
-                <td>{{ produit.caracterique }}</td>
-                <td>{{ produit.description }}</td>
-                <td>
-                    {% if produit.image %}
-                        <img src="{{ asset('uploads/images/' ~ produit.image) }}" alt="{{ produit.nom }}" style="max-width: 100px;">
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-</body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Gestion de stock - Bilan">
+    <meta name="author" content="">
+
+    <title>GESTION DE STOCK</title>
+
+    </head>
+<body id="page-top">
+
+    <div id="wrapper">
+
+        {% include "navbar.html.twig" %}
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <div id="content">
+
+                <div class="container-fluid">
+
+                    <h1 class="h3 mb-2 text-gray-800">liste des produit</h1>
+                    
+
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="tableactif" width="100%" cellspacing="0" data-page-length='50'>
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nom</th>
+                                            <th>Quantité</th>
+                                            <th>Prix</th>
+                                            <th>Date de création</th>
+                                            <th>Caractéristiques</th>
+                                            <th>Description</th>
+                                            <th>Image</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nom</th>
+                                            <th>Quantité</th>
+                                            <th>Prix</th>
+                                            <th>Date de création</th>
+                                            <th>Caractéristiques</th>
+                                            <th>Description</th>
+                                            <th>Image</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for produit in produits %}
+                                            <tr>
+                                                <td>{{ produit.id }}</td>
+                                                <td>{{ produit.nom }}</td>
+                                                <td>{{ produit.quantite }}</td>
+                                                <td>{{ produit.prix }}</td>
+                                                <td>{{ produit.createAt|date('Y-m-d') }}</td>
+                                                <td>{{ produit.caracterique }}</td>
+                                                <td>{{ produit.description }}</td>
+                                                <td>
+                                                    {% if produit.image %}
+                                                        <img src="{{ asset('uploads/' ~ produit.image) }}" alt="{{ produit.nom }}" style="max-width: 100px;">
+                                                    {% else %}
+                                                        <span class="text-muted">Aucune</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="8" class="text-center">Aucun produit trouvé dans le stock.</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
 {% endblock %}

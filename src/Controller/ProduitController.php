@@ -21,7 +21,7 @@ class ProduitController extends AbstractController
             'produits' => $produits,
         ]);
     }
-    #[Route('/produit/create', name: 'app_produit_create')]
+    #[Route('/sg/produit/create', name: 'app_produit_create')]
     public function create(Request $request, EntityManagerInterface $em): Response
     {
         $produit = new Produit();
@@ -37,19 +37,18 @@ class ProduitController extends AbstractController
             $produit->setUser($this->getUser());
             $em->persist($produit);
             $em->flush();
-            return $this->redirectToRoute('app_produit');
+            return $this->redirectToRoute('app_produit_list');
         }
         return $this->render('produit/create.html.twig', [
             'controller_name' => 'ProduitController',
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/produit/list', name: 'app_produit_list')]
+    #[Route('/sg/produit/list', name: 'app_produit_list')]
     public function edit(Request $request, EntityManagerInterface $em): Response
     {
         $produits = $em->getRepository(Produit::class)->findAll();
         return $this->render('produit/list.html.twig', [
-            'controller_name' => 'ProduitController',
             'produits' => $produits,
         ]);
     }

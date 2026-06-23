@@ -68,6 +68,15 @@ class TenueType extends AbstractType
                     'placeholder' => 'Type de tenue',
                 ],
             ])
+            ->add('quantite', NumberType::class,[
+                'label' => "1 pour un ensemble, 2 pour deux ensembles, Etc ..",
+                'scale' => 2,
+                'grouping' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Nombre de tenue',
+                ],
+            ])
         ;
     }
 
