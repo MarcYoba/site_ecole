@@ -16,4 +16,18 @@ class BulletinController extends AbstractController
             'controller_name' => 'BulletinController',
         ]);
     } 
+    #[Route('/bulletin/classe/couverture', name: 'app_bulletin_couverture')]
+    public function couverture(EntityManagerInterface $em): Response
+    {
+        return $this->render('bulletin/couverture.html.twig', [
+            
+        ]);
+    } 
+    #[Route('/bulletin/classe/copie', name: 'app_bulletin_copie')]
+    public function copiebulletin(EntityManagerInterface $em): Response
+    {
+        return $this->render('bulletin/copie.html.twig', [
+            
+        ]);
+    } 
 }
