@@ -59,10 +59,21 @@
                   </div>
                 </div>
 
-                <div data-mdb-input-init class="form-outline mb-4">
-                  {{ form_label(form.typepaiement) }}
-                  {{ form_widget(form.typepaiement) }}
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      {{ form_label(form.typepaiement) }}
+                      {{ form_widget(form.typepaiement) }}
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      {{ form_label(form.rampapier) }}
+                      {{ form_widget(form.rampapier) }}
+                    </div>
+                  </div>
                 </div>
+
                 <div data-mdb-input-init class="form-outline mb-4">
                   {{ form_label(form.createtAt) }}
                   {{ form_widget(form.createtAt) }}

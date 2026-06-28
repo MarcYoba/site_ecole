@@ -46,6 +46,16 @@ class ExamenType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
+            ->add('rampapier', ChoiceType::class,[
+                'label' => 'Ram de papier oui ou non',
+                'choices' => [
+                    'oui' => 'oui',
+                    'non' => 'non',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
             ->add('createtAt', DateType::class, [
                 'label' => 'Date d\'inscription',
                 'widget' => 'single_text',

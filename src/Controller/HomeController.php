@@ -51,6 +51,8 @@ class HomeController extends AbstractController
         $sommeTenue = $em->getRepository(Tenue::class)->findBySommeTenueYear(date("Y"));
         $sorticaisse = $em->getRepository(Caisse::class)->findBySommeSortieCaisse(date("Y"));
         $entrecaisse = $em->getRepository(Caisse::class)->findBySommeEntreCaisse(date("Y"));
+        $fille = $em->getRepository(Eleve::class)->findBy(['sexe' => "F"]);
+        $garcon = $em->getRepository(Eleve::class)->findBy(['sexe' => "H"]);
 
         $classCount = count($classCount);
         $eleveCount = count($eleve);
@@ -87,6 +89,42 @@ class HomeController extends AbstractController
             ],
         ]);
 
+        $chartfillegarcon = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
+
+        // 2. Ajouter les données et les couleurs exactes de votre image
+        $chartfillegarcon->setData([
+            'labels' => ['Fille', 'Garcon'],
+            'datasets' => [
+                [
+                    'data' => [count($fille), count($garcon)], // Vos valeurs
+                    'backgroundColor' => [
+                        '#4e73df', // Bleu (Achat)
+                        '#1cc88a', // Vert (Vente)
+                        '#36b9cc', // Turquoise (Dette)
+                        '#f6c23e'  // Jaune (Versement)
+                    ],
+                    'borderWidth' => 5,
+                    'borderColor' => '#ffffff',
+                ],
+            ],
+        ]);
+
+        // 3. Ajouter les options d'affichage pour la légende en bas avec des ronds
+        $chartfillegarcon->setOptions([
+            'maintainAspectRatio' => false,
+            'cutout' => '68%', // Épaisseur de l'anneau central
+            'plugins' => [
+                'legend' => [
+                    'position' => 'bottom',
+                    'labels' => [
+                        'usePointStyle' => true, // Transforme les carrés de légende en ronds
+                        'boxWidth' => 12,
+                        'padding' => 25,
+                    ]
+                ]
+            ]
+        ]);
+
         return $this->render('home/Dashboard.html.twig', [
             'controller_name' => 'HomeController',
             'monGraphique' => $chart,
@@ -100,6 +138,7 @@ class HomeController extends AbstractController
             'sommetenue' => $sommeTenue,
             'sortiecaisse' => $sorticaisse,
             'entrecaisse' => $entrecaisse,
+            'monGraphique' => $chartfillegarcon,
         ]);
     }
     #[Route('/visiteur/new', name: 'app_visiteur')]

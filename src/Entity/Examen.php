@@ -35,6 +35,9 @@ class Examen
     #[ORM\ManyToOne(inversedBy: 'examens')]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $rampapier = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,18 @@ class Examen
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getRampapier(): ?string
+    {
+        return $this->rampapier;
+    }
+
+    public function setRampapier(string $rampapier): static
+    {
+        $this->rampapier = $rampapier;
 
         return $this;
     }
