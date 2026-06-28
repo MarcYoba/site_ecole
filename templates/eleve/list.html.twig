@@ -3,6 +3,19 @@
 {% block title %}Inscriptions{% endblock %}
 
 {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {# Vos fichiers CSS Bootstrap habituels ici #}
+</head>
+
+<body class="bg-gradient-primary">
 {% include "navbar.html.twig" %}
 <main class="flex-shrink-0 my-5">
     <div class="container">
@@ -10,7 +23,7 @@
             <div class="col-xl-12 col-md-6 mb-4">
                 <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" data-page-length='25' data-order='[[0, "desc"]]'>
+                                <table class="table table-bordered" id="tableactif" width="100%" cellspacing="0" data-page-length='25' data-order='[[0, "desc"]]'>
                                     <thead>
                                        
                                         <tr>
@@ -69,4 +82,6 @@
 
 </main>
 {% include "footer.html.twig" %}
+</body>
+</html> 
 {% endblock %}

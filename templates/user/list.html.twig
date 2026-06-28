@@ -1,5 +1,5 @@
 {% extends "base.html.twig" %}
-{% block title %}YOBSTIE{% endblock %}
+{% block title %}YOBS{% endblock %}
 
 {% block body %}
 {% include "navbar.html.twig" %}
@@ -11,7 +11,7 @@
         <h1 class="page-header">Liste des utilisateurs</h1>
 		<div class="main-box clearfix">
 			<div class="table-responsive">
-				<table class="table user-list">
+				<table class="table user-list " id="tableactif" width="100%" cellspacing="0" data-page-length='25' data-order='[[0, "desc"]]'>
 					<thead>
 						<tr>
 							<th><span>Utilisateur</span></th>
@@ -25,7 +25,7 @@
                         {% for user in users %}
                             <tr>
                                 <td>
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" style="width: 50px; height: 50px;">
+                                    <img src="#" alt="" style="width: 50px; height: 50px;">
                                     <a href="#" class="user-link">{{ user.nom }} {{ user.prenom }}</a>
                                     <span class="user-subhead">{{ user.roles|join(', ') }}</span>
                                 </td>
