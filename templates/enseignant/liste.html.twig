@@ -10,7 +10,7 @@
             <div class="col-xl-12 col-md-6 mb-4">
                 <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" data-page-length='25' data-order='[[0, "desc"]]'>
+                                <table class="table table-bordered" id="tableactif" width="100%" cellspacing="0" data-page-length='25' data-order='[[0, "desc"]]'>
                                     <thead>
                                        
                                         <tr>
@@ -52,9 +52,9 @@
                                                 
                                                     <td>
                                                         <a href='{{ path('app_enseignant_edit', {'id': enseignant.id})}}' class='btn btn-primary' ><i class='fas fa-pencil-alt '></i></a>
-                                                        <a href='{{ path('app_enseignant_delete', {'id': enseignant.id})}}' class='btn btn-danger' onclick='return confirm("Êtes-vous sûr de vouloir supprimer cet row ? si vous suprimer cet row elle sera supprimer du stock");' id='suppresioner'><i class='fas fa-trash-alt'></i></a>
+                                                        <a href='{{ path('app_enseignant_delete', {'id': enseignant.id})}}' class='btn btn-danger' onclick='return confirm("Êtes-vous sûr de vouloir supprimer cet valeurs");' id='suppresioner'><i class='fas fa-trash-alt'></i></a>
                                                         <a href='#' class='btn btn-primary' id='modification'><i class='far fa-file-image'></i></a>
-                                                        <a href='{{ path("app_eleve_print", {"id": enseignant.id}) }}' class='btn btn-primary' id='modification'><i class='fas fa-download'></i></a>
+                                                        <a href='{{ path("app_enseignant_print", {"id": enseignant.id}) }}' class='btn btn-primary' id='modification'><i class='fas fa-download'></i></a>
                                                     </td>
                                                 
                                             </tr> 

@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
         <div class="container-fluid"> {# Utilisation de container-fluid pour une structure Bootstrap propre #}
             
             {# Brand/Logo #}
@@ -99,10 +99,13 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="eleveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Soldes
+                            Scolarite
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="eleveDropdown">
                             <li><a class="dropdown-item" href="{{ path('app_solde') }} "><i class="fas fa-plus-circle"></i> Ajouter</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_solde_list') }}"><i class="fas fa-list"></i>List</a></li>
+                            <li><hr class="dropdown-divider">Frais Examen</li>
+                            <li><a class="dropdown-item" href="{{ path('app_examen') }} "><i class="fas fa-plus-circle"></i> Ajouter</a></li>
                             <li><a class="dropdown-item" href="{{ path('app_solde_list') }}"><i class="fas fa-list"></i>List</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
@@ -116,6 +119,9 @@
                         <ul class="dropdown-menu" aria-labelledby="eleveDropdown">
                             <li><a class="dropdown-item" href="{{ path('app_tenue') }} "><i class="fas fa-plus-circle"></i> Ajouter</a></li>
                             <li><a class="dropdown-item" href="{{ path('app_tenue_list') }}"><i class="fas fa-list"></i>List</a></li>
+                            <li><hr class="dropdown-divider">Achat des tenues</li>
+                            <li><a class="dropdown-item" href="{{ path('app_produit_create')}}"><i class="fas fa-plus-circle"></i> Ajouter achet</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_produit_list')}}"><i class="fas fa-list"></i> Liste achat</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Consultation</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> Téléchargement</a></li>

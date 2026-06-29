@@ -98,3 +98,43 @@ function Tenue() {
   }
   
 }
+
+function examenclasse() {
+  // Récupérer l'input et la liste déroulante
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("rechercheC");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("examen_classe");
+  li = ul.getElementsByTagName("option");
+ 
+  // Boucler sur toutes les options
+  for (i = 0; i < li.length; i++) {
+    a = li[i];
+    if (a.textContent.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+  
+}
+
+function exameneleve() {
+  // Récupérer l'input et la liste déroulante
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("rechercheE");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("examen_eleve");
+  li = ul.getElementsByTagName("option");
+ 
+  // Boucler sur toutes les options
+  for (i = 0; i < li.length; i++) {
+    a = li[i];
+    if (a.textContent.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+  
+}

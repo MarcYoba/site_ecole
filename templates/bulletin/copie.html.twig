@@ -1,0 +1,278 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BulletinController!{% endblock %}
+
+{% block body %}
+<style>
+    /* Configuration globale pour l'écran et l'aperçu */
+    .page-a4 {
+        background: white;
+        width: 21cm;
+        height: 29.7cm;
+        margin: 0.5cm auto;
+        padding: 1cm;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        font-size: 11px; /* Optimisé pour faire tenir les grands tableaux */
+        color: #000;
+        position: relative;
+    }
+
+    /* Style strict pour les tableaux de compétences */
+    .table-bulletin {
+        width: 100%;
+        margin-bottom: 1rem;
+        border-collapse: collapse;
+    }
+    
+    .table-bulletin th, 
+    .table-bulletin td {
+        padding: 0.35rem !important;
+        vertical-align: middle !important;
+        border: 1px solid #000000 !important;
+    }
+
+    .table-bulletin th {
+        background-color: #f8f9fa !important;
+        font-weight: bold;
+    }
+
+    /* Styles spécifiques pour l'impression physique ou PDF */
+    @media print {
+        body {
+            background: none;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .page-a4 {
+            width: 21cm;
+            height: 29.7cm;
+            margin: 0;
+            padding: 1cm;
+            page-break-after: always;
+            box-shadow: none;
+        }
+        .no-print {
+            display: none !important;
+        }
+    }
+</style>
+
+<div class="container-fluid no-print text-center my-3">
+    <button class="btn btn-primary px-4" onclick="window.print()">Imprimer le Bulletin (A4)</button>
+</div>
+
+{# ==================== PAGE 1 : COMPETENCES 1 & 2 ==================== #}
+<div class="page-a4">
+    <div class="row text-center border-bottom pb-2 mb-3">
+        <div class="col-4 text-uppercase font-weight-bold" style="font-size: 9px; line-height: 1.2;">
+            République du Cameroun<br>
+            Paix - Travail - Patrie<br>
+            <span class="text-muted text-capitalize">Ministère de l'Éducation de Base</span>
+        </div>
+        <div class="col-4">
+            <h5 class="mb-0 font-weight-bold" style="font-size: 13px;">{{ "GROUPE SCOLAIRE BILINGUE LES ENFANTS BENIS" }}</h5> <small class="font-weight-bold">Année Scolaire : 2025/2026</small> </div>
+        <div class="col-4 font-weight-bold text-uppercase text-right" style="font-size: 10px;">
+            Niveau: I / Cours: ______<br> Enseignant: ________________ </div>
+    </div>
+
+    <div class="alert alert-secondary text-center py-1 font-weight-bold mb-3" style="font-size: 11px; border: 1px solid #ccc;">
+        COMPETENCE 1: COMMUNIQUER EN FRANÇAIS ET EN ANGLAIS ET PRATIQUER AU MOINS UNE LANGUE NATIONALE (100 points)
+    </div>
+
+    <table class="table table-bordered table-bulletin text-center">
+        <thead>
+            <tr>
+                <th rowspan="2" style="width: 25%;">COMPETENCES [cite: 1, 4, 5]</th>
+                <th rowspan="2" style="width: 20%;">Unité d'Apprentissage / Évaluation [cite: 1, 4, 5]</th>
+                <th colspan="2">Premier Trimestre [cite: 4, 5]</th>
+                <th colspan="2">Deuxième Trimestre [cite: 1, 4, 5]</th>
+                <th colspan="2">Troisième Trimestre [cite: 1, 4, 5]</th>
+            </tr>
+            <tr>
+                <th>Notes [cite: 4, 5]</th>
+                <th>Cote [cite: 4, 5]</th>
+                <th>Notes [cite: 1, 4, 5]</th>
+                <th>Cote [cite: 1, 4, 5]</th>
+                <th>Notes [cite: 1, 4, 5]</th>
+                <th>Cote [cite: 1, 4, 5]</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2" class="text-left font-weight-bold align-middle">
+                    1A : Communiquer en français <br><small class="text-muted">(40 points)</small> </td>
+                <td class="text-left small">
+                    1: Orale (20 pts)<br>2: Écrite (15 pts)<br>3: Savoir-être (5 pts) </td>
+                <td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr class="bg-light font-weight-bold">
+                <td>TOTAL & COTE [cite: 5]</td>
+                <td>/40</td><td></td><td>/40</td><td></td><td>/40</td><td></td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" class="text-left font-weight-bold align-middle">
+                    1B : Communicate in English <br><small class="text-muted">(40 Marks)</small> </td>
+                <td class="text-left small">
+                    1: Oral (20 Mks)<br>2: Written (15 Mks)<br>3: Attitudes (5 Mks) </td>
+                <td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr class="bg-light font-weight-bold">
+                <td>TOTAL & COTE [cite: 4]</td>
+                <td>/40</td><td></td><td>/40</td><td></td><td>/40</td><td></td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" class="text-left font-weight-bold align-middle">
+                    1C : Pratiquer la langue nationale <br><small class="text-muted">(20 points)</small> </td>
+                <td class="text-left small">
+                    1: Orale (10 pts)<br>2: Écrite (5 pts)<br>3: Autre (5 pts) </td>
+                <td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr class="bg-light font-weight-bold">
+                <td>TOTAL & COTE [cite: 1]</td>
+                <td>/20</td><td></td><td>/20</td><td></td><td>/20</td><td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="alert alert-secondary text-center py-1 font-weight-bold my-3" style="font-size: 11px; border: 1px solid #ccc;">
+        COMPETENCE 2: UTILISER LES COMPÉTENCES DE BASE EN MATHÉMATIQUES, SCIENCES ET TECHNOLOGIE (60 points) </div>
+
+    <table class="table table-bordered table-bulletin text-center">
+        <thead>
+            <tr>
+                <th style="width: 25%;">COMPETENCES [cite: 12]</th>
+                <th style="width: 20%;">Évaluations / Barèmes [cite: 2, 11]</th>
+                <th colspan="2">Premier Trimestre [cite: 2, 11]</th>
+                <th colspan="2">Deuxième Trimestre [cite: 2, 11]</th>
+                <th colspan="2">Troisième Trimestre [cite: 2, 11]</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-left font-weight-bold align-middle">
+                    2A : Utiliser les notions de base en mathématiques <br><small class="text-muted">(30 points)</small> </td>
+                <td class="text-left small">1: Orale (5 pts)<br>2: Écrite (20 pts)<br>3: Savoir-être (5 pts)</td> <td>/30</td><td></td><td>/30</td><td></td><td>/30</td><td></td>
+            </tr>
+            <tr>
+                <td class="text-left font-weight-bold align-middle">
+                    2B : Utiliser les notions de base en sciences et technologie <br><small class="text-muted">(30 points)</small> </td>
+                <td class="text-left small">1: Orale (5 pts)<br>2: Écrite (5 pts)<br>3: Pratique (15 pts)<br>4: Savoir-être (2 pts)</td> <td>/30</td><td></td><td>/30</td><td></td><td>/30</td><td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{# ==================== PAGE 2 : COMPETENCES 3 A 6 & VISAS ==================== #}
+<div class="page-a4">
+    <div class="alert alert-secondary text-center py-1 font-weight-bold mb-3" style="font-size: 11px; border: 1px solid #ccc;">
+        COMPETENCE 3: PRATIQUER LES VALEURS SOCIALES ET CITOYENNES (40 points) </div>
+    
+    <table class="table table-bordered table-bulletin text-center mb-3">
+        <thead>
+            <tr>
+                <th style="width: 25%;">COMPETENCES [cite: 38]</th>
+                <th style="width: 20%;">Évaluations / Barèmes [cite: 23, 39]</th>
+                <th colspan="2">Premier Trim. [cite: 21, 57]</th>
+                <th colspan="2">Deuxième Trim. [cite: 22, 58]</th>
+                <th colspan="2">Troisième Trim. [cite: 59]</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-left font-weight-bold align-middle">3A : Pratiquer les valeurs sociales <br><small class="text-muted">(20 points)</small></td> <td class="text-left small">1: Orale (3 pts)<br>2: Écrite (3 pts)<br>3: Pratique (10 pts)<br>4: Savoir-être (4 pts)</td> <td>/20</td><td></td><td>/20</td><td></td><td>/20</td><td></td>
+            </tr>
+            <tr>
+                <td class="text-left font-weight-bold align-middle">3B : Pratiquer les valeurs citoyennes <br><small class="text-muted">(20 points)</small></td> <td class="text-left small">1: Orale (5 pts)<br>2: Écrite (5 pts)<br>3: Pratique (8 pts)<br>4: Autre (2 pts)</td> <td>/20</td><td></td><td>/20</td><td></td><td>/20</td><td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="alert alert-dark text-center py-1 font-weight-bold mb-2 text-uppercase" style="font-size: 10px;">
+                COMPETENCE 4: Autonomie et entreprenariat (20 pts) </div>
+            <table class="table table-bordered table-bulletin text-center small">
+                <thead>
+                    <tr class="bg-light"><th>Évaluations / Barèmes [cite: 49]</th><th>T1</th><th>T2</th><th>T3</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="text-left text-muted" style="font-size: 9px;">1: Orale (5 pts)<br>2: Écrite (3 pts)<br>3: Pratique (10 pts)<br>4: S.Être (2 pts)</td><td></td><td></td><td></td></tr> <tr class="font-weight-bold bg-light"><td>TOTAL & COTE [cite: 49]</td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-6">
+            <div class="alert alert-dark text-center py-1 font-weight-bold mb-2 text-uppercase" style="font-size: 10px;">
+                COMPETENCE 5: TIC (20 points) </div>
+            <table class="table table-bordered table-bulletin text-center small">
+                <thead>
+                    <tr class="bg-light"><th>Évaluations / Barèmes [cite: 81, 86]</th><th>T1</th><th>T2</th><th>T3</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="text-left text-muted" style="font-size: 9px;">1: Orale (3 pts)<br>2: Écrite (3 pts)<br>3: Pratique (10 pts)<br>4: S.Être (4 pts)</td><td></td><td></td><td></td></tr> <tr class="font-weight-bold bg-light"><td>TOTAL & COTE [cite: 86]</td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="alert alert-secondary text-center py-1 font-weight-bold my-2" style="font-size: 11px; border: 1px solid #ccc;">
+        COMPETENCE 6: PRATIQUER LES ACTIVITÉS PHYSIQUES, SPORTIVES ET ARTISTIQUES (40 points) </div>
+    
+    <table class="table table-bordered table-bulletin text-center mb-3">
+        <tbody>
+            <tr>
+                <td class="text-left font-weight-bold align-middle" style="width: 25%;">6A: Éducation Physique & Sportive <br><small class="text-muted">(20 pts)</small></td> <td class="text-left small" style="width: 25%;">1: Oral (3pt) | 2: Écrit (3pt) | 3: Prat. (10pt) | 4: S.Être (4pt)</td> <td class="bg-light font-weight-bold" style="width: 8%;">T1:</td><td></td>
+                <td class="bg-light font-weight-bold" style="width: 8%;">T2:</td><td></td>
+                <td class="bg-light font-weight-bold" style="width: 8%;">T3:</td><td></td>
+            </tr>
+            <tr>
+                <td class="text-left font-weight-bold align-middle">6B: Activités Artistiques <br><small class="text-muted">(20 pts)</small></td> <td class="text-left small">1: Oral (4pt) | 2: Écrit (3pt) | 3: Prat. (10pt) | 4: S.Être (3pt)</td> <td class="bg-light font-weight-bold">T1:</td><td></td>
+                <td class="bg-light font-weight-bold">T2:</td><td></td>
+                <td class="bg-light font-weight-bold">T3:</td><td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    {# ==================== SECTION OBSERVATIONS & VISAS ==================== #}
+    <div class="alert alert-dark font-weight-bold text-center py-1 mb-2 text-uppercase" style="font-size: 11px;">
+        OBSERVATIONS GENERALES & SIGNATURES </div>
+    
+    <table class="table table-bordered table-bulletin text-center small mb-3">
+        <thead>
+            <tr class="bg-light">
+                <th style="width: 12%;">Trimestres [cite: 110, 114, 121]</th>
+                <th style="width: 38%;">Moyennes Périodiques [cite: 110, 115, 122]</th>
+                <th style="width: 8%;">Rang [cite: 110, 119, 126]</th>
+                <th style="width: 14%;">Enseignant(e) [cite: 110, 111]</th>
+                <th style="width: 14%;">Conseil des Maîtres [cite: 133]</th>
+                <th style="width: 14%;">Parents [cite: 110, 134]</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="font-weight-bold bg-light align-middle text-uppercase">1er Trim</td> <td class="text-left align-middle" style="line-height: 1.6;">
+                    Mois 1: ______ | Mois 2: ______ | Mois 3: ______ <br> <span class="font-weight-bold text-dark">Moyenne Trimestrielle : _________ / 20</span> </td>
+                <td class="align-middle"></td>
+                <td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold bg-light align-middle text-uppercase">2ème Trim</td> <td class="text-left align-middle" style="line-height: 1.6;">
+                    Mois 4: ______ | Mois 5: ______ | Mois 6: ______ <br> <span class="font-weight-bold text-dark">Moyenne Trimestrielle : _________ / 20</span> </td>
+                <td class="align-middle"></td>
+                <td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold bg-light align-middle text-uppercase">3ème Trim</td> <td class="text-left align-middle" style="line-height: 1.6;">
+                    Mois 7: ______ | Mois 8: ______ <br> <span class="font-weight-bold text-dark">Moyenne Trimestrielle : _________ / 20</span> </td>
+                <td class="align-middle"></td>
+                <td></td><td></td><td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="border p-2 rounded bg-light row mx-0 text-center font-weight-bold align-items-center" style="font-size: 11px; border: 1px solid #111 !important;">
+        <div class="col-4 border-right">Moyenne Annuelle : ____________ / 20</div> <div class="col-2 border-right">Rang : ______</div> <div class="col-3 border-right text-success text-uppercase">Promu(e) : [  ]</div> <div class="col-3 text-danger text-uppercase">Redouble : [  ]</div> </div>
+</div>
+{% endblock %}

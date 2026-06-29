@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +20,9 @@ class ProduitType extends AbstractType
             ->add('prix')
             ->add('caracterique')
             ->add('description')
-            ->add('createAt')
+            ->add('createAt',DateType::class,[
+                'widget' => 'single_text'
+            ])
             ->add('image', FileType::class, [
                 'label' => 'Image (JPG file)',
                 'mapped' => false,
