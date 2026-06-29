@@ -34,18 +34,16 @@
             <span><strong>MATRICULE :</strong> {{ enseignant.matricule | default('----') }}</span>
             <span>
                 <strong>Sexe :</strong> 
-                M <span style="border: 1px solid #000; padding: 0 5px; min-width: 15px; display: inline-block; text-align: center;">
-                    {% if enseignant.sexe == 'H' or enseignant.sexe == 'M' %}X{% endif %}
+                <span style="border: 1px solid #000; padding: 0 5px; min-width: 15px; display: inline-block; text-align: center;">
+                    {% if enseignant.genre  %}{% endif %}
                 </span> 
-                F <span style="border: 1px solid #000; padding: 0 5px; min-width: 15px; display: inline-block; text-align: center;">
-                    {% if enseignant.sexe == 'F' %}X{% endif %}
-                </span>
+                
             </span>
         </div>
         <p style="margin: 5px 0;"><strong>Prénom(s) :</strong> {{ enseignant.prenom }}</p>
-        <p style="margin: 5px 0;"><strong>Né(e) le :</strong> {{ enseignant.naissance | date("d/m/Y") }} &nbsp;&nbsp; <strong>Lieu :</strong> {{ enseignant.lieu | default('----') }}</p>
-        <p style="margin: 5px 0;"><strong>Adresse / Ville :</strong> {{ enseignant.ville | default('----') }}</p>
-        <p style="margin: 5px 0;"><strong>Téléphone :</strong> {{ enseignant.telephone | default('----') }}</p>
+        <p style="margin: 5px 0;"><strong>Né(e) le :</strong> {{ enseignant.dateNaissance | date("d/m/Y") }} &nbsp;&nbsp; <strong>Lieu :</strong> {{ enseignant.lieu | default('----') }}</p>
+        <p style="margin: 5px 0;"><strong>Grade :</strong> {{ enseignant.grade | default('----') }}</p>
+        <p style="margin: 5px 0;"><strong>Téléphone :</strong> {{ enseignant.contact | default('----') }}</p>
     </div>
 
     {# Section SITUATION PROFESSIONNELLE #}

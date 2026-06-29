@@ -21,7 +21,7 @@ class ExamenType extends AbstractType
     {
         $builder
             ->add('montant', NumberType::class,[
-                'label' => 'Montant de l\'inscription',
+                'label' => 'Montant de l\'Examen',
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Entrez le montant',
