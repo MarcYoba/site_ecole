@@ -91,7 +91,7 @@ class EnseignantController extends AbstractController
         $dompdf = new Dompdf($options);
         $ecole = $em->getRepository(Ecole::class)->findOneBy(["id"=> 1]);
 
-        $html = $this->renderView('eleve/print.html.twig', [
+        $html = $this->renderView('enseignant/print.html.twig', [
             'enseignant' => $enseignant,
             'date' => date("Y-m-d"),
             'ecole' => $ecole,
