@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Ecole;
 use App\Entity\Enseignant;
 use App\Form\EnseignantType;
 use Doctrine\ORM\EntityManagerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -72,11 +75,43 @@ class EnseignantController extends AbstractController
         if (!$ensignants) {
             return $this->redirectToRoute('app_enseignant_liste');
         }
-
-        $em->persist($ensignants);
+        $em->remove($ensignants);
         $em->flush();
         
         return $this->redirectToRoute('app_enseignant_liste');
+    }
+    #[Route('/sg/enseignant/print/{id}', name: 'app_enseignant_print')]
+    public function print(EntityManagerInterface $em, int $id) :Response {
+        $enseignant = $em->getRepository(Enseignant::class)->find($id);
+        if (!$enseignant) {
+            return $this->redirectToRoute('app_enseignant_liste');
+        }
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Permet les assets distants (CSS/images)
+        $dompdf = new Dompdf($options);
+        $ecole = $em->getRepository(Ecole::class)->findOneBy(["id"=> 1]);
+
+        $html = $this->renderView('eleve/print.html.twig', [
+            'enseignant' => $enseignant,
+            'date' => date("Y-m-d"),
+            'ecole' => $ecole,
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+
+        // 5. Rendre le PDF
+        $dompdf->render();
+        $document = "fiche_".$enseignant->getNom().".pdf";
+        // 6. Retourner le PDF dans la réponse
+        return new Response(
+            $dompdf->output(),
+            Response::HTTP_OK,
+            [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="'.$document.'"', // 'inline' pour affichage navigateur
+            ]
+        );
     }
     
     
